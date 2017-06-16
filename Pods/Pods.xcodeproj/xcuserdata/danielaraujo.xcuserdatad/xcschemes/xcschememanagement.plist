@@ -9,12 +9,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>GoogleToolboxForMac.xcscheme</key>
+		<key>Pods-Sapiens.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Sapiens.xcscheme</key>
+		<key>PromiseKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -22,17 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>00103D6C821BE85971C563025527BA5D</key>
+		<key>1C6C71A4D1506D4315BECFFD23B8A1E3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>69785CE8EC19B51E7C853C54F3402DD9</key>
+		<key>5E90B5433990F996F0292B7C0378FA93</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AF22C0257C17B9FEAD96807E337CB0BE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

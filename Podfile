@@ -7,6 +7,7 @@ target 'Sapiens' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   
   pod 'Alamofire', '~> 4.4'
-  # Pods for Sapiens
-  pod 'Firebase'
+  pod “PromiseKit”, “~> 4.0”
+  #pod 'Firebase'
+  pod 'SwiftyJSON'
 end
