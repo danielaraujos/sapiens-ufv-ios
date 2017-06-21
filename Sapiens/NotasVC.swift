@@ -7,12 +7,23 @@
 //
 
 import UIKit
+import Alamofire
 
 class NotasVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Alamofire.request(BASE_URL + "notas", method:.post, encoding: JSONEncoding.default).validate(statusCode: 200..<300).responseJSON { response in
+            
+            if let json: AnyObject = response.result.value! as AnyObject {
+                
+              print(response)
+                
+            }
+        }
+
 
     }
 
