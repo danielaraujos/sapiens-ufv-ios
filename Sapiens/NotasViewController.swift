@@ -29,23 +29,21 @@ class NotasViewController: UIViewController, UITableViewDelegate, UITableViewDat
         print("------------------NOTAS--------------------")
         REST.subjectResponse(user: self.user, onComplete: { (array) in
             self.arraySubjects = array
-            print(array)
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-
         }) { (error) in
             switch error {
             case .noResponse:
-                print("1")
+                self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NORESPONSE)
             case .noJson:
-                print("2")
+                self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NOJSON)
             case .nullResponse:
-                print("3")
-            case .noDecoder:
-                print("4")
+                self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NULLJSON)
+            case .responseStatusCode(code: let codigo):
+                self.showAlert(title: "Erro!", message: MESSAGE.returnStatus(valueStatus:codigo))
             default:
-                print("5")
+                self.showAlert(title: "OPS!", message: MESSAGE.MESSAGE_DEFAULT)
             }
         }
     }
@@ -91,8 +89,4 @@ class NotasViewController: UIViewController, UITableViewDelegate, UITableViewDat
         alert.addAction(ok);
         present(alert, animated: true, completion: nil);
     }
-    
-   
-    
-
 }

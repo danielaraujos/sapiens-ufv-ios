@@ -8,24 +8,57 @@
 
 /* Begin PBXBuildFile section */
 		4C1F0EDC1EFB39F400BD9325 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1F0EDB1EFB39F400BD9325 /* User.swift */; };
+		4C2FF2072108CC46005769BB /* ColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FF2062108CC46005769BB /* ColorHex.swift */; };
+		4C2FF2092108CE08005769BB /* ClassroomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FF2082108CE08005769BB /* ClassroomViewController.swift */; };
 		4C3E916C1ECE2948008D7931 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3E916B1ECE2948008D7931 /* AppDelegate.swift */; };
 		4C3E91711ECE2948008D7931 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C3E916F1ECE2948008D7931 /* Main.storyboard */; };
 		4C3E91741ECE2948008D7931 /* Sapiens.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C3E91721ECE2948008D7931 /* Sapiens.xcdatamodeld */; };
 		4C3E91761ECE2948008D7931 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C3E91751ECE2948008D7931 /* Assets.xcassets */; };
 		4C3E91791ECE2948008D7931 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C3E91771ECE2948008D7931 /* LaunchScreen.storyboard */; };
 		4C450C802104A5A500640DA0 /* REST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C450C7F2104A5A500640DA0 /* REST.swift */; };
+		4C5C0AB8210A195B0071C7C9 /* MESSAGE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C0AB7210A195B0071C7C9 /* MESSAGE.swift */; };
+		4C5D14422108828B00442274 /* SwiftDataTables.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5D14412108828B00442274 /* SwiftDataTables.framework */; };
+		4C65332C2107C4F500FEB8BD /* SubjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C65332B2107C4F500FEB8BD /* SubjectCell.swift */; };
+		4C65332E2107CF2900FEB8BD /* SchedulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C65332D2107CF2900FEB8BD /* SchedulesViewController.swift */; };
 		4C67F16B1EF3065A004BCFB4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C67F16A1EF3065A004BCFB4 /* LoginViewController.swift */; };
 		4C67F1761EF331B8004BCFB4 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C67F1751EF331B8004BCFB4 /* Alamofire.framework */; };
 		4C67F1781EF458B8004BCFB4 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C67F1771EF458B8004BCFB4 /* SwiftyJSON.framework */; };
 		4C67F17A1EF464CA004BCFB4 /* NotasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C67F1791EF464CA004BCFB4 /* NotasViewController.swift */; };
 		4C67F17C1EF471ED004BCFB4 /* SubjectClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C67F17B1EF471ED004BCFB4 /* SubjectClasses.swift */; };
-		4C9343211EFEAB0F003092E4 /* NotasDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9343201EFEAB0F003092E4 /* NotasDetailVC.swift */; };
+		4C9343211EFEAB0F003092E4 /* NotasDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9343201EFEAB0F003092E4 /* NotasDetailViewController.swift */; };
+		4C93C74A210765D200781074 /* SchedulesClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C93C749210765D200781074 /* SchedulesClasses.swift */; };
 		68220C52605486015DBFF3BC /* Pods_Sapiens.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4BF36D584B86A72D8E535B8 /* Pods_Sapiens.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4C43A03E210814BA0069697B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C43A038210814BA0069697B /* SpreadsheetView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 149E6A691EADE047000D851D;
+			remoteInfo = SpreadsheetView;
+		};
+		4C43A040210814BA0069697B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C43A038210814BA0069697B /* SpreadsheetView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 149E6A721EADE047000D851D;
+			remoteInfo = SpreadsheetViewTests;
+		};
+		4C43A042210814BA0069697B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C43A038210814BA0069697B /* SpreadsheetView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 149E6AA31EADE19F000D851D;
+			remoteInfo = HostApp;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4C0EE5B61EFCB96D00BC642F /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = "Pods/../build/Debug-iphoneos/SVProgressHUD/SVProgressHUD.framework"; sourceTree = "<group>"; };
 		4C1F0EDB1EFB39F400BD9325 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4C2FF2062108CC46005769BB /* ColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHex.swift; sourceTree = "<group>"; };
+		4C2FF2082108CE08005769BB /* ClassroomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassroomViewController.swift; sourceTree = "<group>"; };
 		4C3E91681ECE2948008D7931 /* Sapiens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sapiens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C3E916B1ECE2948008D7931 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C3E91701ECE2948008D7931 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -33,15 +66,25 @@
 		4C3E91751ECE2948008D7931 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C3E91781ECE2948008D7931 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C3E917A1ECE2948008D7931 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C43A032210813D50069697B /* SwiftDataTables */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftDataTables; path = Pods/SwiftDataTables/SwiftDataTables; sourceTree = "<group>"; };
+		4C43A034210813F10069697B /* SwiftDataTables.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftDataTables.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C43A0362108143A0069697B /* SwiftDataTables.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SwiftDataTables.bundle; path = Pods/SwiftDataTables/SwiftDataTables/SwiftDataTables.bundle; sourceTree = "<group>"; };
+		4C43A038210814BA0069697B /* SpreadsheetView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SpreadsheetView.xcodeproj; path = Pods/Framework/SpreadsheetView.xcodeproj; sourceTree = "<group>"; };
+		4C43A045210814E40069697B /* SwiftDataTables.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftDataTables.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C450C7D2104968800640DA0 /* CodableAlamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CodableAlamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C450C7F2104A5A500640DA0 /* REST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REST.swift; sourceTree = "<group>"; };
+		4C5C0AB7210A195B0071C7C9 /* MESSAGE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MESSAGE.swift; sourceTree = "<group>"; };
+		4C5D14412108828B00442274 /* SwiftDataTables.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftDataTables.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C65332B2107C4F500FEB8BD /* SubjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectCell.swift; sourceTree = "<group>"; };
+		4C65332D2107CF2900FEB8BD /* SchedulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesViewController.swift; sourceTree = "<group>"; };
 		4C67F16A1EF3065A004BCFB4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4C67F1731EF331B3004BCFB4 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Sapiens-dovrozhxjwfnarbgchfexlsjhsbl/Build/Products/Debug-iphonesimulator/PromiseKit/PromiseKit.framework"; sourceTree = "<group>"; };
 		4C67F1751EF331B8004BCFB4 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Sapiens-dovrozhxjwfnarbgchfexlsjhsbl/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		4C67F1771EF458B8004BCFB4 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Sapiens-dovrozhxjwfnarbgchfexlsjhsbl/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		4C67F1791EF464CA004BCFB4 /* NotasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotasViewController.swift; sourceTree = "<group>"; };
 		4C67F17B1EF471ED004BCFB4 /* SubjectClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectClasses.swift; sourceTree = "<group>"; };
-		4C9343201EFEAB0F003092E4 /* NotasDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotasDetailVC.swift; sourceTree = "<group>"; };
+		4C9343201EFEAB0F003092E4 /* NotasDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotasDetailViewController.swift; sourceTree = "<group>"; };
+		4C93C749210765D200781074 /* SchedulesClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesClasses.swift; sourceTree = "<group>"; };
 		7D3E8546880695C8ED6F7BE6 /* Pods-Sapiens.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sapiens.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sapiens/Pods-Sapiens.debug.xcconfig"; sourceTree = "<group>"; };
 		8B068ACBD1594920EC4E745E /* Pods-Sapiens.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sapiens.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sapiens/Pods-Sapiens.release.xcconfig"; sourceTree = "<group>"; };
 		A4BF36D584B86A72D8E535B8 /* Pods_Sapiens.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sapiens.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C5D14422108828B00442274 /* SwiftDataTables.framework in Frameworks */,
 				4C67F1781EF458B8004BCFB4 /* SwiftyJSON.framework in Frameworks */,
 				4C67F1761EF331B8004BCFB4 /* Alamofire.framework in Frameworks */,
 				68220C52605486015DBFF3BC /* Pods_Sapiens.framework in Frameworks */,
@@ -94,11 +138,22 @@
 			path = Sapiens;
 			sourceTree = "<group>";
 		};
+		4C43A039210814BA0069697B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4C43A03F210814BA0069697B /* SpreadsheetView.framework */,
+				4C43A041210814BA0069697B /* SpreadsheetViewTests.xctest */,
+				4C43A043210814BA0069697B /* HostApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		4C67F1671EF303EA004BCFB4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				4C67F17B1EF471ED004BCFB4 /* SubjectClasses.swift */,
 				4C1F0EDB1EFB39F400BD9325 /* User.swift */,
+				4C93C749210765D200781074 /* SchedulesClasses.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -108,6 +163,7 @@
 			children = (
 				4C3E916F1ECE2948008D7931 /* Main.storyboard */,
 				4C3E91771ECE2948008D7931 /* LaunchScreen.storyboard */,
+				4C65332B2107C4F500FEB8BD /* SubjectCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -117,7 +173,9 @@
 			children = (
 				4C67F16A1EF3065A004BCFB4 /* LoginViewController.swift */,
 				4C67F1791EF464CA004BCFB4 /* NotasViewController.swift */,
-				4C9343201EFEAB0F003092E4 /* NotasDetailVC.swift */,
+				4C9343201EFEAB0F003092E4 /* NotasDetailViewController.swift */,
+				4C65332D2107CF2900FEB8BD /* SchedulesViewController.swift */,
+				4C2FF2082108CE08005769BB /* ClassroomViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -126,6 +184,8 @@
 			isa = PBXGroup;
 			children = (
 				4C450C7F2104A5A500640DA0 /* REST.swift */,
+				4C2FF2062108CC46005769BB /* ColorHex.swift */,
+				4C5C0AB7210A195B0071C7C9 /* MESSAGE.swift */,
 			);
 			name = Provider;
 			sourceTree = "<group>";
@@ -133,6 +193,12 @@
 		5BBAC2F4E1CDA0241A823E30 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4C5D14412108828B00442274 /* SwiftDataTables.framework */,
+				4C43A045210814E40069697B /* SwiftDataTables.framework */,
+				4C43A038210814BA0069697B /* SpreadsheetView.xcodeproj */,
+				4C43A0362108143A0069697B /* SwiftDataTables.bundle */,
+				4C43A034210813F10069697B /* SwiftDataTables.framework */,
+				4C43A032210813D50069697B /* SwiftDataTables */,
 				4C450C7D2104968800640DA0 /* CodableAlamofire.framework */,
 				4C0EE5B61EFCB96D00BC642F /* SVProgressHUD.framework */,
 				4C67F1771EF458B8004BCFB4 /* SwiftyJSON.framework */,
@@ -203,12 +269,42 @@
 			mainGroup = 4C3E915F1ECE2948008D7931;
 			productRefGroup = 4C3E91691ECE2948008D7931 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 4C43A039210814BA0069697B /* Products */;
+					ProjectRef = 4C43A038210814BA0069697B /* SpreadsheetView.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				4C3E91671ECE2948008D7931 /* Sapiens */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		4C43A03F210814BA0069697B /* SpreadsheetView.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SpreadsheetView.framework;
+			remoteRef = 4C43A03E210814BA0069697B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4C43A041210814BA0069697B /* SpreadsheetViewTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SpreadsheetViewTests.xctest;
+			remoteRef = 4C43A040210814BA0069697B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4C43A043210814BA0069697B /* HostApp.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = HostApp.app;
+			remoteRef = 4C43A042210814BA0069697B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		4C3E91661ECE2948008D7931 /* Resources */ = {
@@ -265,11 +361,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Sapiens/Pods-Sapiens-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftDataTables/SwiftDataTables.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDataTables.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,12 +383,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C1F0EDC1EFB39F400BD9325 /* User.swift in Sources */,
+				4C2FF2072108CC46005769BB /* ColorHex.swift in Sources */,
 				4C67F17C1EF471ED004BCFB4 /* SubjectClasses.swift in Sources */,
+				4C93C74A210765D200781074 /* SchedulesClasses.swift in Sources */,
 				4C67F17A1EF464CA004BCFB4 /* NotasViewController.swift in Sources */,
+				4C5C0AB8210A195B0071C7C9 /* MESSAGE.swift in Sources */,
+				4C65332C2107C4F500FEB8BD /* SubjectCell.swift in Sources */,
 				4C3E91741ECE2948008D7931 /* Sapiens.xcdatamodeld in Sources */,
 				4C67F16B1EF3065A004BCFB4 /* LoginViewController.swift in Sources */,
-				4C9343211EFEAB0F003092E4 /* NotasDetailVC.swift in Sources */,
+				4C65332E2107CF2900FEB8BD /* SchedulesViewController.swift in Sources */,
+				4C9343211EFEAB0F003092E4 /* NotasDetailViewController.swift in Sources */,
 				4C450C802104A5A500640DA0 /* REST.swift in Sources */,
+				4C2FF2092108CE08005769BB /* ClassroomViewController.swift in Sources */,
 				4C3E916C1ECE2948008D7931 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,7 +462,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -403,7 +507,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

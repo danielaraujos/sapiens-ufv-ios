@@ -33,14 +33,13 @@ class ClassroomViewController: UIViewController {
         self.dataTable.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.dataTable.frame = self.view.frame
         self.view.addSubview(self.dataTable);
-        
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("------------------MATERIAS--------------------")
-        REST.schedulesResponse(user: self.user) { (arrayResponse) in
+        REST.schedulesResponse(user: self.user, onComplete: { (arrayResponse) in
             for i in arrayResponse.disciplinas {
                 self.dataSource.append([
                     DataTableValueType.string(i.codigo),
@@ -51,14 +50,31 @@ class ClassroomViewController: UIViewController {
                     ])
             }
             self.dataTable.reload()
-            print(self.dataSource)
+        }) { (error) in
+            switch error {
+            case .noResponse:
+                self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NORESPONSE)
+            case .noJson:
+                self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NOJSON)
+            case .nullResponse:
+                self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NULLJSON)
+            case .responseStatusCode(code: let codigo):
+                self.showAlert(title: "Erro!", message: MESSAGE.returnStatus(valueStatus:codigo))
+            default:
+                self.showAlert(title: "OPS!", message: MESSAGE.MESSAGE_DEFAULT)
+            }
         }
         self.dataSource.removeAll()
-        
     }
     
-    
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet);
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil);
+        alert.addAction(ok);
+        present(alert, animated: true, completion: nil);
+    }
 }
+
 extension ClassroomViewController: SwiftDataTableDataSource {
     public func dataTable(_ dataTable: SwiftDataTable, headerTitleForColumnAt columnIndex: NSInteger) -> String {
         return self.headerTitles[columnIndex]

@@ -36,14 +36,13 @@ class SchedulesViewController: UIViewController {
         self.dataTable.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.dataTable.frame = self.view.frame
         self.view.addSubview(self.dataTable);
-        
     }
-    
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("------------------HORARIOS--------------------")
-        REST.schedulesResponse(user: self.user) { (arrayResponse) in
+        
+        REST.schedulesResponse(user: self.user, onComplete: { (arrayResponse) in
             for i in arrayResponse.horarios {
                 self.dataSource.append([
                     DataTableValueType.string(i.hora),
@@ -53,13 +52,31 @@ class SchedulesViewController: UIViewController {
                     DataTableValueType.string(i.quinta.sala),
                     DataTableValueType.string(i.sexta.sala),
                     DataTableValueType.string(i.sabado.sala)
-                ])
+                    ])
             }
-             self.dataTable.reload()
-            print(self.dataSource)
+            self.dataTable.reload()
+        }) { (error) in
+            switch error {
+            case .noResponse:
+                self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NORESPONSE)
+            case .noJson:
+                self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NOJSON)
+            case .nullResponse:
+                self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NULLJSON)
+            case .responseStatusCode(code: let codigo):
+                self.showAlert(title: "Erro!", message: MESSAGE.returnStatus(valueStatus:codigo))
+            default:
+                self.showAlert(title: "OPS!", message: MESSAGE.MESSAGE_DEFAULT)
+            }
         }
         self.dataSource.removeAll()
         
+    }
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet);
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil);
+        alert.addAction(ok);
+        present(alert, animated: true, completion: nil);
     }
     
     

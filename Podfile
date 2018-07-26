@@ -10,4 +10,5 @@ target 'Sapiens' do
   pod 'Alamofire', '~> 4.4'
   #pod 'Firebase'
   pod 'SwiftyJSON'
+  pod 'SwiftDataTables'
 end

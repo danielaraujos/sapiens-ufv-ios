@@ -15,6 +15,7 @@ class MESSAGE {
     static let MESSAGE_NOJSON = "Não foi possivel converter a requisição"
     static let MESSAGE_NULLJSON = "Ocorreu algum erro na aplicação, e não está retornando nada"
     static let MESSAGE_NODECODER = "Ocorreu algum erro na aplicação, e não está retornando nada."
+    static let MESSAGE_DEFAULT = "Ocorreu algum problema!"
     
     
     class func returnStatus(valueStatus: Int)-> String {
@@ -27,11 +28,7 @@ class MESSAGE {
         }else if valueStatus == 503 {
             return "ERRO 503: Serviço do servidor está temporareamente indisponivel."
         }else {
-            return " "
+            return "Por algum motivo ocorreu algum erro. Tente novamente mais tarde! 😢"
         }
     }
-//    case noResponse
-//    case noJson
-//    case nullResponse
-//    case noDecoder
 }

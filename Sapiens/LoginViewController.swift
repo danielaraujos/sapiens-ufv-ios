@@ -62,7 +62,7 @@ class LoginViewController: UIViewController {
             case .responseStatusCode(code: let codigo):
                 self.showAlert(title: "Erro!", message: MESSAGE.returnStatus(valueStatus:codigo))
             default:
-                print("Erro generico")
+                self.showAlert(title: "OPS!", message: MESSAGE.MESSAGE_DEFAULT)
             }
         }
     }

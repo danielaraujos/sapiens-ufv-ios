@@ -83,24 +83,29 @@ class REST {
                     onFail(.noDecoder)
                 }
             }else {
-                onFail(.noResponse)
+                onFail(.responseStatusCode(code: response.response!.statusCode))
             }
             
         }
     }
     
-    class func schedulesResponse(user: User, onComplete: @escaping (SubjectsDataT) -> Void){
+    class func schedulesResponse(user: User, onComplete: @escaping (SubjectsDataT) -> Void, onFail: @escaping (RESTFail) -> ()){
         Alamofire.request(pathBase + "horarios", method: .post, parameters: parametersAlamofire(user: user.user!, pass: user.pass!),encoding: JSONEncoding.default).responseJSON { (response) in
             
-            guard let data = response.data else {
-                print("Erro no response data")
-                return
-            }
-            do{
-                let subjects = try JSONDecoder().decode(SubjectsDataT.self, from: data)
-                onComplete(subjects)
-            }catch{
-                print("Erro no try")
+            if response.response?.statusCode == 200 {
+                guard let data = response.data else {
+                    onFail(.noJson)
+                    return
+                }
+                do{
+                    let subjects = try JSONDecoder().decode(SubjectsDataT.self, from: data)
+                    onComplete(subjects)
+                }catch{
+                    print("Erro no try")
+                    onFail(.noDecoder)
+                }
+            }else {
+                onFail(.responseStatusCode(code: response.response!.statusCode))
             }
             
         }

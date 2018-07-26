@@ -46,6 +46,11 @@ class NotasDetailViewController: UIViewController ,UITableViewDataSource, UITabl
         self.arrayTupla.append((title: "Nota Final", detail: notaFinal,tipo:"3"))
         self.arrayTupla.append((title: "Conceito", detail: notaConceito,tipo:"4"))
         
+        if (self.array.nota?.notas?.isEmpty == false) {
+            for a in (self.array.nota!.notas)! {
+                self.arrayTupla.append((title: "\(a.nome)", detail: "\(a.valor) de \(a.max)", tipo: String("0")))
+            }
+        }
     }
     
     
