@@ -26,11 +26,26 @@ class NotasViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        REST.subjectResponse(user: self.user) { (array) in
+        print("------------------NOTAS--------------------")
+        REST.subjectResponse(user: self.user, onComplete: { (array) in
             self.arraySubjects = array
-            
+            print(array)
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+            }
+
+        }) { (error) in
+            switch error {
+            case .noResponse:
+                print("1")
+            case .noJson:
+                print("2")
+            case .nullResponse:
+                print("3")
+            case .noDecoder:
+                print("4")
+            default:
+                print("5")
             }
         }
     }
@@ -64,13 +79,10 @@ class NotasViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "MateriasSegue" {
-            let vc = segue.destination as! NotasDetailVC
-            vc.array = self.arraySubjects[tableView.indexPathForSelectedRow!.row]
-            
+            let vc = segue.destination as! NotasDetailViewController
+            vc.array = self.arraySubjects[tableView.indexPathForSelectedRow!.row]            
         }
     }
-    
-    
     
     
     private func showAlert(title: String, message: String) {

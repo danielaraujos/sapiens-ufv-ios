@@ -54,6 +54,17 @@ class LoginViewController: UIViewController {
             case .errorLogin(error: let er):
                 print(er)
                 self.showAlert(title: "Erro!", message: er)
+            case .noResponse:
+                print("Servidor não respondendo")
+                self.showAlert(title: "Erro!", message: "Servidor não respondendo.")
+            case .noJson:
+                print("Não foi possivel converter a requisicao")
+                self.showAlert(title: "Erro!", message: "Não foi possivel converter a requisição")
+            case .nullResponse:
+                print("Ocorreu algum erro na aplicação, e não está retornando nada.")
+                self.showAlert(title: "Erro!", message: "Ocorreu algum erro na aplicação, e não está retornando nada.")
+            default:
+                print("Erro generico")
             }
         }
     }
