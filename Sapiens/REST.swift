@@ -16,6 +16,7 @@ enum RESTFail {
     case noJson
     case nullResponse
     case noDecoder
+    case responseStatusCode(code:Int)
 }
 
 class REST {
@@ -61,23 +62,28 @@ class REST {
                 }
             }else {
                 onSucess(false)
-                onFail(.noResponse)
+                onFail(.responseStatusCode(code: response.response!.statusCode))
             }
         }
     }
     
-    class func subjectResponse(user: User, onComplete: @escaping ([SubjectData]) -> Void, onFail: (RESTFail) -> ()){
+    class func subjectResponse(user: User, onComplete: @escaping ([SubjectData]) -> Void, onFail: @escaping (RESTFail) -> ()){
         Alamofire.request(pathBase + "notas", method: .post, parameters: parametersAlamofire(user: user.user!, pass: user.pass!),encoding: JSONEncoding.default).responseJSON { (response) in
             
-            guard let data = response.data else {
-                print("Erro no response data")
-                return
-            }
-            do{
-                let subjects = try JSONDecoder().decode([SubjectData].self, from: data)
-                onComplete(subjects)
-            }catch{
-                print("Erro no try")
+            if response.response?.statusCode == 200 {
+                guard let data = response.data else {
+                    onFail(.noJson)
+                    return
+                }
+                do{
+                    let subjects = try JSONDecoder().decode([SubjectData].self, from: data)
+                    onComplete(subjects)
+                }catch{
+                    print("Erro no try")
+                    onFail(.noDecoder)
+                }
+            }else {
+                onFail(.noResponse)
             }
             
         }
