@@ -51,18 +51,16 @@ class LoginViewController: UIViewController {
             }
         }) { (error) in
             switch error {
-            case .errorLogin(error: let er):
-                print(er)
-                self.showAlert(title: "Erro!", message: er)
+            case .errorLogin(error: let message):
+                self.showAlert(title: "Erro!", message: message)
             case .noResponse:
-                print("Servidor não respondendo")
-                self.showAlert(title: "Erro!", message: "Servidor não respondendo.")
+                self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NORESPONSE)
             case .noJson:
-                print("Não foi possivel converter a requisicao")
-                self.showAlert(title: "Erro!", message: "Não foi possivel converter a requisição")
+                self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NOJSON)
             case .nullResponse:
-                print("Ocorreu algum erro na aplicação, e não está retornando nada.")
-                self.showAlert(title: "Erro!", message: "Ocorreu algum erro na aplicação, e não está retornando nada.")
+                self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NULLJSON)
+            case .responseStatusCode(code: let codigo):
+                self.showAlert(title: "Erro!", message: MESSAGE.returnStatus(valueStatus:codigo))
             default:
                 print("Erro generico")
             }
