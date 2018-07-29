@@ -12,6 +12,7 @@
  
  */
 import Foundation
+import CoreData
 
 class User {
     var user: String?
@@ -23,3 +24,7 @@ class User {
     }
     
 }
+
+
+
+
