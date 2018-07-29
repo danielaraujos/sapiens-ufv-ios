@@ -11,7 +11,7 @@ import SwiftDataTables
 
 class SchedulesViewController: UIViewController {
 
-    var user = User(user: "ER04325", pass: "142563")
+    var user = User(user: COREDATA.loginUserCore().user!, pass: COREDATA.loginUserCore().pass!)
     
     var dataTable: SwiftDataTable! = nil
     var dataSource: DataTableContent = []
@@ -65,6 +65,8 @@ class SchedulesViewController: UIViewController {
                 self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NULLJSON)
             case .responseStatusCode(code: let codigo):
                 self.showAlert(title: "Erro!", message: MESSAGE.returnStatus(valueStatus:codigo))
+            case .noConectionInternet:
+                self.showAlert(title: "OPS!", message: MESSAGE.MESSAGE_NO_INTERNET)
             default:
                 self.showAlert(title: "OPS!", message: MESSAGE.MESSAGE_DEFAULT)
             }

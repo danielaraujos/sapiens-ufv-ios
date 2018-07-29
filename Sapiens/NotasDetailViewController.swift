@@ -20,7 +20,7 @@ class NotasDetailViewController: UIViewController ,UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = array.nome
-        print(array)
+        //print(array)
         DispatchQueue.main.async {
             self.returnTuplas()
             self.tableView.reloadData()

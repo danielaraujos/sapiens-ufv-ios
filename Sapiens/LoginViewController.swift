@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import UIKit
+import CoreData
 import SwiftyJSON
 
 
@@ -21,9 +22,22 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var viewUser: UIView!
     @IBOutlet weak var viewPass: UIView!
     
+    var userBD : UserP?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.round()
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if(COREDATA.loginUserCore().user != "-1"){
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            let tabs1 = storyBoard.instantiateViewController(withIdentifier: "Tabs") as! UITabBarController
+            self.present(tabs1, animated:true, completion:nil)
+            print("COREDATA")
+        }
     }
     
     @IBAction func loginBTN(_ sender: Any) {
@@ -42,10 +56,16 @@ class LoginViewController: UIViewController {
         REST.login(user: usuario, onSucess: { (sucess) in
             if sucess == true {
                 print("LOGADO")
+                
+                self.saveCore()
                 let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                 let tabs1 = storyBoard.instantiateViewController(withIdentifier: "Tabs") as! UITabBarController
                 self.present(tabs1, animated:true, completion:nil)
-
+                DispatchQueue.main.async {
+                    COREDATA.loginUserCore()
+                }
+                
+                
             }else {
                 print("FALSO")
             }
@@ -61,12 +81,34 @@ class LoginViewController: UIViewController {
                 self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NULLJSON)
             case .responseStatusCode(code: let codigo):
                 self.showAlert(title: "Erro!", message: MESSAGE.returnStatus(valueStatus:codigo))
+            case .noConectionInternet:
+                self.showAlert(title: "OPS!", message: MESSAGE.MESSAGE_NO_INTERNET)
             default:
                 self.showAlert(title: "OPS!", message: MESSAGE.MESSAGE_DEFAULT)
             }
         }
+        
     }
 
+    
+    func saveCore (){
+        if(self.userBD == nil ){
+            self.userBD = UserP(context: context)
+        }
+        self.userBD?.user = self.userTF.text
+        self.userBD?.pass = self.passTF.text
+
+        do {
+            try context.save()
+        }catch{
+            print(error.localizedDescription)
+        }
+        
+    }
+
+    
+    
+    
     func round () {
         button.layer.cornerRadius = 20;
         viewUser.layer.cornerRadius = 20;
@@ -75,7 +117,6 @@ class LoginViewController: UIViewController {
         viewUser.clipsToBounds = true;
         button.clipsToBounds = true;
         viewPass.clipsToBounds = true;
-    
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -12,7 +12,7 @@ import Alamofire
 class NotasViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var arraySubjects = [SubjectData]()
-    var user = User(user: "ER04325", pass: "142563")
+    var user = User(user: COREDATA.loginUserCore().user!, pass: COREDATA.loginUserCore().pass!)
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -26,6 +26,7 @@ class NotasViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         print("------------------NOTAS--------------------")
         REST.subjectResponse(user: self.user, onComplete: { (array) in
             self.arraySubjects = array
@@ -42,6 +43,8 @@ class NotasViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NULLJSON)
             case .responseStatusCode(code: let codigo):
                 self.showAlert(title: "Erro!", message: MESSAGE.returnStatus(valueStatus:codigo))
+            case .noConectionInternet:
+                self.showAlert(title: "OPS!", message: MESSAGE.MESSAGE_NO_INTERNET)
             default:
                 self.showAlert(title: "OPS!", message: MESSAGE.MESSAGE_DEFAULT)
             }
@@ -63,10 +66,8 @@ class NotasViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellNotas", for: indexPath)
         
         let subject = self.arraySubjects[indexPath.row]
-        
         cell.textLabel?.text = subject.nome
         cell.detailTextLabel?.text = "Data da Alteração: \(subject.alteracao)"
-        
         return cell
     
     }
