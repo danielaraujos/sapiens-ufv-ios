@@ -15,7 +15,7 @@ class NotasDetailViewController: BaseViewController ,UITableViewDataSource, UITa
     @IBOutlet weak var tableView: UITableView!
     var array : SubjectData!
     var arraySubjects: [SubjectData] = []
-    var arrayTupla: [(title: String, detail : String, tipo: String)] = [(" ", " ", " ")]
+    var arrayTupla: [(title: String, detail : String, tipo: String, max: String)] = [(" ", " ", " ", " ")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,6 @@ class NotasDetailViewController: BaseViewController ,UITableViewDataSource, UITa
         var notaFinal = self.array.nota!.final
         var notaConceito = self.array.nota!.conceito
         
-        print(notaConceito)
         
         if (faltasPraticas.isEmpty) {faltasPraticas = String(0)}
         if (faltasTeoricas.isEmpty) {faltasTeoricas = String(0)}
@@ -43,14 +42,14 @@ class NotasDetailViewController: BaseViewController ,UITableViewDataSource, UITa
         if (notaConceito.isEmpty) {notaConceito = String(0)}
         
         
-        self.arrayTupla.append((title: "Faltas Práticas", detail: faltasPraticas,tipo:"1"))
-        self.arrayTupla.append((title: "Faltas Teóricas", detail: faltasTeoricas,tipo:"2"))
-        self.arrayTupla.append((title: "Nota Final", detail: notaFinal,tipo:"3"))
-        self.arrayTupla.append((title: "Conceito", detail: notaConceito,tipo:"4"))
+        self.arrayTupla.append((title: "Faltas Práticas", detail: faltasPraticas,tipo:"1", max: ""))
+        self.arrayTupla.append((title: "Faltas Teóricas", detail: faltasTeoricas,tipo:"2",max: ""))
+        self.arrayTupla.append((title: "Nota Final", detail: notaFinal,tipo:"3",max: "60"))
+        self.arrayTupla.append((title: "Conceito", detail: notaConceito,tipo:"4",max: ""))
         
         if (self.array.nota?.notas?.isEmpty == false) {
             for a in (self.array.nota!.notas)! {
-                self.arrayTupla.append((title: "\(a.nome)", detail: "\(a.valor) de \(a.max)", tipo: String("0")))
+                self.arrayTupla.append((title: "\(a.nome)", detail: "\(a.valor)", tipo: String("0"),max: "\(a.max)"))
             }
         }
     }
@@ -73,12 +72,17 @@ class NotasDetailViewController: BaseViewController ,UITableViewDataSource, UITa
         
         cell.selectionStyle = .none
         cell.detail.layer.cornerRadius = 7
-        if(subject.tipo == "3" || subject.tipo == "4"){
-            if let value = Int(subject.detail){
-                if(value >= Int("60")!){
+        if(subject.tipo == "0"){
+            if let value = Float(subject.detail), let maximo = Float(subject.max){
+                if(value >= (maximo*0.6)){
                     cell.detail.backgroundColor = UIColor(hexString: "1C93D1")
                 }else{
                     cell.detail.backgroundColor = UIColor.red
+                }
+                if maximo != 0{
+                    cell.detail.text = "\(value) de \(maximo) (\((value/maximo)*100)%"
+                }else{
+                    cell.detail.text = "\(value) de \(maximo)"
                 }
                 
             }
