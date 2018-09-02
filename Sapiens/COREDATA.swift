@@ -19,7 +19,7 @@ class COREDATA {
 
 
     class func loginUserCore() -> User{
-        let requisicao = NSFetchRequest<NSFetchRequestResult>(entityName: "UserP")
+        let requisicao = NSFetchRequest<NSFetchRequestResult>(entityName: "UserDataBase")
         do {
             let users = try context.fetch(requisicao)
             if users.count > 0 {
@@ -40,7 +40,7 @@ class COREDATA {
     
     
     class func deleteLoginCore(){
-        let requisicao = NSFetchRequest<NSFetchRequestResult>(entityName: "UserP")
+        let requisicao = NSFetchRequest<NSFetchRequestResult>(entityName: "UserDataBase")
         do {
             let users = try context.fetch(requisicao)
             if users.count > 0 {
@@ -57,8 +57,8 @@ class COREDATA {
     }
     
     
-    class func saveUserResponse (user: UserP?, usuario: User, onSucess: (Bool)-> Void){
-        //var userBD : UserP!
+    class func saveUserResponse (user: UserDataBase?, usuario: User, onSucess: (Bool)-> Void){
+        //var userBD : UserDataBase!
 //            if(user == nil ){
 //                user = user(context: context)
 //            }

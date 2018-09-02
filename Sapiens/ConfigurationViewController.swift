@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConfigurationViewController: UIViewController {
+class ConfigurationViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

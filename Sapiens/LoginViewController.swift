@@ -10,11 +10,8 @@ import UIKit
 import Alamofire
 import UIKit
 import CoreData
-import SwiftyJSON
 
-
-class LoginViewController: UIViewController {
-    
+class LoginViewController: BaseViewController {
     
     @IBOutlet weak var userTF: UITextField!
     @IBOutlet weak var passTF: UITextField!
@@ -22,13 +19,12 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var viewUser: UIView!
     @IBOutlet weak var viewPass: UIView!
     
-    var userBD : UserP?
+    var userBD : UserDataBase?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.round()
     }
-    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -41,7 +37,6 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginBTN(_ sender: Any) {
-        
         let usuario = User(user: userTF.text!, pass: passTF.text!)
     
         if(userTF.text == nil || (userTF.text?.isEmpty)!) {
@@ -65,7 +60,6 @@ class LoginViewController: UIViewController {
                     COREDATA.loginUserCore()
                 }
                 
-                
             }else {
                 print("FALSO")
             }
@@ -80,7 +74,7 @@ class LoginViewController: UIViewController {
             case .nullResponse:
                 self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NULLJSON)
             case .responseStatusCode(code: let codigo):
-                self.showAlert(title: "Erro!", message: MESSAGE.returnStatus(valueStatus:codigo))
+                self.showAlert(title: "Erro!", message: MESSAGE.returnStatus(valueStatus:codigo!))
             case .noConectionInternet:
                 self.showAlert(title: "OPS!", message: MESSAGE.MESSAGE_NO_INTERNET)
             default:
@@ -90,10 +84,9 @@ class LoginViewController: UIViewController {
         
     }
 
-    
     func saveCore (){
         if(self.userBD == nil ){
-            self.userBD = UserP(context: context)
+            self.userBD = UserDataBase(context: context)
         }
         self.userBD?.user = self.userTF.text
         self.userBD?.pass = self.passTF.text
@@ -103,11 +96,8 @@ class LoginViewController: UIViewController {
         }catch{
             print(error.localizedDescription)
         }
-        
     }
 
-    
-    
     
     func round () {
         button.layer.cornerRadius = 20;
@@ -117,21 +107,6 @@ class LoginViewController: UIViewController {
         viewUser.clipsToBounds = true;
         button.clipsToBounds = true;
         viewPass.clipsToBounds = true;
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.esconderTeclado()
-    }
-    
-    func esconderTeclado(){
-        view.endEditing(true)
-    }
-    
-    private func showAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet);
-        let ok = UIAlertAction(title: "OK", style: .default, handler: nil);
-        alert.addAction(ok);
-        present(alert, animated: true, completion: nil);
     }
     
 }

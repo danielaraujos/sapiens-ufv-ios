@@ -7,8 +7,9 @@
 //
 import UIKit
 import SwiftDataTables
+import SVProgressHUD
 
-class ClassroomViewController: UIViewController {
+class ClassroomViewController: BaseViewController {
 
     var user = User(user: COREDATA.loginUserCore().user!, pass: COREDATA.loginUserCore().pass!)
     
@@ -17,14 +18,7 @@ class ClassroomViewController: UIViewController {
     
     var arraySchedules : [SchedulesInfo] = []
     
-    let headerTitles = [
-        "Código",
-        "Nome",
-        "Créditos",
-        "Prática",
-        "Teorica"
-    ]
-    
+    let headerTitles = ["Código","Nome","Créditos","Prática","Teorica"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +32,18 @@ class ClassroomViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("------------------MATERIAS--------------------")
+        self.loadClassRoomInformations()
+    }
+    
+    @IBAction func btReload(_ sender: UIBarButtonItem) {
+        SVProgressHUD.show(withStatus: "Carregando Horários")
+        self.loadClassRoomInformations()
+        SVProgressHUD.dismiss(withDelay: 2)
+    }
+    
+    
+    func loadClassRoomInformations(){
+        print("Pedindo requsição das materias")
         REST.schedulesResponse(user: self.user, onComplete: { (arrayResponse) in
             for i in arrayResponse.disciplinas {
                 self.dataSource.append([
@@ -59,7 +64,7 @@ class ClassroomViewController: UIViewController {
             case .nullResponse:
                 self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NULLJSON)
             case .responseStatusCode(code: let codigo):
-                self.showAlert(title: "Erro!", message: MESSAGE.returnStatus(valueStatus:codigo))
+                self.showAlert(title: "Erro!", message: MESSAGE.returnStatus(valueStatus:codigo!))
             case .noConectionInternet:
                 self.showAlert(title: "OPS!", message: MESSAGE.MESSAGE_NO_INTERNET)
             default:
@@ -69,12 +74,6 @@ class ClassroomViewController: UIViewController {
         self.dataSource.removeAll()
     }
     
-    private func showAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet);
-        let ok = UIAlertAction(title: "OK", style: .default, handler: nil);
-        alert.addAction(ok);
-        present(alert, animated: true, completion: nil);
-    }
 }
 
 extension ClassroomViewController: SwiftDataTableDataSource {

@@ -10,6 +10,7 @@
 		4C1F0EDC1EFB39F400BD9325 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1F0EDB1EFB39F400BD9325 /* User.swift */; };
 		4C2FF2072108CC46005769BB /* ColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FF2062108CC46005769BB /* ColorHex.swift */; };
 		4C2FF2092108CE08005769BB /* ClassroomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FF2082108CE08005769BB /* ClassroomViewController.swift */; };
+		4C33DECF21261C470059C108 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C33DECE21261C470059C108 /* BaseViewController.swift */; };
 		4C3E916C1ECE2948008D7931 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3E916B1ECE2948008D7931 /* AppDelegate.swift */; };
 		4C3E91711ECE2948008D7931 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C3E916F1ECE2948008D7931 /* Main.storyboard */; };
 		4C3E91741ECE2948008D7931 /* Sapiens.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C3E91721ECE2948008D7931 /* Sapiens.xcdatamodeld */; };
@@ -26,11 +27,9 @@
 		4C67F17A1EF464CA004BCFB4 /* NotasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C67F1791EF464CA004BCFB4 /* NotasViewController.swift */; };
 		4C67F17C1EF471ED004BCFB4 /* SubjectClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C67F17B1EF471ED004BCFB4 /* SubjectClasses.swift */; };
 		4C818A64210A7DD5003D4AFF /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C818A63210A7DD5003D4AFF /* ConfigurationViewController.swift */; };
-		4C818A66210AA05D003D4AFF /* ViewCoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C818A65210AA05D003D4AFF /* ViewCoreViewController.swift */; };
 		4C90AC72210B695E0024ADE5 /* COREDATA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C90AC71210B695E0024ADE5 /* COREDATA.swift */; };
 		4C9343211EFEAB0F003092E4 /* NotasDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9343201EFEAB0F003092E4 /* NotasDetailViewController.swift */; };
 		4C93C74A210765D200781074 /* SchedulesClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C93C749210765D200781074 /* SchedulesClasses.swift */; };
-		4CCF9E6F210E11E300217E62 /* CONNECTION.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCF9E6E210E11E300217E62 /* CONNECTION.swift */; };
 		68220C52605486015DBFF3BC /* Pods_Sapiens.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4BF36D584B86A72D8E535B8 /* Pods_Sapiens.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +62,7 @@
 		4C1F0EDB1EFB39F400BD9325 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4C2FF2062108CC46005769BB /* ColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHex.swift; sourceTree = "<group>"; };
 		4C2FF2082108CE08005769BB /* ClassroomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassroomViewController.swift; sourceTree = "<group>"; };
+		4C33DECE21261C470059C108 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		4C3E91681ECE2948008D7931 /* Sapiens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sapiens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C3E916B1ECE2948008D7931 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C3E91701ECE2948008D7931 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -88,11 +88,9 @@
 		4C67F1791EF464CA004BCFB4 /* NotasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotasViewController.swift; sourceTree = "<group>"; };
 		4C67F17B1EF471ED004BCFB4 /* SubjectClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectClasses.swift; sourceTree = "<group>"; };
 		4C818A63210A7DD5003D4AFF /* ConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
-		4C818A65210AA05D003D4AFF /* ViewCoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCoreViewController.swift; sourceTree = "<group>"; };
 		4C90AC71210B695E0024ADE5 /* COREDATA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = COREDATA.swift; sourceTree = "<group>"; };
 		4C9343201EFEAB0F003092E4 /* NotasDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotasDetailViewController.swift; sourceTree = "<group>"; };
 		4C93C749210765D200781074 /* SchedulesClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesClasses.swift; sourceTree = "<group>"; };
-		4CCF9E6E210E11E300217E62 /* CONNECTION.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CONNECTION.swift; sourceTree = "<group>"; };
 		7D3E8546880695C8ED6F7BE6 /* Pods-Sapiens.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sapiens.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sapiens/Pods-Sapiens.debug.xcconfig"; sourceTree = "<group>"; };
 		8B068ACBD1594920EC4E745E /* Pods-Sapiens.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sapiens.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sapiens/Pods-Sapiens.release.xcconfig"; sourceTree = "<group>"; };
 		A4BF36D584B86A72D8E535B8 /* Pods_Sapiens.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sapiens.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,7 +183,7 @@
 				4C65332D2107CF2900FEB8BD /* SchedulesViewController.swift */,
 				4C2FF2082108CE08005769BB /* ClassroomViewController.swift */,
 				4C818A63210A7DD5003D4AFF /* ConfigurationViewController.swift */,
-				4C818A65210AA05D003D4AFF /* ViewCoreViewController.swift */,
+				4C33DECE21261C470059C108 /* BaseViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -197,7 +195,6 @@
 				4C2FF2062108CC46005769BB /* ColorHex.swift */,
 				4C5C0AB7210A195B0071C7C9 /* MESSAGE.swift */,
 				4C90AC71210B695E0024ADE5 /* COREDATA.swift */,
-				4CCF9E6E210E11E300217E62 /* CONNECTION.swift */,
 			);
 			name = Provider;
 			sourceTree = "<group>";
@@ -397,9 +394,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C1F0EDC1EFB39F400BD9325 /* User.swift in Sources */,
-				4CCF9E6F210E11E300217E62 /* CONNECTION.swift in Sources */,
 				4C2FF2072108CC46005769BB /* ColorHex.swift in Sources */,
 				4C67F17C1EF471ED004BCFB4 /* SubjectClasses.swift in Sources */,
+				4C33DECF21261C470059C108 /* BaseViewController.swift in Sources */,
 				4C93C74A210765D200781074 /* SchedulesClasses.swift in Sources */,
 				4C67F17A1EF464CA004BCFB4 /* NotasViewController.swift in Sources */,
 				4C5C0AB8210A195B0071C7C9 /* MESSAGE.swift in Sources */,
@@ -407,7 +404,6 @@
 				4C3E91741ECE2948008D7931 /* Sapiens.xcdatamodeld in Sources */,
 				4C818A64210A7DD5003D4AFF /* ConfigurationViewController.swift in Sources */,
 				4C67F16B1EF3065A004BCFB4 /* LoginViewController.swift in Sources */,
-				4C818A66210AA05D003D4AFF /* ViewCoreViewController.swift in Sources */,
 				4C65332E2107CF2900FEB8BD /* SchedulesViewController.swift in Sources */,
 				4C90AC72210B695E0024ADE5 /* COREDATA.swift in Sources */,
 				4C9343211EFEAB0F003092E4 /* NotasDetailViewController.swift in Sources */,
@@ -550,6 +546,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.danielaraujos.Sapiens;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -569,6 +566,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.danielaraujos.Sapiens;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

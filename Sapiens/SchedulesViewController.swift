@@ -8,8 +8,9 @@
 
 import UIKit
 import SwiftDataTables
+import SVProgressHUD
 
-class SchedulesViewController: UIViewController {
+class SchedulesViewController: BaseViewController {
 
     var user = User(user: COREDATA.loginUserCore().user!, pass: COREDATA.loginUserCore().pass!)
     
@@ -19,13 +20,8 @@ class SchedulesViewController: UIViewController {
     var arraySchedules : [SchedulesInfo] = []
     
     let headerTitles = [
-        "Hs",
-        "Se",
-        "Te",
-        "Qu",
-        "Qu",
-        "Se",
-        "Sa"
+        "Hs","Se","Te","Qu","Qu","Se"
+        //,"Sa"
     ]
     
     
@@ -33,20 +29,32 @@ class SchedulesViewController: UIViewController {
         super.viewDidLoad()
         
         self.dataTable = SwiftDataTable(dataSource: self)
-        self.dataTable.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.dataTable.autoresizingMask = [.flexibleWidth,.flexibleHeight]
         self.dataTable.frame = self.view.frame
         self.view.addSubview(self.dataTable);
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("------------------HORARIOS--------------------")
+        self.loadSchedulesInformations()
         
+    }
+    
+    
+    @IBAction func btReload(_ sender: UIBarButtonItem) {
+        SVProgressHUD.show(withStatus: "Carregando Horários")
+        self.loadSchedulesInformations()
+        SVProgressHUD.dismiss(withDelay: 2)
+        
+    }
+   
+    func loadSchedulesInformations(){
+        print("Pedindo requsição dos horarios")
         REST.schedulesResponse(user: self.user, onComplete: { (arrayResponse) in
             for i in arrayResponse.horarios {
                 self.dataSource.append([
                     DataTableValueType.string(i.hora),
-                    DataTableValueType.string(i.segunda.sala),
+                    DataTableValueType.string(i.segunda.codigo+"\n"+i.segunda.sala),
                     DataTableValueType.string(i.terca.sala),
                     DataTableValueType.string(i.quarta.sala),
                     DataTableValueType.string(i.quinta.sala),
@@ -64,7 +72,7 @@ class SchedulesViewController: UIViewController {
             case .nullResponse:
                 self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NULLJSON)
             case .responseStatusCode(code: let codigo):
-                self.showAlert(title: "Erro!", message: MESSAGE.returnStatus(valueStatus:codigo))
+                self.showAlert(title: "Erro!", message: MESSAGE.returnStatus(valueStatus:codigo!))
             case .noConectionInternet:
                 self.showAlert(title: "OPS!", message: MESSAGE.MESSAGE_NO_INTERNET)
             default:
@@ -72,21 +80,15 @@ class SchedulesViewController: UIViewController {
             }
         }
         self.dataSource.removeAll()
-        
     }
-    private func showAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet);
-        let ok = UIAlertAction(title: "OK", style: .default, handler: nil);
-        alert.addAction(ok);
-        present(alert, animated: true, completion: nil);
-    }
-    
     
 }
 extension SchedulesViewController: SwiftDataTableDataSource {
     public func dataTable(_ dataTable: SwiftDataTable, headerTitleForColumnAt columnIndex: NSInteger) -> String {
         return self.headerTitles[columnIndex]
     }
+    
+    
     
     public func numberOfColumns(in: SwiftDataTable) -> Int {
         return self.headerTitles.count

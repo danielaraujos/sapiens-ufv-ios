@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class NotasDetailViewController: UIViewController ,UITableViewDataSource, UITableViewDelegate{
+class NotasDetailViewController: BaseViewController ,UITableViewDataSource, UITableViewDelegate{
 
     @IBOutlet weak var tableView: UITableView!
     var array : SubjectData!
@@ -35,14 +35,16 @@ class NotasDetailViewController: UIViewController ,UITableViewDataSource, UITabl
         var notaFinal = self.array.nota!.final
         var notaConceito = self.array.nota!.conceito
         
+        print(notaConceito)
+        
         if (faltasPraticas.isEmpty) {faltasPraticas = String(0)}
         if (faltasTeoricas.isEmpty) {faltasTeoricas = String(0)}
         if (notaFinal.isEmpty) {notaFinal = String(0)}
         if (notaConceito.isEmpty) {notaConceito = String(0)}
         
         
-        self.arrayTupla.append((title: "Faltas práticas", detail: faltasPraticas,tipo:"1"))
-        self.arrayTupla.append((title: "Faltas teóricas", detail: faltasTeoricas,tipo:"2"))
+        self.arrayTupla.append((title: "Faltas Práticas", detail: faltasPraticas,tipo:"1"))
+        self.arrayTupla.append((title: "Faltas Teóricas", detail: faltasTeoricas,tipo:"2"))
         self.arrayTupla.append((title: "Nota Final", detail: notaFinal,tipo:"3"))
         self.arrayTupla.append((title: "Conceito", detail: notaConceito,tipo:"4"))
         
@@ -69,13 +71,16 @@ class NotasDetailViewController: UIViewController ,UITableViewDataSource, UITabl
         cell.title.text = subject.title
         cell.detail.text = subject.detail
         
-        
-        cell.detail.layer.cornerRadius = 10
+        cell.selectionStyle = .none
+        cell.detail.layer.cornerRadius = 7
         if(subject.tipo == "3" || subject.tipo == "4"){
-            if(Int(subject.detail)! >= Int("60")!){
-                cell.detail.backgroundColor = UIColor(hexString: "1C93D1")
-            }else{
-                cell.detail.backgroundColor = UIColor.red
+            if let value = Int(subject.detail){
+                if(value >= Int("60")!){
+                    cell.detail.backgroundColor = UIColor(hexString: "1C93D1")
+                }else{
+                    cell.detail.backgroundColor = UIColor.red
+                }
+                
             }
         }else {
             cell.detail.backgroundColor = UIColor(hexString: "1C93D1")
@@ -86,6 +91,7 @@ class NotasDetailViewController: UIViewController ,UITableViewDataSource, UITabl
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
+        
     }
 
 }

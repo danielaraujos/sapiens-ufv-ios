@@ -16,7 +16,8 @@ enum RESTFail {
     case noJson
     case nullResponse
     case noDecoder
-    case responseStatusCode(code:Int)
+    case responseStatusCode(code:Int?)
+    case noConectionInternet
 }
 
 class REST {
@@ -41,74 +42,94 @@ class REST {
     
     class func login (user: User, onSucess: @escaping (Bool) -> Void , onFail: @escaping (RESTFail) -> Void){
         Alamofire.request(pathBase + "login", method: .post, parameters: parametersAlamofire(user: user.user!, pass: user.pass!),encoding: JSONEncoding.default).responseJSON { response in
-            
-            if (response.response?.statusCode == 200){
-                if let json: AnyObject = response.result.value as? AnyObject {
-                    if response.result.value != nil{
-                        let conversaoJson = JSON(json)
-                        if conversaoJson["logado"] == true {
-                            onSucess(true)
+            if REST.isConnectedToInternet() {
+                if (response.response?.statusCode == 200){
+                    if let json: AnyObject = response.result.value as? AnyObject {
+                        if response.result.value != nil{
+                            let conversaoJson = JSON(json)
+                            if conversaoJson["logado"] == true {
+                                onSucess(true)
+                            }else{
+                                onSucess(false)
+                                onFail(.errorLogin(error: "\(conversaoJson["erro"])"))
+                            }
                         }else{
                             onSucess(false)
-                            onFail(.errorLogin(error: "\(conversaoJson["erro"])"))
+                            onFail(.nullResponse)
                         }
-                    }else{
+                    }else {
                         onSucess(false)
-                        onFail(.nullResponse)
+                        onFail(.noJson)
                     }
                 }else {
                     onSucess(false)
-                    onFail(.noJson)
+                    onFail(.responseStatusCode(code: response.response!.statusCode ?? 0))
                 }
             }else {
+                print("Sem conexão com a internet")
                 onSucess(false)
-                onFail(.responseStatusCode(code: response.response!.statusCode))
+                onFail(.noConectionInternet)
             }
+            
         }
     }
     
     class func subjectResponse(user: User, onComplete: @escaping ([SubjectData]) -> Void, onFail: @escaping (RESTFail) -> ()){
         Alamofire.request(pathBase + "notas", method: .post, parameters: parametersAlamofire(user: user.user!, pass: user.pass!),encoding: JSONEncoding.default).responseJSON { (response) in
-            
-            if response.response?.statusCode == 200 {
-                guard let data = response.data else {
-                    onFail(.noJson)
-                    return
-                }
-                do{
-                    let subjects = try JSONDecoder().decode([SubjectData].self, from: data)
-                    onComplete(subjects)
-                }catch{
-                    print("Erro no try")
-                    onFail(.noDecoder)
+            if REST.isConnectedToInternet() {
+                if response.response?.statusCode == 200 {
+                    guard let data = response.data else {
+                        onFail(.noJson)
+                        return
+                    }
+                    do{
+                        let subjects = try JSONDecoder().decode([SubjectData].self, from: data)
+                        onComplete(subjects)
+                    }catch{
+                        print("Erro no try")
+                        onFail(.noDecoder)
+                    }
+                }else {
+                    onFail(.responseStatusCode(code: response.response?.statusCode  ?? 0))
                 }
             }else {
-                onFail(.responseStatusCode(code: response.response!.statusCode))
+                print("Sem conexão com a internet")
+                onFail(.noConectionInternet)
             }
-            
         }
     }
     
     class func schedulesResponse(user: User, onComplete: @escaping (SubjectsDataT) -> Void, onFail: @escaping (RESTFail) -> ()){
         Alamofire.request(pathBase + "horarios", method: .post, parameters: parametersAlamofire(user: user.user!, pass: user.pass!),encoding: JSONEncoding.default).responseJSON { (response) in
-            
-            if response.response?.statusCode == 200 {
-                guard let data = response.data else {
-                    onFail(.noJson)
-                    return
-                }
-                do{
-                    let subjects = try JSONDecoder().decode(SubjectsDataT.self, from: data)
-                    onComplete(subjects)
-                }catch{
-                    print("Erro no try")
-                    onFail(.noDecoder)
+            if REST.isConnectedToInternet() {
+                if response.response?.statusCode == 200 {
+                    guard let data = response.data else {
+                        onFail(.noJson)
+                        return
+                    }
+                    do{
+                        let subjects = try JSONDecoder().decode(SubjectsDataT.self, from: data)
+                        onComplete(subjects)
+                    }catch{
+                        print("Erro no try")
+                        onFail(.noDecoder)
+                    }
+                }else {
+                    onFail(.responseStatusCode(code: response.response?.statusCode ?? 0))
                 }
             }else {
-                onFail(.responseStatusCode(code: response.response!.statusCode))
+                print("Sem conexão com a internet")
+                onFail(.noConectionInternet)
             }
-            
         }
     }
     
+    class func logoutHome () -> LoginViewController{
+        let loginViewController: LoginViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        return loginViewController
+    }
+    
+    class func isConnectedToInternet () -> Bool {
+        return NetworkReachabilityManager()!.isReachable
+    }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina5_9" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,38 +18,37 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fundo3" translatesAutoresizingMaskIntoConstraints="NO" id="IGg-LC-IBt">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logomarca" translatesAutoresizingMaskIntoConstraints="NO" id="NBJ-jM-25m">
-                                <rect key="frame" x="79" y="332" width="217" height="148"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Aplicação não Oficial" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7A-Er-RgX">
+                                <rect key="frame" x="65" y="595" width="244" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="tYQ-GF-DKv">
+                                <rect key="frame" x="67.5" y="211" width="240" height="205"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="217" id="FfO-0D-8tw"/>
-                                    <constraint firstAttribute="height" constant="148" id="qfr-zh-uqT"/>
+                                    <constraint firstAttribute="width" constant="240" id="GKA-go-6wd"/>
+                                    <constraint firstAttribute="height" constant="205" id="PQg-e7-Get"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="NBJ-jM-25m" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="2kS-4O-Fm0"/>
-                            <constraint firstAttribute="trailing" secondItem="IGg-LC-IBt" secondAttribute="trailing" id="Geu-7u-VEc"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="IGg-LC-IBt" secondAttribute="bottom" id="KyG-1K-sDo"/>
-                            <constraint firstItem="IGg-LC-IBt" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Lul-jz-17O"/>
-                            <constraint firstItem="IGg-LC-IBt" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="fKd-Hv-fVO"/>
-                            <constraint firstItem="NBJ-jM-25m" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="vbd-G3-iFN"/>
+                            <constraint firstItem="tYQ-GF-DKv" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="mQ3-7X-Y0l"/>
+                            <constraint firstItem="tYQ-GF-DKv" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-20" id="zSS-T7-6PM"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
     <resources>
-        <image name="fundo3" width="736" height="1309"/>
-        <image name="logomarca" width="378" height="293"/>
+        <image name="logo" width="368" height="305"/>
     </resources>
 </document>

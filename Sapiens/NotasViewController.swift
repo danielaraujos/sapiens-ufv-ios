@@ -8,8 +8,9 @@
 
 import UIKit
 import Alamofire
+import SVProgressHUD
 
-class NotasViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class NotasViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
 
     var arraySubjects = [SubjectData]()
     var user = User(user: COREDATA.loginUserCore().user!, pass: COREDATA.loginUserCore().pass!)
@@ -26,31 +27,15 @@ class NotasViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        print("------------------NOTAS--------------------")
-        REST.subjectResponse(user: self.user, onComplete: { (array) in
-            self.arraySubjects = array
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }) { (error) in
-            switch error {
-            case .noResponse:
-                self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NORESPONSE)
-            case .noJson:
-                self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NOJSON)
-            case .nullResponse:
-                self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NULLJSON)
-            case .responseStatusCode(code: let codigo):
-                self.showAlert(title: "Erro!", message: MESSAGE.returnStatus(valueStatus:codigo))
-            case .noConectionInternet:
-                self.showAlert(title: "OPS!", message: MESSAGE.MESSAGE_NO_INTERNET)
-            default:
-                self.showAlert(title: "OPS!", message: MESSAGE.MESSAGE_DEFAULT)
-            }
-        }
+        self.loadInformations()
     }
     
+    @IBAction func btReload(_ sender: UIBarButtonItem) {
+        SVProgressHUD.show(withStatus: "Carregando Notas")
+        SVProgressHUD.dismiss(withDelay: 2)
+        self.loadInformations()
+        
+    }
     
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -69,7 +54,6 @@ class NotasViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.textLabel?.text = subject.nome
         cell.detailTextLabel?.text = "Data da Alteração: \(subject.alteracao)"
         return cell
-    
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -83,11 +67,30 @@ class NotasViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    
-    private func showAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet);
-        let ok = UIAlertAction(title: "OK", style: .default, handler: nil);
-        alert.addAction(ok);
-        present(alert, animated: true, completion: nil);
+    func loadInformations(){
+        print("Pedindo requsição das notas")
+        REST.subjectResponse(user: self.user, onComplete: { (array) in
+            self.arraySubjects = array
+            print(array)
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }) { (error) in
+            switch error {
+            case .noResponse:
+                self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NORESPONSE)
+            case .noJson:
+                self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NOJSON)
+            case .nullResponse:
+                self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NULLJSON)
+            case .responseStatusCode(code: let codigo):
+                self.showAlert(title: "Erro!", message: MESSAGE.returnStatus(valueStatus:codigo!))
+            case .noConectionInternet:
+                self.showAlert(title: "OPS!", message: MESSAGE.MESSAGE_NO_INTERNET)
+            default:
+                self.showAlert(title: "OPS!", message: MESSAGE.MESSAGE_DEFAULT)
+            }
+        }
     }
+    
 }
