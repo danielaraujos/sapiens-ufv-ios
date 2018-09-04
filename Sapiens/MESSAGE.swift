@@ -15,7 +15,7 @@ class MESSAGE {
     static let MESSAGE_NOJSON = "Não foi possivel converter a requisição"
     static let MESSAGE_NULLJSON = "Ocorreu algum erro na aplicação, e não está retornando nada"
     static let MESSAGE_NODECODER = "Ocorreu algum erro na aplicação, e não está retornando nada."
-    static let MESSAGE_DEFAULT = "Você está mesmo matriculado em alguma matéria? Acesse o painel do Sanpiens e confira."
+    static let MESSAGE_DEFAULT = "Você está mesmo matriculado em alguma matéria? Caso esteja, pode estar ocorrendo um erro interno no Sapiens."
     static let MESSAGE_NO_INTERNET = "Dispositivo sem conexão com a internet"
     
     

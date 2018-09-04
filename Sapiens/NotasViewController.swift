@@ -71,7 +71,7 @@ class NotasViewController: BaseViewController, UITableViewDelegate, UITableViewD
         print("Pedindo requsição das notas")
         REST.subjectResponse(user: self.user, onComplete: { (array) in
             self.arraySubjects = array
-            print(array)
+            //print(array)
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }

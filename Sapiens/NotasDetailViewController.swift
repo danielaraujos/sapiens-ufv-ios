@@ -71,25 +71,26 @@ class NotasDetailViewController: BaseViewController ,UITableViewDataSource, UITa
         cell.detail.text = subject.detail
         
         cell.selectionStyle = .none
-        cell.detail.layer.cornerRadius = 7
+        
+        cell.backgraundView.layer.cornerRadius = 7
         if(subject.tipo == "0"){
             if let value = Float(subject.detail), let maximo = Float(subject.max){
                 if(value >= (maximo*0.6)){
-                    cell.detail.backgroundColor = UIColor(hexString: "1C93D1")
+                    cell.backgraundView.backgroundColor = UIColor(hexString: "E6C43D")
                 }else{
-                    cell.detail.backgroundColor = UIColor.red
+                    cell.backgraundView.backgroundColor = UIColor.red
                 }
                 if maximo != 0{
-                    cell.detail.text = "\(value) de \(maximo) (\((value/maximo)*100)%"
+                    cell.detail.text = "\(value) de \(maximo) (\((value/maximo)*100)%)"
                 }else{
                     cell.detail.text = "\(value) de \(maximo)"
                 }
                 
             }
         }else {
-            cell.detail.backgroundColor = UIColor(hexString: "1C93D1")
+            cell.backgraundView.backgroundColor = UIColor(hexString: "E6C43D")
         }
-        cell.detail.clipsToBounds = true
+        cell.backgraundView.clipsToBounds = true
         return cell;
     }
     
