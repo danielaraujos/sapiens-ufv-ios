@@ -51,7 +51,6 @@ class LoginViewController: BaseViewController {
         REST.login(user: usuario, onSucess: { (sucess) in
             if sucess == true {
                 print("LOGADO")
-                
                 self.saveCore()
                 let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                 let tabs1 = storyBoard.instantiateViewController(withIdentifier: "Tabs") as! UITabBarController

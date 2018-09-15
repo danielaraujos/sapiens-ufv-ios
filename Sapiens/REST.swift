@@ -75,6 +75,15 @@ class REST {
     }
     
     class func subjectResponse(user: User, onComplete: @escaping ([SubjectData]) -> Void, onFail: @escaping (RESTFail) -> ()){
+        
+        /*
+         PASSAR PELO COREDATA ANTES DE ENTRAR AQUI.
+         -> SE FOR NULO ENTRA NO REQUEST, SE NAO RECARREGA O VALOR DO BANCO.
+         
+         CASO O USAURIO QUERIA ATUALIZAR AS NOTAS, CLICAR EM ATUALIZAR. A ROTINA DELETA O BANCO
+         E ELE ABRE O DECODE.
+ 
+        */
         Alamofire.request(pathBase + "notas", method: .post, parameters: parametersAlamofire(user: user.user!, pass: user.pass!),encoding: JSONEncoding.default).responseJSON { (response) in
             if REST.isConnectedToInternet() {
                 if response.response?.statusCode == 200 {

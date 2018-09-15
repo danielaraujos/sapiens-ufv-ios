@@ -58,22 +58,17 @@ class COREDATA {
     
     
     class func saveUserResponse (user: UserDataBase?, usuario: User, onSucess: (Bool)-> Void){
-        //var userBD : UserDataBase!
-//            if(user == nil ){
-//                user = user(context: context)
-//            }
-        print("Entrou aqui")
-            user?.user = usuario.user
-            user?.pass = usuario.pass
-    
-            do {
-                try COREDATA.context.save()
-                onSucess(true)
-            }catch{
-                print(error.localizedDescription)
-                onSucess(false)
-            }
+        user?.user = usuario.user
+        user?.pass = usuario.pass
+
+        do {
+            try COREDATA.context.save()
+            onSucess(true)
+        }catch{
+            print(error.localizedDescription)
+            onSucess(false)
         }
+    }
     
     
     

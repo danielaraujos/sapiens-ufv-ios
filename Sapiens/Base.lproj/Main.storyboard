@@ -579,8 +579,6 @@
                                     <constraint firstAttribute="bottom" secondItem="cwz-ad-YXy" secondAttribute="bottom" constant="11" id="4LT-xJ-laU"/>
                                     <constraint firstAttribute="height" constant="44" id="NYT-Tk-Vvf"/>
                                     <constraint firstAttribute="trailing" secondItem="cwz-ad-YXy" secondAttribute="trailing" constant="197" id="kkX-bS-bML"/>
-                                    <constraint firstItem="cwz-ad-YXy" firstAttribute="top" secondItem="Tix-OA-ubk" secondAttribute="top" constant="12" id="tZ0-pq-ZO0"/>
-                                    <constraint firstItem="cwz-ad-YXy" firstAttribute="leading" secondItem="Tix-OA-ubk" secondAttribute="leading" constant="8" id="xqq-Ej-90w"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Receber notificações" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3o3-DJ-tgg">

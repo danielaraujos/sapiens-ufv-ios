@@ -13,11 +13,15 @@ import SVProgressHUD
 class NotasViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
 
     var arraySubjects = [SubjectData]()
+    var messageEmpty = UILabel()
     var user = User(user: COREDATA.loginUserCore().user!, pass: COREDATA.loginUserCore().pass!)
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        messageEmpty.text = "Materias não carregadas."
+        messageEmpty.textAlignment = .center
         
         let backItem = UIBarButtonItem()
         backItem.title = " "
@@ -44,6 +48,7 @@ class NotasViewController: BaseViewController, UITableViewDelegate, UITableViewD
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //tableView.backgroundView = arraySubjects.count == 0 ? messageEmpty : nil
         return arraySubjects.count
     }
     

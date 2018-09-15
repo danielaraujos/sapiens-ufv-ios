@@ -35,8 +35,6 @@ class BaseViewController: UIViewController {
         view.endEditing(true)
     }
   
-    
-
 }
 
 extension BaseViewController {
