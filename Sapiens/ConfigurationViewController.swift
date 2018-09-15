@@ -12,7 +12,9 @@ import MessageUI
 class ConfigurationViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    var user = User(user: COREDATA.loginUserCore().user!, pass: COREDATA.loginUserCore().pass!)
     
+    @IBOutlet weak var lblMatricula: UILabel!
     
     var settings : [Setting] = []
     var CELL_ID = "AjusteCell"
@@ -20,6 +22,8 @@ class ConfigurationViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.lista()
+        
+        self.lblMatricula.text = user.user!.uppercased()
     }
     
     

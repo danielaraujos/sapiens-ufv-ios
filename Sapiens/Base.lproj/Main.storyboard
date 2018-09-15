@@ -515,6 +515,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="lblMatricula" destination="QeX-g6-fMZ" id="vYf-Iw-Slz"/>
                         <outlet property="tableView" destination="YoR-Gf-Dk2" id="Ou7-26-Uvo"/>
                     </connections>
                 </viewController>
