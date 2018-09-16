@@ -37,6 +37,9 @@ class REST {
         ]
     }
     
+    private static let localStorageSubject = "LocalSubject"
+    private static let localStorageSchedules = "LocalSchedules"
+    
     
     private static let sessionManager = Alamofire.SessionManager(configuration: configuration)
     
@@ -86,7 +89,7 @@ class REST {
     class func subjectResponse(user: User, onComplete: @escaping ([SubjectData]) -> Void, onFail: @escaping (RESTFail) -> ()){
         
         Alamofire.request(pathBase + "notas", method: .post, parameters: parametersAlamofire(user: user.user!, pass: user.pass!),encoding: JSONEncoding.default).responseJSON { (response) in
-            if let storageOff = defaults.data(forKey: "localNotas") {
+            if let storageOff = defaults.data(forKey: REST.localStorageSubject) {
                 /*CASO O STORAGE ESTEJA COM INFORMACOES ELE ENTRARÁ AQUI*/
                 do{
                     let subjects = try JSONDecoder().decode([SubjectData].self, from: storageOff)
@@ -115,7 +118,7 @@ class REST {
                         do{
                             let subjects = try JSONDecoder().decode([SubjectData].self, from: data)
                             print("INTERNET")
-                            defaults.set(data, forKey: "localNotas")
+                            defaults.set(data, forKey: REST.localStorageSubject)
                             onComplete(subjects)
                         }catch{
                             print("Erro no try")
@@ -134,32 +137,55 @@ class REST {
     
     class func schedulesResponse(user: User, onComplete: @escaping (SubjectsDataT) -> Void, onFail: @escaping (RESTFail) -> ()){
         Alamofire.request(pathBase + "horarios", method: .post, parameters: parametersAlamofire(user: user.user!, pass: user.pass!),encoding: JSONEncoding.default).responseJSON { (response) in
-            if REST.isConnectedToInternet() {
-                if response.response?.statusCode == 200 {
-                    guard let data = response.data else {
-                        onFail(.noJson)
-                        return
+             if let storageOff = defaults.data(forKey: REST.localStorageSchedules) {
+                /*CASO O STORAGE ESTEJA COM INFORMACOES ELE ENTRARÁ AQUI*/
+                do{
+                    let subjects = try JSONDecoder().decode(SubjectsDataT.self, from: storageOff)
+                    onComplete(subjects)
+                }catch{
+                    print("Erro no try")
+                    onFail(.noDecoder)
+                }
+                if REST.isConnectedToInternet() {
+                    if response.data != storageOff {
+                        print("A versão atual está desatualizada! \(String(describing: response.data)) - \(storageOff)" )
+                        onFail(.alertData)
+                    }else {
+                        print("Está igual :-)")
                     }
-                    do{
-                        let subjects = try JSONDecoder().decode(SubjectsDataT.self, from: data)
-                        onComplete(subjects)
-                    }catch{
-                        print("Erro no try")
-                        onFail(.noDecoder)
+                }
+                
+             }else {
+                if REST.isConnectedToInternet() {
+                    if response.response?.statusCode == 200 {
+                        guard let data = response.data else {
+                            onFail(.noJson)
+                            return
+                        }
+                        do{
+                            let subjects = try JSONDecoder().decode(SubjectsDataT.self, from: data)
+                            print("INTERNET")
+                            defaults.set(data, forKey: REST.localStorageSchedules)
+                            onComplete(subjects)
+                        }catch{
+                            print("Erro no try")
+                            onFail(.noDecoder)
+                        }
+                    }else {
+                        onFail(.responseStatusCode(code: response.response?.statusCode ?? 0))
                     }
                 }else {
-                    onFail(.responseStatusCode(code: response.response?.statusCode ?? 0))
+                    print("Sem conexão com a internet")
+                    onFail(.noConectionInternet)
                 }
-            }else {
-                print("Sem conexão com a internet")
-                onFail(.noConectionInternet)
             }
         }
     }
     
     class func deleteStorage() {
         // Remover as notas
-        defaults.removeObject(forKey: "localNotas")
+        defaults.removeObject(forKey: REST.localStorageSubject)
+        defaults.removeObject(forKey: REST.localStorageSchedules)
         defaults.synchronize()
         print("Dados do Storage foi deletado com sucesso!")
     }
