@@ -17,7 +17,7 @@ class MESSAGE {
     static let MESSAGE_NODECODER = "Ocorreu algum erro na aplicação, e não está retornando nada."
     static let MESSAGE_DEFAULT = "Você está mesmo matriculado em alguma matéria? Caso esteja, pode estar ocorrendo um erro interno no Sapiens."
     static let MESSAGE_NO_INTERNET = "Dispositivo sem conexão com a internet"
-    static let MESSAGE_MESSAGE_ALERT = "Precisamos atualizar os dados! Ouve alguma mudança no Sapiens."
+    static let MESSAGE_ALERT = "Precisamos atualizar os dados! Ouve alguma mudança no Sapiens."
     
     
     class func returnStatus(valueStatus: Int)-> String {
