@@ -40,7 +40,11 @@ class REST {
     
     private static let sessionManager = Alamofire.SessionManager(configuration: configuration)
     
+    private static let defaults = UserDefaults.standard
     
+    /*
+     FUNÇÃO RESPONSAVEL POR REALIZAR O LOGIN DO APLICATIVO
+     */
     class func login (user: User, onSucess: @escaping (Bool) -> Void , onFail: @escaping (RESTFail) -> Void){
         Alamofire.request(pathBase + "login", method: .post, parameters: parametersAlamofire(user: user.user!, pass: user.pass!),encoding: JSONEncoding.default).responseJSON { response in
             if REST.isConnectedToInternet() {
@@ -75,16 +79,12 @@ class REST {
         }
     }
     
+    /*
+     FUNÇÃO RESPONSAVEL PELA VERIFICAÇÃO DE NOTAS. CASO LOCAL STORAGE ESTEJA NULO, ELE ATUALIZA AS INFORMACOES.
+     CASO O LOCAL STORATE ESTEJA DIFERENTE DO SAPIENS, ELE MOSTRARÁ UMA MENSAGEM PARA VARIFICAÇÃO
+     */
     class func subjectResponse(user: User, onComplete: @escaping ([SubjectData]) -> Void, onFail: @escaping (RESTFail) -> ()){
-        let defaults = UserDefaults.standard
-        /*
-         PASSAR PELO COREDATA ANTES DE ENTRAR AQUI.
-         -> SE FOR NULO ENTRA NO REQUEST, SE NAO RECARREGA O VALOR DO BANCO.
-         
-         CASO O USAURIO QUERIA ATUALIZAR AS NOTAS, CLICAR EM ATUALIZAR. A ROTINA DELETA O BANCO
-         E ELE ABRE O DECODE.
- 
-        */
+        
         Alamofire.request(pathBase + "notas", method: .post, parameters: parametersAlamofire(user: user.user!, pass: user.pass!),encoding: JSONEncoding.default).responseJSON { (response) in
             if let storageOff = defaults.data(forKey: "localNotas") {
                 /*CASO O STORAGE ESTEJA COM INFORMACOES ELE ENTRARÁ AQUI*/
@@ -155,6 +155,13 @@ class REST {
                 onFail(.noConectionInternet)
             }
         }
+    }
+    
+    class func deleteStorage() {
+        // Remover as notas
+        defaults.removeObject(forKey: "localNotas")
+        defaults.synchronize()
+        print("Dados do Storage foi deletado com sucesso!")
     }
     
     class func logoutHome () -> LoginViewController{
