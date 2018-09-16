@@ -18,6 +18,7 @@ enum RESTFail {
     case noDecoder
     case responseStatusCode(code:Int?)
     case noConectionInternet
+    case alertData
 }
 
 class REST {
@@ -75,7 +76,7 @@ class REST {
     }
     
     class func subjectResponse(user: User, onComplete: @escaping ([SubjectData]) -> Void, onFail: @escaping (RESTFail) -> ()){
-        
+        let defaults = UserDefaults.standard
         /*
          PASSAR PELO COREDATA ANTES DE ENTRAR AQUI.
          -> SE FOR NULO ENTRA NO REQUEST, SE NAO RECARREGA O VALOR DO BANCO.
@@ -85,25 +86,48 @@ class REST {
  
         */
         Alamofire.request(pathBase + "notas", method: .post, parameters: parametersAlamofire(user: user.user!, pass: user.pass!),encoding: JSONEncoding.default).responseJSON { (response) in
-            if REST.isConnectedToInternet() {
-                if response.response?.statusCode == 200 {
-                    guard let data = response.data else {
-                        onFail(.noJson)
-                        return
+            if let storageOff = defaults.data(forKey: "localNotas") {
+                /*CASO O STORAGE ESTEJA COM INFORMACOES ELE ENTRARÁ AQUI*/
+                do{
+                    let subjects = try JSONDecoder().decode([SubjectData].self, from: storageOff)
+                    print("LOCAL STORAGE")
+                    onComplete(subjects)
+                }catch{
+                    print("Erro no try")
+                    onFail(.noDecoder)
+                }
+                if REST.isConnectedToInternet() {
+                    if response.data != storageOff {
+                        print("A versão atual está desatualizada! \(String(describing: response.data)) - \(storageOff)" )
+                        onFail(.alertData)
+                    }else {
+                        print("Está igual :-)")
                     }
-                    do{
-                        let subjects = try JSONDecoder().decode([SubjectData].self, from: data)
-                        onComplete(subjects)
-                    }catch{
-                        print("Erro no try")
-                        onFail(.noDecoder)
-                    }
-                }else {
-                    onFail(.responseStatusCode(code: response.response?.statusCode  ?? 0))
                 }
             }else {
-                print("Sem conexão com a internet")
-                onFail(.noConectionInternet)
+                /*CASO A PRIMEIRA VERIFICACAO OCORRA UM ERRO, ELE ATUALIZA OS DADOS.*/
+                if REST.isConnectedToInternet() {
+                    if response.response?.statusCode == 200 {
+                        guard let data = response.data else {
+                            onFail(.noJson)
+                            return
+                        }
+                        do{
+                            let subjects = try JSONDecoder().decode([SubjectData].self, from: data)
+                            print("INTERNET")
+                            defaults.set(data, forKey: "localNotas")
+                            onComplete(subjects)
+                        }catch{
+                            print("Erro no try")
+                            onFail(.noDecoder)
+                        }
+                    }else {
+                        onFail(.responseStatusCode(code: response.response?.statusCode  ?? 0))
+                    }
+                }else {
+                    print("Sem conexão com a internet")
+                    onFail(.noConectionInternet)
+                }
             }
         }
     }
