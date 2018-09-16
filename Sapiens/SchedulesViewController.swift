@@ -73,8 +73,6 @@ class SchedulesViewController: BaseViewController{
         
     }
    
-    
-    
     func loadSchedulesInformations(){
         print("Pedindo requsição dos horarios")
         REST.schedulesResponse(user: self.user, onComplete: { (arrayResponse ) in
@@ -108,6 +106,8 @@ class SchedulesViewController: BaseViewController{
                 self.showAlert(title: "Erro!", message: MESSAGE.returnStatus(valueStatus:codigo!))
             case .noConectionInternet:
                 self.showAlert(title: "OPS!", message: MESSAGE.MESSAGE_NO_INTERNET)
+            case .alertData:
+                self.showAlert(title: "OPS!", message: MESSAGE.MESSAGE_ALERT)
             default:
                 self.showAlert(title: "OPS!", message: MESSAGE.MESSAGE_DEFAULT)
             }
