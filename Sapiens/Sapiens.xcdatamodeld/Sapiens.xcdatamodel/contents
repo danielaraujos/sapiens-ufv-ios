@@ -1,36 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="FaultDataBase" representedClassName="FaultDataBase" syncable="YES" codeGenerationType="class">
-        <attribute name="praticas" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="teoricas" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
-    <entity name="NoteDataBase" representedClassName="NoteDataBase" syncable="YES" codeGenerationType="class">
-        <attribute name="conceito" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="exame" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="final" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="notas" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NotesDataBase" syncable="YES"/>
-    </entity>
-    <entity name="NotesDataBase" representedClassName="NotesDataBase" syncable="YES" codeGenerationType="class">
-        <attribute name="max" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="valor" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
-    <entity name="SubjectDataBase" representedClassName="SubjectDataBase" syncable="YES" codeGenerationType="class">
-        <attribute name="alteracao" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="calculo" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="faltas" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FaultDataBase" syncable="YES"/>
-        <relationship name="nota" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NoteDataBase" syncable="YES"/>
-    </entity>
     <entity name="UserDataBase" representedClassName="UserDataBase" syncable="YES" codeGenerationType="class">
         <attribute name="pass" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="user" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="NoteDataBase" positionX="25" positionY="-115" width="128" height="103"/>
-        <element name="FaultDataBase" positionX="340" positionY="-108" width="128" height="73"/>
-        <element name="SubjectDataBase" positionX="187" positionY="-253" width="128" height="118"/>
         <element name="UserDataBase" positionX="196" positionY="-369" width="128" height="75"/>
-        <element name="NotesDataBase" positionX="153" positionY="45" width="128" height="90"/>
     </elements>
 </model>
