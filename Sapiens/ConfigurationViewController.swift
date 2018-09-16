@@ -45,6 +45,7 @@ class ConfigurationViewController: BaseViewController {
     @IBAction func btLogout(_ sender: UIBarButtonItem) {
         print("Redirecionar para inicio")
         COREDATA.deleteLoginCore()
+        REST.deleteStorage()
         let loginViewController = REST.logoutHome()
         self.present(loginViewController, animated:true, completion:nil)
     }
