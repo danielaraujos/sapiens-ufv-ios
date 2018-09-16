@@ -92,6 +92,8 @@ class NotasViewController: BaseViewController, UITableViewDelegate, UITableViewD
                 self.showAlert(title: "Erro!", message: MESSAGE.returnStatus(valueStatus:codigo!))
             case .noConectionInternet:
                 self.showAlert(title: "OPS!", message: MESSAGE.MESSAGE_NO_INTERNET)
+            case .alertData:
+                self.showAlert(title: "OPS!", message: MESSAGE.MESSAGE_ALERT)
             default:
                 self.showAlert(title: "OPS!", message: MESSAGE.MESSAGE_DEFAULT)
             }
