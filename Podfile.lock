@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.7.3)
+  - LIHAlert (2.1.1)
   - SpreadsheetView (0.8.4)
   - SVProgressHUD (2.2.5)
   - SwiftDataTables (0.6.31)
@@ -7,6 +8,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
+  - LIHAlert
   - SpreadsheetView
   - SVProgressHUD (~> 2.2)
   - SwiftDataTables
@@ -14,11 +16,12 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  LIHAlert: a027605673986d03b896e4f4a901f393b15840b9
   SpreadsheetView: 17c55b6dc82099993cc2ceb818248d19f3220998
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftDataTables: 3b38580f5638b6eb80f5a0eafba0e9ebe99294cb
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: f5d8643910a4eb77a4e26659141f4cc84e44e5ca
+PODFILE CHECKSUM: 00041f0c02913a8a2ba6710a48a80a6838c369dc
 
 COCOAPODS: 1.3.1
