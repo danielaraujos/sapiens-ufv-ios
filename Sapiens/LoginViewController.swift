@@ -38,13 +38,15 @@ class LoginViewController: BaseViewController {
     
     @IBAction func loginBTN(_ sender: Any) {
         let usuario = User(user: userTF.text!, pass: passTF.text!)
-    
+        
+        self.errorAlert?.show(nil, hidden: nil)
+        
         if(userTF.text == nil || (userTF.text?.isEmpty)!) {
-            self.showAlert(title: "Ops...", message: "Campo usuário é obrigatório!")
+            self.showError(message: "Campo usuário é obrigatório!")
             return
         }
         if(passTF.text == nil || (passTF.text?.isEmpty)!) {
-            self.showAlert(title: "Ops...", message: "Campo senha é obrigatório!")
+            self.showError(message: "Campo senha é obrigatório!")
             return
         }
         
@@ -63,21 +65,22 @@ class LoginViewController: BaseViewController {
                 print("FALSO")
             }
         }) { (error) in
+            self.errorAlert?.show(nil, hidden: nil)
             switch error {
             case .errorLogin(error: let message):
-                self.showAlertSheet(title: "Erro!", message: message)
+                self.showError(message: message)
             case .noResponse:
-                self.showAlertSheet(title: "Erro!", message: MESSAGE.MESSAGE_NORESPONSE)
+                self.showError(message: MESSAGE.MESSAGE_NORESPONSE)
             case .noJson:
-                self.showAlertSheet(title: "Erro!", message: MESSAGE.MESSAGE_NOJSON)
+                self.showError(message: MESSAGE.MESSAGE_NOJSON)
             case .nullResponse:
-                self.showAlertSheet(title: "Erro!", message: MESSAGE.MESSAGE_NULLJSON)
+                self.showError(message: MESSAGE.MESSAGE_NULLJSON)
             case .responseStatusCode(code: let codigo):
-                self.showAlertSheet(title: "Erro!", message: MESSAGE.returnStatus(valueStatus:codigo!))
+                self.showError(message: MESSAGE.returnStatus(valueStatus:codigo!))
             case .noConectionInternet:
-                self.showAlertSheet(title: "OPS!", message: MESSAGE.MESSAGE_NO_INTERNET)
+                self.showError(message: MESSAGE.MESSAGE_NO_INTERNET)
             default:
-                self.showAlertSheet(title: "OPS!", message: MESSAGE.MESSAGE_DEFAULT)
+                self.showError(message: MESSAGE.MESSAGE_DEFAULT)
             }
         }
         
