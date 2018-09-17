@@ -8,7 +8,7 @@
 
 import UIKit
 import Alamofire
-import SVProgressHUD
+
 
 class NotasViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -26,6 +26,8 @@ class NotasViewController: BaseViewController, UITableViewDelegate, UITableViewD
         let backItem = UIBarButtonItem()
         backItem.title = " "
         navigationItem.backBarButtonItem = backItem
+        self.showProgressing(message: "Carregando Notas")
+        
         
     }
     
@@ -35,10 +37,8 @@ class NotasViewController: BaseViewController, UITableViewDelegate, UITableViewD
     }
     
     @IBAction func btReload(_ sender: UIBarButtonItem) {
-        SVProgressHUD.show(withStatus: "Carregando Notas")
-        SVProgressHUD.dismiss(withDelay: 2)
+        self.processingAlert?.show(nil, hidden: nil)
         self.loadInformations()
-        
     }
     
 
@@ -76,27 +76,29 @@ class NotasViewController: BaseViewController, UITableViewDelegate, UITableViewD
         print("Pedindo requsição das notas")
         REST.subjectResponse(user: self.user, onComplete: { (array) in
             self.arraySubjects = array
-            //print(array)
+            self.processingAlert?.hideAlert(nil)
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }) { (error) in
+            self.errorAlert?.show(nil, hidden: nil)
             switch error {
             case .noResponse:
-                self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NORESPONSE)
+                self.showError(message: MESSAGE.MESSAGE_NORESPONSE)
             case .noJson:
-                self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NOJSON)
+                self.showError(message: MESSAGE.MESSAGE_NOJSON)
             case .nullResponse:
-                self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NULLJSON)
+                self.showError(message: MESSAGE.MESSAGE_NULLJSON)
             case .responseStatusCode(code: let codigo):
-                self.showAlert(title: "Erro!", message: MESSAGE.returnStatus(valueStatus:codigo!))
+                self.showError(message: MESSAGE.returnStatus(valueStatus:codigo!))
             case .noConectionInternet:
-                self.showAlert(title: "OPS!", message: MESSAGE.MESSAGE_NO_INTERNET)
+                self.showError(message: MESSAGE.MESSAGE_NO_INTERNET)
             case .alertData:
-                self.showAlert(title: "OPS!", message: MESSAGE.MESSAGE_ALERT)
+                self.showError(message: MESSAGE.MESSAGE_ALERT)
             default:
-                self.showAlert(title: "OPS!", message: MESSAGE.MESSAGE_DEFAULT)
+                self.showError(message: MESSAGE.MESSAGE_DEFAULT)
             }
+            
         }
     }
     
