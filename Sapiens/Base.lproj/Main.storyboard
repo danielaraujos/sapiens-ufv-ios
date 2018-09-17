@@ -583,16 +583,32 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Receber notificações" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3o3-DJ-tgg">
-                                <rect key="frame" x="19" y="148" width="212" height="21"/>
+                                <rect key="frame" x="15" y="128" width="212" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tempo para atualização (Minutos)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WYY-Ge-yTj">
+                                <rect key="frame" x="16" y="171" width="256" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ENH-xI-JZz">
-                                <rect key="frame" x="306" y="143" width="51" height="31"/>
+                                <rect key="frame" x="306" y="123" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="onTintColor" red="0.89411764709999997" green="0.76470588240000004" blue="0.30196078430000001" alpha="0.91850385270000001" colorSpace="custom" customColorSpace="sRGB"/>
                             </switch>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PPu-UP-IAb">
+                                <rect key="frame" x="15" y="190" width="332" height="92"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="ZfO-EZ-kYO" id="W3U-fO-YeZ"/>
+                                    <outlet property="delegate" destination="ZfO-EZ-kYO" id="S1s-en-plR"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -604,6 +620,9 @@
                             <constraint firstAttribute="trailing" secondItem="VLV-1f-wmt" secondAttribute="trailing" id="i8y-dF-KKB"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pickerView" destination="PPu-UP-IAb" id="Ctr-Om-uPK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yt1-14-hOg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
