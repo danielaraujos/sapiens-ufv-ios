@@ -9,14 +9,43 @@
 import UIKit
 
 import CoreData
+import LIHAlert
 
 class BaseViewController: UIViewController {
 
+    var errorAlert: LIHAlert?
+    var informationsAlert : LIHAlert?
+    var sucessAlert : LIHAlert?
+    var textWithButtonAlert: LIHAlert?
+    var processingAlert: LIHAlert?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
-
+    
+    func showError(message: String) {
+        self.errorAlert = LIHAlertManager.getErrorAlert(message: message)
+        self.errorAlert?.initAlert(self.view)
+        self.errorAlert?.icon = UIImage(named: "ErrorIcon")
+    }
+    
+    func showSucess(message: String) {
+        self.sucessAlert = LIHAlertManager.getSuccessAlert(message: message)
+        self.sucessAlert?.initAlert(self.view)
+        self.sucessAlert?.icon = UIImage(named: "SuccessIcon")
+    }
+    
+    func showInformations(message: String) {
+        self.informationsAlert = LIHAlertManager.getTextAlert(message: message)
+        self.informationsAlert?.initAlert(self.view)
+    }
+    
+    func showProgressing(message: String) {
+        self.processingAlert = LIHAlertManager.getProcessingAlert(message: message)
+        self.processingAlert?.initAlert(self.view)
+    }
+    
     func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert);
         let ok = UIAlertAction(title: "OK", style: .default, handler: nil);
@@ -43,3 +72,5 @@ extension BaseViewController {
         return appDelegate.persistentContainer.viewContext
     }
 }
+
+
