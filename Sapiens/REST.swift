@@ -182,6 +182,14 @@ class REST {
         }
     }
     
+    /*Classe criada para verificar se ouve atualizacao de alguma materia*/
+    class func checkUpdate(){
+        
+        
+    }
+    
+    
+    
     class func deleteStorage() {
         // Remover as notas
         defaults.removeObject(forKey: REST.localStorageSubject)
