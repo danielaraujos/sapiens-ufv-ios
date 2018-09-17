@@ -12,4 +12,5 @@ target 'Sapiens' do
   pod 'SwiftyJSON'
   pod 'SwiftDataTables'
    pod 'SVProgressHUD', '~> 2.2'
+   pod 'LIHAlert'
 end
