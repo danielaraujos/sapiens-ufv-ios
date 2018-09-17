@@ -9,6 +9,7 @@
 import UIKit
 import SVProgressHUD
 import SpreadsheetView
+import LIHAlert
 
 class SchedulesViewController: BaseViewController{
 
@@ -57,6 +58,8 @@ class SchedulesViewController: BaseViewController{
         DispatchQueue.main.async {
             self.loadSchedulesInformations()
         }
+        self.showProgressing(message: "Carregando Horários")
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -68,9 +71,8 @@ class SchedulesViewController: BaseViewController{
     }
     
     @IBAction func btReload(_ sender: UIBarButtonItem) {
-        SVProgressHUD.show(withStatus: "Carregando Horários")
-        SVProgressHUD.dismiss(withDelay: 2)
-        
+        self.processingAlert?.show(nil, hidden: nil)
+        self.loadSchedulesInformations()
     }
    
     func loadSchedulesInformations(){
@@ -92,25 +94,27 @@ class SchedulesViewController: BaseViewController{
                     self.data = [v1,v2,v3,v4,v5,v6]
                 }
             }
-            
-             self.spreadsheetView.reloadData()
+            self.processingAlert?.hideAlert(nil)
+            self.spreadsheetView.reloadData()
         }) { (error) in
+            self.errorAlert?.show(nil, hidden: nil)
             switch error {
             case .noResponse:
-                self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NORESPONSE)
+                self.showError(message: MESSAGE.MESSAGE_NORESPONSE)
             case .noJson:
-                self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NOJSON)
+                self.showError(message: MESSAGE.MESSAGE_NOJSON)
             case .nullResponse:
-                self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NULLJSON)
+                self.showError(message: MESSAGE.MESSAGE_NULLJSON)
             case .responseStatusCode(code: let codigo):
-                self.showAlert(title: "Erro!", message: MESSAGE.returnStatus(valueStatus:codigo!))
+                self.showError(message: MESSAGE.returnStatus(valueStatus:codigo!))
             case .noConectionInternet:
-                self.showAlert(title: "OPS!", message: MESSAGE.MESSAGE_NO_INTERNET)
+                self.showError(message: MESSAGE.MESSAGE_NO_INTERNET)
             case .alertData:
-                self.showAlert(title: "OPS!", message: MESSAGE.MESSAGE_ALERT)
+                self.showError(message: MESSAGE.MESSAGE_ALERT)
             default:
-                self.showAlert(title: "OPS!", message: MESSAGE.MESSAGE_DEFAULT)
+                self.showError(message: MESSAGE.MESSAGE_DEFAULT)
             }
+            
         }
     }
 }
@@ -193,6 +197,10 @@ extension SchedulesViewController :SpreadsheetViewDataSource, SpreadsheetViewDel
     
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, didSelectItemAt indexPath: IndexPath) {
         print("Selected: (row: \(indexPath.row), column: \(indexPath.column))")
+        self.showAlertSheet(title: "NUR 340", message: "Nome da Materia")
+       
+        
+        
     }
     
 }
