@@ -600,6 +600,9 @@
                                 <rect key="frame" x="306" y="123" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="onTintColor" red="0.89411764709999997" green="0.76470588240000004" blue="0.30196078430000001" alpha="0.91850385270000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="btIsOn:" destination="ZfO-EZ-kYO" eventType="valueChanged" id="zjl-Sl-ZBl"/>
+                                </connections>
                             </switch>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PPu-UP-IAb">
                                 <rect key="frame" x="15" y="190" width="332" height="92"/>
@@ -621,6 +624,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="isOn" destination="ENH-xI-JZz" id="CiC-yc-gqj"/>
                         <outlet property="pickerView" destination="PPu-UP-IAb" id="Ctr-Om-uPK"/>
                     </connections>
                 </viewController>
