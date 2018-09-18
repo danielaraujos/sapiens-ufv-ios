@@ -10,6 +10,7 @@ import UIKit
 
 import CoreData
 import LIHAlert
+import UserNotifications
 
 class BaseViewController: UIViewController {
 
@@ -18,6 +19,8 @@ class BaseViewController: UIViewController {
     var sucessAlert : LIHAlert?
     var textWithButtonAlert: LIHAlert?
     var processingAlert: LIHAlert?
+    
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
