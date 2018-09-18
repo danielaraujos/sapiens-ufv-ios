@@ -8,15 +8,37 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let center = UNUserNotificationCenter.current()
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        center.delegate = self
+        center.getNotificationSettings { (setting) in
+            if setting.authorizationStatus == .notDetermined{
+                let options : UNAuthorizationOptions = [.alert, .sound, .badge, .carPlay]
+                self.center.requestAuthorization(options: options, completionHandler: { (sucess, error) in
+                    if error == nil {
+                        print(sucess)
+                    }else {
+                        print(error?.localizedDescription)
+                    }
+                    
+                })
+            }else if setting.authorizationStatus == .denied {
+                print("O usuario negou a notificacao")
+            }
+        }
+        
+        
+        
         return true
     }
 
@@ -89,5 +111,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+}
+
+extension AppDelegate : UNUserNotificationCenterDelegate{
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert,.sound,.badge])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        print("didReceive Response")
+        //response.notification.request.content.title
+        let id = response.notification.request.identifier
+        print(id)
+        
+        switch response.actionIdentifier {
+        case UNNotificationDefaultActionIdentifier:
+            print("Clicou na propria notificacao")
+        default:
+            break
+        }
+        
+        completionHandler()
+    }
 }
 
