@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import UserNotifications
 
 enum RESTFail {
     case errorLogin(error: String)
@@ -20,6 +21,8 @@ enum RESTFail {
     case noConectionInternet
     case alertData
 }
+
+
 
 class REST {
     private static let pathBase = "http://danielaraujos.com/webservicesapiens/index.php?info="
@@ -37,8 +40,10 @@ class REST {
         ]
     }
     
-    private static let localStorageSubject = "LocalSubject"
-    private static let localStorageSchedules = "LocalSchedules"
+    static let localStorageSubject = "LocalSubject"
+    static let localStorageSchedules = "LocalSchedules"
+    static let localStorageNotifications = "isNotification"
+    static let localStorageTime = "isTime"
     
     
     private static let sessionManager = Alamofire.SessionManager(configuration: configuration)
@@ -142,6 +147,7 @@ class REST {
                 do{
                     let subjects = try JSONDecoder().decode(SubjectsDataT.self, from: storageOff)
                     onComplete(subjects)
+                    
                 }catch{
                     print("Erro no try")
                     onFail(.noDecoder)
@@ -183,11 +189,49 @@ class REST {
     }
     
     /*Classe criada para verificar se ouve atualizacao de alguma materia*/
-    class func checkUpdate(){
-        
-        
+    class func checkUpdate(user: User){
+        Alamofire.request(pathBase + "notas", method: .post, parameters: parametersAlamofire(user: user.user!, pass: user.pass!),encoding: JSONEncoding.default).responseJSON { (response) in
+            guard let data = response.data else {
+                print("Erro na requisicao")
+                return
+            }
+            if let storageOff = defaults.data(forKey: REST.localStorageSubject) {
+                var arrayOf : [String] = [],arrayOn :  [String] = []
+                /*CASO O STORAGE ESTEJA COM INFORMACOES ELE ENTRARÁ AQUI*/
+                do{
+                    let subjectsOff = try JSONDecoder().decode([SubjectData].self, from: storageOff)
+                    let subjectsOn = try JSONDecoder().decode([SubjectData].self, from: data)
+                    
+                    for i in subjectsOff{if let notas = i.nota?.notas{for j in notas {arrayOf.append(j.valor)}}}
+                    for a in subjectsOn{if let notas2 = a.nota?.notas{for b in notas2 {arrayOn.append(b.valor)}}}
+                    
+                    if arrayOn != arrayOf {self.pushNotifications()}else{print("Igual")}
+                    
+                }catch{
+                    print("Erro no try")
+                    print(error.localizedDescription)
+                }
+            }
+        }
     }
     
+    class func pushNotifications (){
+        if defaults.bool(forKey: self.localStorageNotifications) == true {
+            print("Cliquei para ter notificacao")
+            let id = String(Date().timeIntervalSince1970)
+            let content = UNMutableNotificationContent()
+            content.title = "Atualização no Sapiens"
+            content.body = "Ocorreu alguma atualização em suas notas!"
+            
+            content.sound = UNNotificationSound(named: "out.caf")
+            content.categoryIdentifier = "Atualização"
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+            
+            let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        }
+    }
     
     
     class func deleteStorage() {
