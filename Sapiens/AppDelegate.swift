@@ -30,16 +30,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }else {
                         print(error?.localizedDescription)
                     }
-                    
                 })
             }else if setting.authorizationStatus == .denied {
                 print("O usuario negou a notificacao")
             }
         }
         
-        
+        UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
         
         return true
+    }
+    
+    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        print("Está rodando o Backgraund")
+        
+        
+        if application.applicationState == .active {
+            print("Esta ativo")
+        }
+        if application.applicationState == .inactive{
+            print("Nao tem permissao!")
+        }
+        
+        if application.applicationState == .background {
+            print("Hey estou aqui!")
+            let user = User(user: COREDATA.loginUserCore().user!, pass: COREDATA.loginUserCore().pass!)
+            REST.checkUpdate(user: user) { (isValidate) in
+                print(isValidate)
+                if isValidate == true {
+                    do {
+                        DispatchQueue.main.async {
+                            REST.pushNotifications()
+                            print("Executando aqui")
+                        }
+                        completionHandler(UIBackgroundFetchResult.newData)
+                    }catch{
+                        completionHandler(.failed)
+                    }
+                }else {
+                    completionHandler(.failed)
+                }
+            }
+        }
+        
+        if application.backgroundRefreshStatus == .available {
+            print("available")
+            
+        }
+        
+        if application.backgroundRefreshStatus == .restricted {
+            print("Restrito")
+            
+        }
+        
+        if application.backgroundRefreshStatus == .denied{
+            print("Negado")
+            
+        }
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
