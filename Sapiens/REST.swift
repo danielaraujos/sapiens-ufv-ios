@@ -206,7 +206,7 @@ class REST {
                     for i in subjectsOff{if let notas = i.nota?.notas{for j in notas {arrayOf.append(j.valor)}}}
                     for a in subjectsOn{if let notas2 = a.nota?.notas{for b in notas2 {arrayOn.append(b.valor)}}}
                     
-                    if arrayOn != arrayOf {onComplete(true)}else{onComplete(false)}
+                    if arrayOn != arrayOf {onComplete(true)}else{onComplete(true)}
                 }catch{
                     onComplete(false)
                     print(error.localizedDescription)
@@ -221,7 +221,7 @@ class REST {
             let id = String(Date().timeIntervalSince1970)
             let content = UNMutableNotificationContent()
             content.title = "Atualização no Sapiens"
-            content.body = "Ocorreu alguma atualização em suas notas!"
+            content.body = "Ocorreu uma atualização em suas notas!"
             
             content.sound = UNNotificationSound(named: "out.caf")
             content.categoryIdentifier = "Atualização"
