@@ -189,10 +189,11 @@ class REST {
     }
     
     /*Classe criada para verificar se ouve atualizacao de alguma materia*/
-    class func checkUpdate(user: User){
+    class func checkUpdate(user: User,onComplete: @escaping (Bool) -> Void){
         Alamofire.request(pathBase + "notas", method: .post, parameters: parametersAlamofire(user: user.user!, pass: user.pass!),encoding: JSONEncoding.default).responseJSON { (response) in
             guard let data = response.data else {
                 print("Erro na requisicao")
+                onComplete(false)
                 return
             }
             if let storageOff = defaults.data(forKey: REST.localStorageSubject) {
@@ -205,10 +206,9 @@ class REST {
                     for i in subjectsOff{if let notas = i.nota?.notas{for j in notas {arrayOf.append(j.valor)}}}
                     for a in subjectsOn{if let notas2 = a.nota?.notas{for b in notas2 {arrayOn.append(b.valor)}}}
                     
-                    if arrayOn != arrayOf {self.pushNotifications()}else{print("Igual")}
-                    
+                    if arrayOn != arrayOf {onComplete(true)}else{onComplete(false)}
                 }catch{
-                    print("Erro no try")
+                    onComplete(false)
                     print(error.localizedDescription)
                 }
             }
@@ -226,7 +226,7 @@ class REST {
             content.sound = UNNotificationSound(named: "out.caf")
             content.categoryIdentifier = "Atualização"
             
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
             
             let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
