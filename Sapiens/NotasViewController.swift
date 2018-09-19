@@ -39,6 +39,11 @@ class NotasViewController: BaseViewController, UITableViewDelegate, UITableViewD
     @IBAction func btReload(_ sender: UIBarButtonItem) {
         self.processingAlert?.show(nil, hidden: nil)
         self.loadInformations()
+        REST.checkUpdate(user: user) { (isValide) in
+            if isValide == true {
+                REST.pushNotifications()
+            }
+        }
     }
     
 
