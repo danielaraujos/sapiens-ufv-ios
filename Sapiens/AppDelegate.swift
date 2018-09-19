@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     if error == nil {
                         print(sucess)
                     }else {
-                        print(error?.localizedDescription)
+                        print(error?.localizedDescription ?? 0)
                     }
                 })
             }else if setting.authorizationStatus == .denied {
