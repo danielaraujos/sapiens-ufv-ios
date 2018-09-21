@@ -206,7 +206,7 @@ class REST {
                     for i in subjectsOff{if let notas = i.nota?.notas{for j in notas {arrayOf.append(j.valor)}}}
                     for a in subjectsOn{if let notas2 = a.nota?.notas{for b in notas2 {arrayOn.append(b.valor)}}}
                     
-                    if arrayOn != arrayOf {onComplete(true)}else{onComplete(true)}
+                    if arrayOn != arrayOf {onComplete(true)}
                 }catch{
                     onComplete(false)
                     print(error.localizedDescription)
