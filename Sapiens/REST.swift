@@ -25,9 +25,9 @@ enum RESTFail {
 
 
 class REST {
-    private static let pathBase = "http://danielaraujos.com/webservicesapiens/index.php?info="
+    static let pathBase = "http://danielaraujos.com/webservicesapiens/index.php?info="
     
-    private static let configuration : URLSessionConfiguration = {
+    static let configuration : URLSessionConfiguration = {
         var config = URLSessionConfiguration.default
         config.httpAdditionalHeaders = ["Content-Type": "application/json"]
         return config
@@ -46,9 +46,9 @@ class REST {
     static let localStorageTime = "isTime"
     
     
-    private static let sessionManager = Alamofire.SessionManager(configuration: configuration)
+    static let sessionManager = Alamofire.SessionManager(configuration: configuration)
     
-    private static let defaults = UserDefaults.standard
+    static let defaults = UserDefaults.standard
     
     /*
      FUNÇÃO RESPONSAVEL POR REALIZAR O LOGIN DO APLICATIVO
@@ -79,7 +79,6 @@ class REST {
                     onFail(.responseStatusCode(code: response.response!.statusCode ?? 0))
                 }
             }else {
-                print("Sem conexão com a internet")
                 onSucess(false)
                 onFail(.noConectionInternet)
             }
@@ -93,100 +92,60 @@ class REST {
      */
     class func subjectResponse(user: User, onComplete: @escaping ([SubjectData]) -> Void, onFail: @escaping (RESTFail) -> ()){
         
-        Alamofire.request(pathBase + "notas", method: .post, parameters: parametersAlamofire(user: user.user!, pass: user.pass!),encoding: JSONEncoding.default).responseJSON { (response) in
-            if let storageOff = defaults.data(forKey: REST.localStorageSubject) {
-                /*CASO O STORAGE ESTEJA COM INFORMACOES ELE ENTRARÁ AQUI*/
-                do{
-                    let subjects = try JSONDecoder().decode([SubjectData].self, from: storageOff)
-                    print("LOCAL STORAGE")
-                    onComplete(subjects)
-                }catch{
-                    print("Erro no try")
-                    onFail(.noDecoder)
-                }
-                if REST.isConnectedToInternet() {
-                    if response.data != storageOff {
-                        print("A versão atual está desatualizada! \(String(describing: response.data)) - \(storageOff)" )
-                        onFail(.alertData)
-                    }else {
-                        print("Está igual :-)")
-                    }
-                }
-            }else {
-                /*CASO A PRIMEIRA VERIFICACAO OCORRA UM ERRO, ELE ATUALIZA OS DADOS.*/
-                if REST.isConnectedToInternet() {
-                    if response.response?.statusCode == 200 {
-                        guard let data = response.data else {
-                            onFail(.noJson)
-                            return
-                        }
-                        do{
-                            let subjects = try JSONDecoder().decode([SubjectData].self, from: data)
-                            print("INTERNET")
-                            defaults.set(data, forKey: REST.localStorageSubject)
-                            onComplete(subjects)
-                        }catch{
-                            print("Erro no try")
-                            onFail(.noDecoder)
-                        }
-                    }else {
-                        onFail(.responseStatusCode(code: response.response?.statusCode  ?? 0))
-                    }
-                }else {
-                    print("Sem conexão com a internet")
-                    onFail(.noConectionInternet)
-                }
+        if let storageOff = defaults.data(forKey: REST.localStorageSubject) {
+            do{
+                let subjects = try JSONDecoder().decode([SubjectData].self, from: storageOff)
+                onComplete(subjects)
+                print("OFFLINE")
+            }catch{
+                onFail(.noDecoder)
             }
+            if REST.isConnectedToInternet() {
+                REST.checkUpdate(user: user, onComplete: { (validate) in
+                    if validate == true {
+                        ProviderFecth.subjectFetch(user: user, onComplete: { (sucess) in
+                            onComplete(sucess)
+                        }, onFail: { (error) in
+                            onFail(error)
+                        })
+                    }
+                })
+            }
+        }else {
+            ProviderFecth.subjectFetch(user: user, onComplete: { (sucess) in
+                onComplete(sucess)
+            }, onFail: { (error) in
+                onFail(error)
+            })
         }
     }
     
+    
+    
     class func schedulesResponse(user: User, onComplete: @escaping (SubjectsDataT) -> Void, onFail: @escaping (RESTFail) -> ()){
-        Alamofire.request(pathBase + "horarios", method: .post, parameters: parametersAlamofire(user: user.user!, pass: user.pass!),encoding: JSONEncoding.default).responseJSON { (response) in
-             if let storageOff = defaults.data(forKey: REST.localStorageSchedules) {
-                /*CASO O STORAGE ESTEJA COM INFORMACOES ELE ENTRARÁ AQUI*/
-                do{
-                    let subjects = try JSONDecoder().decode(SubjectsDataT.self, from: storageOff)
-                    onComplete(subjects)
-                    
-                }catch{
-                    print("Erro no try")
-                    onFail(.noDecoder)
-                }
-                if REST.isConnectedToInternet() {
-                    if response.data != storageOff {
-                        print("A versão atual está desatualizada! \(String(describing: response.data)) - \(storageOff)" )
-                        onFail(.alertData)
-                    }else {
-                        print("Está igual :-)")
-                    }
-                }
+        if let storageOff = defaults.data(forKey: REST.localStorageSchedules) {
+            /*CASO O STORAGE ESTEJA COM INFORMACOES ELE ENTRARÁ AQUI*/
+            do{
+                let subjects = try JSONDecoder().decode(SubjectsDataT.self, from: storageOff)
+                onComplete(subjects)
+                print("OFFLINE")
                 
-             }else {
-                if REST.isConnectedToInternet() {
-                    if response.response?.statusCode == 200 {
-                        guard let data = response.data else {
-                            onFail(.noJson)
-                            return
-                        }
-                        do{
-                            let subjects = try JSONDecoder().decode(SubjectsDataT.self, from: data)
-                            print("INTERNET")
-                            defaults.set(data, forKey: REST.localStorageSchedules)
-                            onComplete(subjects)
-                        }catch{
-                            print("Erro no try")
-                            onFail(.noDecoder)
-                        }
-                    }else {
-                        onFail(.responseStatusCode(code: response.response?.statusCode ?? 0))
-                    }
-                }else {
-                    print("Sem conexão com a internet")
-                    onFail(.noConectionInternet)
-                }
+            }catch{
+                onFail(.noDecoder)
             }
+            if REST.isConnectedToInternet() {
+                print("TEREMOS QUE VER")
+            }
+            
+        }else {
+            ProviderFecth.schedulesFecth(user: user, onComplete: { (sucess) in
+                onComplete(sucess)
+            }, onFail: { (error) in
+                onFail(error)
+            })
         }
     }
+    
     
     /*Classe criada para verificar se ouve atualizacao de alguma materia*/
     class func checkUpdate(user: User,onComplete: @escaping (Bool) -> Void){
@@ -206,7 +165,7 @@ class REST {
                     for i in subjectsOff{if let notas = i.nota?.notas{for j in notas {arrayOf.append(j.valor)}}}
                     for a in subjectsOn{if let notas2 = a.nota?.notas{for b in notas2 {arrayOn.append(b.valor)}}}
                     
-                    if arrayOn != arrayOf {onComplete(true)}
+                    if arrayOn != arrayOf {onComplete(true);print("Diferente")}else{print("Igual")}
                 }catch{
                     onComplete(false)
                     print(error.localizedDescription)
