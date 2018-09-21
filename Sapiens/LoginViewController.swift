@@ -38,50 +38,39 @@ class LoginViewController: BaseViewController {
     
     @IBAction func loginBTN(_ sender: Any) {
         let usuario = User(user: userTF.text!, pass: passTF.text!)
-        
         self.errorAlert?.show(nil, hidden: nil)
         
-        if(userTF.text == nil || (userTF.text?.isEmpty)!) {
-            self.showError(message: "Campo usuário é obrigatório!")
-            return
-        }
-        if(passTF.text == nil || (passTF.text?.isEmpty)!) {
-            self.showError(message: "Campo senha é obrigatório!")
-            return
-        }
-        
-        REST.login(user: usuario, onSucess: { (sucess) in
-            if sucess == true {
-                print("LOGADO")
-                self.saveCore()
-                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                let tabs1 = storyBoard.instantiateViewController(withIdentifier: "Tabs") as! UITabBarController
-                self.present(tabs1, animated:true, completion:nil)
-                DispatchQueue.main.async {
-                    COREDATA.loginUserCore()
+        if self.validTextField(user: userTF, pass: passTF) == true {
+            REST.login(user: usuario, onSucess: { (sucess) in
+                if sucess == true {
+                    self.saveCore()
+                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                    let tabs1 = storyBoard.instantiateViewController(withIdentifier: "Tabs") as! UITabBarController
+                    self.present(tabs1, animated:true, completion:nil)
+                    DispatchQueue.main.async {
+                        COREDATA.loginUserCore()
+                    }
                 }
-                
-            }else {
-                print("FALSO")
+            }) { (error) in
+                self.errorAlert?.show(nil, hidden: nil)
+                switch error {
+                case .errorLogin(error: let message):
+                    self.showError(message: message)
+                case .noResponse:
+                    self.showError(message: MESSAGE.MESSAGE_NORESPONSE)
+                case .noJson:
+                    self.showError(message: MESSAGE.MESSAGE_NOJSON)
+                case .nullResponse:
+                    self.showError(message: MESSAGE.MESSAGE_NULLJSON)
+                case .responseStatusCode(code: let codigo):
+                    self.showError(message: MESSAGE.returnStatus(valueStatus:codigo!))
+                case .noConectionInternet:
+                    self.showError(message: MESSAGE.MESSAGE_NO_INTERNET)
+                default:
+                    self.showError(message: MESSAGE.MESSAGE_DEFAULT)
+                }
             }
-        }) { (error) in
-            self.errorAlert?.show(nil, hidden: nil)
-            switch error {
-            case .errorLogin(error: let message):
-                self.showError(message: message)
-            case .noResponse:
-                self.showError(message: MESSAGE.MESSAGE_NORESPONSE)
-            case .noJson:
-                self.showError(message: MESSAGE.MESSAGE_NOJSON)
-            case .nullResponse:
-                self.showError(message: MESSAGE.MESSAGE_NULLJSON)
-            case .responseStatusCode(code: let codigo):
-                self.showError(message: MESSAGE.returnStatus(valueStatus:codigo!))
-            case .noConectionInternet:
-                self.showError(message: MESSAGE.MESSAGE_NO_INTERNET)
-            default:
-                self.showError(message: MESSAGE.MESSAGE_DEFAULT)
-            }
+            
         }
         
     }
@@ -110,5 +99,22 @@ class LoginViewController: BaseViewController {
         button.clipsToBounds = true;
         viewPass.clipsToBounds = true;
     }
+    
+    
+    
+    /*Function response validate textField*/
+    func validTextField(user: UITextField, pass:UITextField!) -> Bool{
+        if(user.text == nil || (user.text?.isEmpty)!) {
+            self.showError(message: "Campo usuário é obrigatório!")
+            return false
+        }else if(self.passTF.text == nil || (self.passTF.text?.isEmpty)!) {
+            self.showError(message: "Campo senha é obrigatório!")
+            return false
+        }else {
+            return true
+        }
+    }
+    
+    
     
 }
