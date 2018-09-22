@@ -35,9 +35,6 @@ class SchedulesViewController: BaseViewController{
         ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
         ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
     ]
-    var d1: [[String]] = []
-    var d2: [Any]  = []
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,28 +52,26 @@ class SchedulesViewController: BaseViewController{
         spreadsheetView.register(TimeCell.self, forCellWithReuseIdentifier: String(describing: TimeCell.self))
         spreadsheetView.register(DayTitleCell.self, forCellWithReuseIdentifier: String(describing: DayTitleCell.self))
         spreadsheetView.register(ScheduleCell.self, forCellWithReuseIdentifier: String(describing: ScheduleCell.self))
-        DispatchQueue.main.async {
-            self.loadSchedulesInformations()
-        }
+        
         self.showProgressing(message: "Carregando Horários")
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        spreadsheetView.flashScrollIndicators()
         DispatchQueue.main.async {
-            self.loadSchedulesInformations()
+            self.reloadFecth()
         }
+        spreadsheetView.flashScrollIndicators()
     }
     
     @IBAction func btReload(_ sender: UIBarButtonItem) {
         self.processingAlert?.show(nil, hidden: nil)
-        self.loadSchedulesInformations()
+        self.reloadFecth()
     }
    
-    func loadSchedulesInformations(){
-        print("Pedindo requsição dos horarios")
+    func reloadFecth(){
+        print("ESTOU CARREGANDO OS HORARIOS")
         REST.schedulesResponse(user: self.user, onComplete: { (arrayResponse ) in
             
             var v1: [(String)] = [],v2: [(String)] = [],v3: [(String)] = [],v4: [(String)] = [],v5: [(String)] = [],v6: [(String)] = []
@@ -91,6 +86,7 @@ class SchedulesViewController: BaseViewController{
                         v6.append(i.sabado.codigo+" - "+i.sabado.sala)
                 }
                 DispatchQueue.main.async {
+                    self.data.removeAll()
                     self.data = [v1,v2,v3,v4,v5,v6]
                 }
             }
@@ -198,8 +194,7 @@ extension SchedulesViewController :SpreadsheetViewDataSource, SpreadsheetViewDel
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, didSelectItemAt indexPath: IndexPath) {
         print("Selected: (row: \(indexPath.row), column: \(indexPath.column))")
         self.showAlertSheet(title: "NUR 340", message: "Nome da Materia")
-       
-        
+        //print(self.data[indexPath.row])
         
     }
     
