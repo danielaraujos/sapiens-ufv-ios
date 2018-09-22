@@ -10,23 +10,20 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class NotasDetailViewController: BaseViewController ,UITableViewDataSource, UITableViewDelegate{
+class NotasDetailViewController: BaseViewController{
 
     @IBOutlet weak var tableView: UITableView!
     var array : SubjectData!
-    var arraySubjects: [SubjectData] = []
     var arrayTupla: [(title: String, detail : String, tipo: String, max: String)] = [(" ", " ", " ", " ")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = array.nome
-        //print(array)
         DispatchQueue.main.async {
             self.returnTuplas()
             self.tableView.reloadData()
         }
     }
-    
     
     func returnTuplas (){
         self.arrayTupla.remove(at: 0)
@@ -34,7 +31,6 @@ class NotasDetailViewController: BaseViewController ,UITableViewDataSource, UITa
         var faltasTeoricas = self.array.faltas!.teoricas
         var notaFinal = self.array.nota!.final
         var notaConceito = self.array.nota!.conceito
-        
         
         if (faltasPraticas.isEmpty) {faltasPraticas = String(0)}
         if (faltasTeoricas.isEmpty) {faltasTeoricas = String(0)}
@@ -53,7 +49,10 @@ class NotasDetailViewController: BaseViewController ,UITableViewDataSource, UITa
             }
         }
     }
-    
+
+}
+
+extension NotasDetailViewController : UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -85,7 +84,6 @@ class NotasDetailViewController: BaseViewController ,UITableViewDataSource, UITa
                 }else{
                     cell.detail.text = "\(value) de \(maximo)"
                 }
-                
             }
         }else {
             cell.backgraundView.backgroundColor = UIColor(hexString: "E6C43D")
@@ -96,7 +94,5 @@ class NotasDetailViewController: BaseViewController ,UITableViewDataSource, UITa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
-        
     }
-
 }
