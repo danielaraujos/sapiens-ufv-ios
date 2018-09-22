@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 
-class NotasViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+class NotasViewController: BaseViewController {
 
     var arraySubjects = [SubjectData]()
     var messageEmpty = UILabel()
@@ -45,37 +45,6 @@ class NotasViewController: BaseViewController, UITableViewDelegate, UITableViewD
         self.processingAlert?.hideAlert(nil)
     }
     
-
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //tableView.backgroundView = arraySubjects.count == 0 ? messageEmpty : nil
-        return arraySubjects.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CellNotas", for: indexPath)
-        
-        let subject = self.arraySubjects[indexPath.row]
-        cell.textLabel?.text = subject.nome
-        cell.detailTextLabel?.text = "Data da Alteração: \(subject.alteracao)"
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "MateriasSegue" {
-            let vc = segue.destination as! NotasDetailViewController
-            vc.array = self.arraySubjects[tableView.indexPathForSelectedRow!.row]            
-        }
-    }
-    
     func reloadFecth(){
         REST.subjectResponse(user: self.user, onComplete: { (array) in
             self.arraySubjects = array
@@ -101,6 +70,38 @@ class NotasViewController: BaseViewController, UITableViewDelegate, UITableViewD
             default:
                 self.showError(message: MESSAGE.MESSAGE_DEFAULT)
             }
+        }
+    }
+}
+
+extension NotasViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //tableView.backgroundView = arraySubjects.count == 0 ? messageEmpty : nil
+        return arraySubjects.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CellNotas", for: indexPath)
+        
+        let subject = self.arraySubjects[indexPath.row]
+        cell.textLabel?.text = subject.nome
+        cell.detailTextLabel?.text = "Data da Alteração: \(subject.alteracao)"
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "MateriasSegue" {
+            let vc = segue.destination as! NotasDetailViewController
+            vc.array = self.arraySubjects[tableView.indexPathForSelectedRow!.row]
         }
     }
 }
