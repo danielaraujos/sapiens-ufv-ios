@@ -21,9 +21,11 @@ class ProviderFecth {
                         return
                     }
                     do{
+                        REST.defaults.removeObject(forKey: REST.localStorageSubject)
                         let subjects = try JSONDecoder().decode([SubjectData].self, from: data)
                         REST.defaults.set(data, forKey: REST.localStorageSubject)
                         onComplete(subjects)
+                        REST.defaults.synchronize()
                     }catch{
                         onFail(.noDecoder)
                     }
@@ -46,9 +48,11 @@ class ProviderFecth {
                         return
                     }
                     do{
+                        REST.defaults.removeObject(forKey: REST.localStorageSchedules)
                         let subjects = try JSONDecoder().decode(SubjectsDataT.self, from: data)
                         REST.defaults.set(data, forKey: REST.localStorageSchedules)
                         onComplete(subjects)
+                        REST.defaults.synchronize()
                     }catch{
                         onFail(.noDecoder)
                     }
