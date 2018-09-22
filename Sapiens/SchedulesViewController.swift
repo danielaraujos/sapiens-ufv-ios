@@ -37,6 +37,9 @@ class SchedulesViewController: BaseViewController{
         ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
     ]
     
+    var v1: [(String)] = [],v2: [(String)] = [],v3: [(String)] = [],v4: [(String)] = [],v5: [(String)] = [],v6: [(String)] = []
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,26 +72,26 @@ class SchedulesViewController: BaseViewController{
     
     @IBAction func btReload(_ sender: UIBarButtonItem) {
         self.processingAlert?.show(nil, hidden: nil)
-        //self.reloadFecth()
+        self.reloadFecth()
+        self.processingAlert?.hideAlert(nil)
     }
    
     func reloadFecth(){
         SVProgressHUD.show(withStatus: "Carregando")
         REST.schedulesResponse(user: self.user, onComplete: { (arrayResponse ) in
-            var v1: [(String)] = [],v2: [(String)] = [],v3: [(String)] = [],v4: [(String)] = [],v5: [(String)] = [],v6: [(String)] = []
-
+    
             DispatchQueue.global(qos: .userInitiated).async {
                 for i in arrayResponse.horarios {
-                        v1.append(i.segunda.codigo+" - "+i.segunda.sala)
-                        v2.append(i.terca.codigo+" - "+i.terca.sala)
-                        v3.append(i.quarta.codigo+" - "+i.quarta.sala)
-                        v4.append(i.quinta.codigo+" - "+i.quinta.sala)
-                        v5.append(i.sexta.codigo+" - "+i.sexta.sala)
-                        v6.append(i.sabado.codigo+" - "+i.sabado.sala)
+                        self.v1.append(i.segunda.codigo+" - "+i.segunda.sala)
+                        self.v2.append(i.terca.codigo+" - "+i.terca.sala)
+                        self.v3.append(i.quarta.codigo+" - "+i.quarta.sala)
+                        self.v4.append(i.quinta.codigo+" - "+i.quinta.sala)
+                        self.v5.append(i.sexta.codigo+" - "+i.sexta.sala)
+                        self.v6.append(i.sabado.codigo+" - "+i.sabado.sala)
                 }
                 DispatchQueue.main.async {
                     self.data.removeAll()
-                    self.data = [v1,v2,v3,v4,v5,v6]
+                    self.data = [self.v1,self.v2,self.v3,self.v4,self.v5,self.v6]
                     self.spreadsheetView.reloadData()
                     self.processingAlert?.hideAlert(nil)
                     SVProgressHUD.dismiss()
@@ -195,6 +198,22 @@ extension SchedulesViewController :SpreadsheetViewDataSource, SpreadsheetViewDel
         print("Selected: (row: \(indexPath.row), column: \(indexPath.column))")
         self.showAlertSheet(title: "NUR 340", message: "Nome da Materia")
         //print(self.data[indexPath.row])
+        switch indexPath.row {
+        case 1:
+            print("1")
+        case 2:
+            print("2")
+        case 3:
+            print("3")
+        case 4:
+            print("4")
+        case 5:
+            print("5")
+        case 6:
+            print("6")
+        default:
+            break
+        }
         
     }
     
