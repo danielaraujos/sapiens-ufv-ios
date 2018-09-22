@@ -27,23 +27,22 @@ class NotasViewController: BaseViewController, UITableViewDelegate, UITableViewD
         backItem.title = " "
         navigationItem.backBarButtonItem = backItem
         self.showProgressing(message: "Carregando Notas")
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.loadInformations()
+        self.reloadFecth()
     }
     
     @IBAction func btReload(_ sender: UIBarButtonItem) {
         self.processingAlert?.show(nil, hidden: nil)
-        self.loadInformations()
         REST.checkUpdate(user: user) { (isValide) in
             if isValide == true {
                 REST.pushNotifications()
+                self.reloadFecth()
             }
         }
+        self.processingAlert?.hideAlert(nil)
     }
     
 
@@ -77,8 +76,7 @@ class NotasViewController: BaseViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    func loadInformations(){
-        print("Pedindo requsição das notas")
+    func reloadFecth(){
         REST.subjectResponse(user: self.user, onComplete: { (array) in
             self.arraySubjects = array
             self.processingAlert?.hideAlert(nil)
@@ -103,8 +101,6 @@ class NotasViewController: BaseViewController, UITableViewDelegate, UITableViewD
             default:
                 self.showError(message: MESSAGE.MESSAGE_DEFAULT)
             }
-            
         }
     }
-    
 }
