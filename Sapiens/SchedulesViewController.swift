@@ -27,6 +27,7 @@ class SchedulesViewController: BaseViewController{
                 "16:00", "17:00", "18:00", "19:00", "19:50", "21:00", "21:50"]
     let evenRowColor = UIColor(red: 0.914, green: 0.914, blue: 0.906, alpha: 1)
     let oddRowColor: UIColor = .white
+    
     var data = [
         ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
         ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
@@ -59,6 +60,7 @@ class SchedulesViewController: BaseViewController{
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        print("ViewDidAppear")
         DispatchQueue.main.async {
             self.reloadFecth()
         }
@@ -67,15 +69,14 @@ class SchedulesViewController: BaseViewController{
     
     @IBAction func btReload(_ sender: UIBarButtonItem) {
         self.processingAlert?.show(nil, hidden: nil)
-        self.reloadFecth()
+        //self.reloadFecth()
     }
    
     func reloadFecth(){
-        print("ESTOU CARREGANDO OS HORARIOS")
+        SVProgressHUD.show(withStatus: "Carregando")
         REST.schedulesResponse(user: self.user, onComplete: { (arrayResponse ) in
-            
             var v1: [(String)] = [],v2: [(String)] = [],v3: [(String)] = [],v4: [(String)] = [],v5: [(String)] = [],v6: [(String)] = []
-            
+
             DispatchQueue.global(qos: .userInitiated).async {
                 for i in arrayResponse.horarios {
                         v1.append(i.segunda.codigo+" - "+i.segunda.sala)
@@ -88,12 +89,15 @@ class SchedulesViewController: BaseViewController{
                 DispatchQueue.main.async {
                     self.data.removeAll()
                     self.data = [v1,v2,v3,v4,v5,v6]
+                    self.spreadsheetView.reloadData()
+                    self.processingAlert?.hideAlert(nil)
+                    SVProgressHUD.dismiss()
                 }
             }
-            self.processingAlert?.hideAlert(nil)
-            self.spreadsheetView.reloadData()
+          
         }) { (error) in
             self.errorAlert?.show(nil, hidden: nil)
+            SVProgressHUD.dismiss()
             switch error {
             case .noResponse:
                 self.showError(message: MESSAGE.MESSAGE_NORESPONSE)
@@ -110,14 +114,12 @@ class SchedulesViewController: BaseViewController{
             default:
                 self.showError(message: MESSAGE.MESSAGE_DEFAULT)
             }
-            
         }
     }
 }
 
 extension SchedulesViewController :SpreadsheetViewDataSource, SpreadsheetViewDelegate {
-    // MARK: DataSource
-    
+ 
     func numberOfColumns(in spreadsheetView: SpreadsheetView) -> Int {
         return 1 + days.count
     }
@@ -188,8 +190,6 @@ extension SchedulesViewController :SpreadsheetViewDataSource, SpreadsheetViewDel
         }
         return nil
     }
-    
-    /// Delegate
     
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, didSelectItemAt indexPath: IndexPath) {
         print("Selected: (row: \(indexPath.row), column: \(indexPath.column))")
