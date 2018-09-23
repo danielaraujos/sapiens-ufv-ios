@@ -16,6 +16,8 @@ class COREDATA {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext
     }
+    
+    static var userBD : UserDataBase?
 
 
     class func loginUserCore() -> User{
@@ -57,19 +59,20 @@ class COREDATA {
     }
     
     
-    class func saveUserResponse (user: UserDataBase?, usuario: User, onSucess: (Bool)-> Void){
-        user?.user = usuario.user
-        user?.pass = usuario.pass
-
+    
+    class func saveUserResponse (user:UITextField, pass: UITextField, context: NSManagedObjectContext){
+        if(userBD == nil ){
+            self.userBD = UserDataBase(context: context)
+            
+        }
+        self.userBD?.user = user.text
+        self.userBD?.pass = pass.text
+        
         do {
-            try COREDATA.context.save()
-            onSucess(true)
+            try context.save()
         }catch{
             print(error.localizedDescription)
-            onSucess(false)
         }
     }
-    
-    
     
 }
