@@ -68,8 +68,8 @@ class SchedulesViewController: BaseViewController{
     }
     
     @IBAction func btReload(_ sender: UIBarButtonItem) {
-        self.alertShow(title: nil, message: "Carregando Notas", color: nil, type: "P")
-        self.alert?.show(nil, hidden: nil)
+        //self.alertShow(title: nil, message: "Carregando Notas", color: nil, type: "P")
+        //self.alert?.show(nil, hidden: nil)
         self.reloadFecth()
     }
    
