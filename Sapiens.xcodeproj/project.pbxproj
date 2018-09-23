@@ -11,6 +11,7 @@
 		4C2FF2072108CC46005769BB /* ColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FF2062108CC46005769BB /* ColorHex.swift */; };
 		4C2FF2092108CE08005769BB /* ClassroomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FF2082108CE08005769BB /* ClassroomViewController.swift */; };
 		4C33DECF21261C470059C108 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C33DECE21261C470059C108 /* BaseViewController.swift */; };
+		4C34D27521558B0A00BE8948 /* ProviderFecth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C34D27421558B0A00BE8948 /* ProviderFecth.swift */; };
 		4C3E916C1ECE2948008D7931 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3E916B1ECE2948008D7931 /* AppDelegate.swift */; };
 		4C3E91711ECE2948008D7931 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C3E916F1ECE2948008D7931 /* Main.storyboard */; };
 		4C3E91741ECE2948008D7931 /* Sapiens.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C3E91721ECE2948008D7931 /* Sapiens.xcdatamodeld */; };
@@ -43,6 +44,7 @@
 		4C2FF2062108CC46005769BB /* ColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHex.swift; sourceTree = "<group>"; };
 		4C2FF2082108CE08005769BB /* ClassroomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassroomViewController.swift; sourceTree = "<group>"; };
 		4C33DECE21261C470059C108 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		4C34D27421558B0A00BE8948 /* ProviderFecth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderFecth.swift; sourceTree = "<group>"; };
 		4C3E91681ECE2948008D7931 /* Sapiens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sapiens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C3E916B1ECE2948008D7931 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C3E91701ECE2948008D7931 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				4C2FF2062108CC46005769BB /* ColorHex.swift */,
 				4C5C0AB7210A195B0071C7C9 /* MESSAGE.swift */,
 				4C90AC71210B695E0024ADE5 /* COREDATA.swift */,
+				4C34D27421558B0A00BE8948 /* ProviderFecth.swift */,
 			);
 			name = Provider;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				4C6AA2B2213E098300B5A0AD /* NotificationsViewController.swift in Sources */,
 				4C67F16B1EF3065A004BCFB4 /* LoginViewController.swift in Sources */,
 				4C65332E2107CF2900FEB8BD /* SchedulesViewController.swift in Sources */,
+				4C34D27521558B0A00BE8948 /* ProviderFecth.swift in Sources */,
 				4C90AC72210B695E0024ADE5 /* COREDATA.swift in Sources */,
 				4CF2FD49213C21830099495C /* Cells.swift in Sources */,
 				4C9343211EFEAB0F003092E4 /* NotasDetailViewController.swift in Sources */,
