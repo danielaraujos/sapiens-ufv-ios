@@ -38,7 +38,8 @@ class LoginViewController: BaseViewController {
     
     @IBAction func loginBTN(_ sender: Any) {
         let usuario = User(user: userTF.text!, pass: passTF.text!)
-        self.errorAlert?.show(nil, hidden: nil)
+        self.alert?.show(nil, hidden: nil)
+        self.textWithTitleAlert?.show(nil, hidden: nil)
         
         if self.validTextField(user: userTF, pass: passTF) == true {
             REST.login(user: usuario, onSucess: { (sucess) in
@@ -52,36 +53,36 @@ class LoginViewController: BaseViewController {
                     }
                 }
             }) { (error) in
-                self.errorAlert?.show(nil, hidden: nil)
+                self.alert?.show(nil, hidden: nil)
                 switch error {
                 case .errorLogin(error: let message):
-                    self.showError(message: message)
+                    self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: message, color: UIColor(named: "errorDefault"), type: "T")
                 case .noResponse:
-                    self.showError(message: MESSAGE.MESSAGE_NORESPONSE)
+                    self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.MESSAGE_NORESPONSE, color: UIColor(named: "errorDefault"), type: "T")
                 case .noJson:
-                    self.showError(message: MESSAGE.MESSAGE_NOJSON)
+                    self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.MESSAGE_NOJSON, color: UIColor(named: "errorDefault"), type: "T")
                 case .nullResponse:
-                    self.showError(message: MESSAGE.MESSAGE_NULLJSON)
+                    self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.MESSAGE_NULLJSON, color: UIColor(named: "errorDefault"), type: "T")
                 case .responseStatusCode(code: let codigo):
-                    self.showError(message: MESSAGE.returnStatus(valueStatus:codigo!))
+                    self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.returnStatus(valueStatus:codigo!), color: UIColor(named: "errorDefault"), type: "T")
                 case .noConectionInternet:
-                    self.showError(message: MESSAGE.MESSAGE_NO_INTERNET)
+                    self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.MESSAGE_NO_INTERNET, color: UIColor(named: "errorDefault"), type: "T")
                 default:
-                    self.showError(message: MESSAGE.MESSAGE_DEFAULT)
+                    self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.MESSAGE_DEFAULT, color: UIColor(named: "errorDefault"), type: "T")
                 }
             }
             
         }
         
     }
-
+    
     func saveCore (){
         if(self.userBD == nil ){
             self.userBD = UserDataBase(context: context)
         }
         self.userBD?.user = self.userTF.text
         self.userBD?.pass = self.passTF.text
-
+        
         do {
             try context.save()
         }catch{
@@ -105,16 +106,13 @@ class LoginViewController: BaseViewController {
     /*Function response validate textField*/
     func validTextField(user: UITextField, pass:UITextField!) -> Bool{
         if(user.text == nil || (user.text?.isEmpty)!) {
-            self.showError(message: "Campo usuário é obrigatório!")
+            self.alertShow(title: nil, message: "Campo usuário é obrigatório!", color: nil, type: "E")
             return false
         }else if(self.passTF.text == nil || (self.passTF.text?.isEmpty)!) {
-            self.showError(message: "Campo senha é obrigatório!")
+            self.alertShow(title: nil, message: "Campo senha é obrigatório!", color: nil, type: "E")
             return false
         }else {
             return true
         }
     }
-    
-    
-    
 }
