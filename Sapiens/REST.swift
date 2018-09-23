@@ -96,7 +96,6 @@ class REST {
             do{
                 let subjects = try JSONDecoder().decode([SubjectData].self, from: storageOff)
                 onComplete(subjects)
-                print("OFFLINE")
             }catch{
                 onFail(.noDecoder)
             }
@@ -128,15 +127,9 @@ class REST {
             do{
                 let subjects = try JSONDecoder().decode(SubjectsDataT.self, from: storageOff)
                 onComplete(subjects)
-                print("OFFLINE")
-                
             }catch{
                 onFail(.noDecoder)
             }
-            if REST.isConnectedToInternet() {
-                print("TEREMOS QUE VER")
-            }
-            
         }else {
             ProviderFecth.schedulesFecth(user: user, onComplete: { (sucess) in
                 onComplete(sucess)
@@ -165,7 +158,7 @@ class REST {
                     for i in subjectsOff{if let notas = i.nota?.notas{for j in notas {arrayOf.append(j.valor)}}}
                     for a in subjectsOn{if let notas2 = a.nota?.notas{for b in notas2 {arrayOn.append(b.valor)}}}
                     
-                    if arrayOn != arrayOf {onComplete(true);print("Diferente")}else{print("Igual")}
+                    if arrayOn != arrayOf {onComplete(true)}else{onComplete(false)}
                 }catch{
                     onComplete(false)
                     print(error.localizedDescription)
