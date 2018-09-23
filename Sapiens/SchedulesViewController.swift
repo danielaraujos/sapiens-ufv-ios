@@ -57,13 +57,10 @@ class SchedulesViewController: BaseViewController{
         spreadsheetView.register(DayTitleCell.self, forCellWithReuseIdentifier: String(describing: DayTitleCell.self))
         spreadsheetView.register(ScheduleCell.self, forCellWithReuseIdentifier: String(describing: ScheduleCell.self))
         
-        self.showProgressing(message: "Carregando Horários")
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("ViewDidAppear")
         DispatchQueue.main.async {
             self.reloadFecth()
         }
@@ -71,9 +68,9 @@ class SchedulesViewController: BaseViewController{
     }
     
     @IBAction func btReload(_ sender: UIBarButtonItem) {
-        self.processingAlert?.show(nil, hidden: nil)
+        self.alertShow(title: nil, message: "Carregando Notas", color: nil, type: "P")
+        self.alert?.show(nil, hidden: nil)
         self.reloadFecth()
-        self.processingAlert?.hideAlert(nil)
     }
    
     func reloadFecth(){
@@ -93,29 +90,28 @@ class SchedulesViewController: BaseViewController{
                     self.data.removeAll()
                     self.data = [self.v1,self.v2,self.v3,self.v4,self.v5,self.v6]
                     self.spreadsheetView.reloadData()
-                    self.processingAlert?.hideAlert(nil)
                     SVProgressHUD.dismiss()
                 }
             }
           
         }) { (error) in
-            self.errorAlert?.show(nil, hidden: nil)
+            self.alert?.show(nil, hidden: nil)
             SVProgressHUD.dismiss()
             switch error {
             case .noResponse:
-                self.showError(message: MESSAGE.MESSAGE_NORESPONSE)
+                self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.MESSAGE_NORESPONSE, color: UIColor(named: "errorDefault"), type: "T")
             case .noJson:
-                self.showError(message: MESSAGE.MESSAGE_NOJSON)
+                self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.MESSAGE_NOJSON, color: UIColor(named: "errorDefault"), type: "T")
             case .nullResponse:
-                self.showError(message: MESSAGE.MESSAGE_NULLJSON)
+                self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.MESSAGE_NULLJSON, color: UIColor(named: "errorDefault"), type: "T")
             case .responseStatusCode(code: let codigo):
-                self.showError(message: MESSAGE.returnStatus(valueStatus:codigo!))
+                self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.returnStatus(valueStatus:codigo!), color: UIColor(named: "errorDefault"), type: "T")
             case .noConectionInternet:
-                self.showError(message: MESSAGE.MESSAGE_NO_INTERNET)
+                self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.MESSAGE_NO_INTERNET, color: UIColor(named: "errorDefault"), type: "T")
             case .alertData:
-                self.showError(message: MESSAGE.MESSAGE_ALERT)
+                self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.MESSAGE_ALERT, color: UIColor(named: "errorDefault"), type: "T")
             default:
-                self.showError(message: MESSAGE.MESSAGE_DEFAULT)
+                self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.MESSAGE_DEFAULT, color: UIColor(named: "errorDefault"), type: "T")
             }
         }
     }
@@ -195,22 +191,20 @@ extension SchedulesViewController :SpreadsheetViewDataSource, SpreadsheetViewDel
     }
     
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, didSelectItemAt indexPath: IndexPath) {
-        print("Selected: (row: \(indexPath.row), column: \(indexPath.column))")
-        self.showAlertSheet(title: "NUR 340", message: "Nome da Materia")
-        //print(self.data[indexPath.row])
-        switch indexPath.row {
+        let click = abs(indexPath.row-2)
+        switch indexPath.column {
         case 1:
-            print("1")
+            for (index, element) in self.v1.enumerated() {if index == click{self.showAlertSheet(title: "AAA", message: element)}}
         case 2:
-            print("2")
+            for (index, element) in self.v2.enumerated() {if index == click{self.showAlertSheet(title: "AAA", message: element)}}
         case 3:
-            print("3")
+            for (index, element) in self.v3.enumerated() {if index == click{self.showAlertSheet(title: "AAA", message: element)}}
         case 4:
-            print("4")
+            for (index, element) in self.v4.enumerated() {if index == click{self.showAlertSheet(title: "AAA", message: element)}}
         case 5:
-            print("5")
+            for (index, element) in self.v5.enumerated() {if index == click{self.showAlertSheet(title: "AAA", message: element)}}
         case 6:
-            print("6")
+            for (index, element) in self.v6.enumerated() {if index == click{self.showAlertSheet(title: "AAA", message: element)}}
         default:
             break
         }
