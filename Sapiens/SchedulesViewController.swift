@@ -194,21 +194,37 @@ extension SchedulesViewController :SpreadsheetViewDataSource, SpreadsheetViewDel
         let click = abs(indexPath.row-2)
         switch indexPath.column {
         case 1:
-            for (index, element) in self.v1.enumerated() {if index == click{self.showAlertSheet(title: "AAA", message: element)}}
+            for (index, element) in self.v1.enumerated() {if index == click{returnSchedules(elemento: element)}}
         case 2:
-            for (index, element) in self.v2.enumerated() {if index == click{self.showAlertSheet(title: "AAA", message: element)}}
+            for (index, element) in self.v2.enumerated() {if index == click{returnSchedules(elemento: element)}}
         case 3:
-            for (index, element) in self.v3.enumerated() {if index == click{self.showAlertSheet(title: "AAA", message: element)}}
+            for (index, element) in self.v3.enumerated() {if index == click{returnSchedules(elemento: element)}}
         case 4:
-            for (index, element) in self.v4.enumerated() {if index == click{self.showAlertSheet(title: "AAA", message: element)}}
+            for (index, element) in self.v4.enumerated() {if index == click{returnSchedules(elemento: element)}}
         case 5:
-            for (index, element) in self.v5.enumerated() {if index == click{self.showAlertSheet(title: "AAA", message: element)}}
+            for (index, element) in self.v5.enumerated() {if index == click{returnSchedules(elemento: element)}}
         case 6:
-            for (index, element) in self.v6.enumerated() {if index == click{self.showAlertSheet(title: "AAA", message: element)}}
+            for (index, element) in self.v6.enumerated() {if index == click{returnSchedules(elemento: element)}}
         default:
             break
         }
         
+    }
+    
+    
+    func returnSchedules(elemento: String){
+        if let endOfSentence = elemento.index(of: "-") {
+            let newStr = elemento.substring(to: endOfSentence).trimmingCharacters(in: .whitespacesAndNewlines)
+            REST.schedulesResponse(user: self.user, onComplete: { (array) in
+                for i in array.disciplinas{
+                    if i.codigo == newStr {
+                        self.showAlertSheet(title: "\(i.codigo) - \(i.nome)", message: "Créditos: \(i.creditos)")
+                    }
+                }
+            }) { (error) in
+                print(error)
+            }
+        }
     }
     
 }
