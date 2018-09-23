@@ -45,47 +45,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("Está rodando o Backgraund")
         
         
-        if application.applicationState == .active {
-            print("Esta ativo")
-        }
-        if application.applicationState == .inactive{
-            print("Nao tem permissao!")
-        }
-        
         if application.applicationState == .background {
-            print("Hey estou aqui!")
-            let user = User(user: COREDATA.loginUserCore().user!, pass: COREDATA.loginUserCore().pass!)
-            REST.checkUpdate(user: user) { (isValidate) in
-                print(isValidate)
-                if isValidate == true {
-                    do {
-                        DispatchQueue.main.async {
-                            REST.pushNotifications()
-                            print("Executando aqui")
+            if application.backgroundRefreshStatus == .available {
+                let user = User(user: COREDATA.loginUserCore().user!, pass: COREDATA.loginUserCore().pass!)
+                REST.checkUpdate(user: user) { (isValidate) in
+                    print(isValidate)
+                    if isValidate == true {
+                        do {
+                            DispatchQueue.main.async {
+                                REST.pushNotifications()
+                            }
+                            completionHandler(UIBackgroundFetchResult.newData)
+                        }catch{
+                            completionHandler(.failed)
                         }
-                        completionHandler(UIBackgroundFetchResult.newData)
-                    }catch{
+                    }else {
                         completionHandler(.failed)
                     }
-                }else {
-                    completionHandler(.failed)
                 }
+            }else if application.backgroundRefreshStatus == .denied{
+                print("Negado")
             }
-        }
-        
-        if application.backgroundRefreshStatus == .available {
-            print("available")
-            
-        }
-        
-        if application.backgroundRefreshStatus == .restricted {
-            print("Restrito")
-            
-        }
-        
-        if application.backgroundRefreshStatus == .denied{
-            print("Negado")
-            
         }
         
     }
@@ -167,7 +147,6 @@ extension AppDelegate : UNUserNotificationCenterDelegate{
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        print("didReceive Response")
         //response.notification.request.content.title
         let id = response.notification.request.identifier
         print(id)
