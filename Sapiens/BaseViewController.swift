@@ -14,39 +14,44 @@ import UserNotifications
 
 class BaseViewController: UIViewController {
 
-    var errorAlert: LIHAlert?
-    var informationsAlert : LIHAlert?
-    var sucessAlert : LIHAlert?
-    var textWithButtonAlert: LIHAlert?
-    var processingAlert: LIHAlert?
-    
+    var alert: LIHAlert?
     let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
-    func showError(message: String) {
-        self.errorAlert = LIHAlertManager.getErrorAlert(message: message)
-        self.errorAlert?.initAlert(self.view)
-        self.errorAlert?.icon = UIImage(named: "ErrorIcon")
-    }
     
-    func showSucess(message: String) {
-        self.sucessAlert = LIHAlertManager.getSuccessAlert(message: message)
-        self.sucessAlert?.initAlert(self.view)
-        self.sucessAlert?.icon = UIImage(named: "SuccessIcon")
-    }
     
-    func showInformations(message: String) {
-        self.informationsAlert = LIHAlertManager.getTextAlert(message: message)
-        self.informationsAlert?.initAlert(self.view)
-    }
-    
-    func showProgressing(message: String) {
-        self.processingAlert = LIHAlertManager.getProcessingAlert(message: message)
-        self.processingAlert?.initAlert(self.view)
+    func alertShow(title: String?, message: String, color: UIColor?, type: String) {
+        switch type {
+        case "S":
+            self.alert = LIHAlertManager.getSuccessAlert(message: message)
+            self.alert?.initAlert(self.view)
+            self.alert?.icon = UIImage(named: "SuccessIcon")
+        case "E":
+            self.alert = LIHAlertManager.getErrorAlert(message: message)
+            self.alert?.initAlert(self.view)
+            self.alert?.icon = UIImage(named: "ErrorIcon")
+            self.alert?.animationDuration = 0.9
+            self.alert?.hasNavigationBar = false
+        case "T":
+            if let vTitle = title {self.alert = LIHAlertManager.getTextWithTitleAlert(title: vTitle, message: message)}
+            if let vColor = color {self.alert?.alertColor = vColor}
+            self.alert?.initAlert(self.view)
+            self.alert?.animationDuration = 0.7
+            self.alert?.hasNavigationBar = false
+            self.alert?.paddingTop = 0.0
+            self.alert?.autoCloseTimeInterval = 3.5
+        case "P":
+            self.alert = LIHAlertManager.getProcessingAlert(message: message)
+            self.alert?.initAlert(self.view)
+            self.alert?.animationDuration = 0.7
+            self.alert?.autoCloseTimeInterval = 3.0
+            self.alert?.autoCloseEnabled=true
+        default:
+            break
+        }
     }
     
     func showAlert(title: String, message: String) {
