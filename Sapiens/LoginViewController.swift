@@ -19,11 +19,9 @@ class LoginViewController: BaseViewController {
     @IBOutlet weak var viewUser: UIView!
     @IBOutlet weak var viewPass: UIView!
     
-    var userBD : UserDataBase?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.round()
+        self.layoutArround()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -43,7 +41,7 @@ class LoginViewController: BaseViewController {
         if self.validTextField(user: userTF, pass: passTF) == true {
             REST.login(user: usuario, onSucess: { (sucess) in
                 if sucess == true {
-                    self.saveCore()
+                    COREDATA.saveUserResponse(user:self.userTF, pass: self.passTF, context: self.context)
                     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                     let tabs1 = storyBoard.instantiateViewController(withIdentifier: "Tabs") as! UITabBarController
                     self.present(tabs1, animated:true, completion:nil)
@@ -73,22 +71,7 @@ class LoginViewController: BaseViewController {
         }
     }
     
-    func saveCore (){
-        if(self.userBD == nil ){
-            self.userBD = UserDataBase(context: context)
-        }
-        self.userBD?.user = self.userTF.text
-        self.userBD?.pass = self.passTF.text
-        
-        do {
-            try context.save()
-        }catch{
-            print(error.localizedDescription)
-        }
-    }
-
-    
-    func round () {
+    func layoutArround () {
         button.layer.cornerRadius = 20;
         viewUser.layer.cornerRadius = 20;
         viewPass.layer.cornerRadius = 20;
@@ -97,8 +80,6 @@ class LoginViewController: BaseViewController {
         button.clipsToBounds = true;
         viewPass.clipsToBounds = true;
     }
-    
-    
     
     /*Function response validate textField*/
     func validTextField(user: UITextField, pass:UITextField!) -> Bool{
