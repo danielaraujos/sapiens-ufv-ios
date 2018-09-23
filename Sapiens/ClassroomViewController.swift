@@ -58,17 +58,17 @@ class ClassroomViewController: BaseViewController {
         }) { (error) in
             switch error {
             case .noResponse:
-                self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NORESPONSE)
+                self.showAlertSheet(title: "Erro!", message: MESSAGE.MESSAGE_NORESPONSE)
             case .noJson:
-                self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NOJSON)
+                self.showAlertSheet(title: "Erro!", message: MESSAGE.MESSAGE_NOJSON)
             case .nullResponse:
-                self.showAlert(title: "Erro!", message: MESSAGE.MESSAGE_NULLJSON)
+                self.showAlertSheet(title: "Erro!", message: MESSAGE.MESSAGE_NULLJSON)
             case .responseStatusCode(code: let codigo):
-                self.showAlert(title: "Erro!", message: MESSAGE.returnStatus(valueStatus:codigo!))
+                self.showAlertSheet(title: "Erro!", message: MESSAGE.returnStatus(valueStatus:codigo!))
             case .noConectionInternet:
-                self.showAlert(title: "OPS!", message: MESSAGE.MESSAGE_NO_INTERNET)
+                self.showAlertSheet(title: "OPS!", message: MESSAGE.MESSAGE_NO_INTERNET)
             default:
-                self.showAlert(title: "OPS!", message: MESSAGE.MESSAGE_DEFAULT)
+                self.showAlertSheet(title: "OPS!", message: MESSAGE.MESSAGE_DEFAULT)
             }
         }
         self.dataSource.removeAll()
