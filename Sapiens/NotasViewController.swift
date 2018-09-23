@@ -38,7 +38,6 @@ class NotasViewController: BaseViewController {
         self.alert?.show(nil, hidden: nil)
         REST.checkUpdate(user: user) { (isValide) in
             if isValide == true {
-                print("true")
                 self.alertShow(title: nil, message: "Carregando Notas", color: nil, type: "P")
                 self.alert?.show(nil, hidden: nil)
                 REST.pushNotifications()
