@@ -116,7 +116,7 @@ extension ConfigurationViewController:  UITableViewDelegate, UITableViewDataSour
             
             present(mail, animated: true)
         } else {
-            self.showAlert(title: "Ops.", message: "Ocorreu algum problema no envio. Tente novamente mais tarde!")
+            self.showAlertSheet(title: "Ops.", message: "Ocorreu algum problema no envio. Tente novamente mais tarde!")
         }
     }
     
