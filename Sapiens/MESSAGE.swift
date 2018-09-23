@@ -11,6 +11,7 @@ import Foundation
 class MESSAGE {
     init (){}
     
+    static let MESSAGE_TITLE = "Ops!"
     static let MESSAGE_NORESPONSE = "Servidor não respondendo"
     static let MESSAGE_NOJSON = "Não foi possivel converter a requisição"
     static let MESSAGE_NULLJSON = "Ocorreu algum erro na aplicação, e não está retornando nada"
