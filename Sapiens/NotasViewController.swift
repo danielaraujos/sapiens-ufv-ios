@@ -8,7 +8,7 @@
 
 import UIKit
 import Alamofire
-
+import SVProgressHUD
 
 class NotasViewController: BaseViewController {
 
@@ -26,7 +26,6 @@ class NotasViewController: BaseViewController {
         let backItem = UIBarButtonItem()
         backItem.title = " "
         navigationItem.backBarButtonItem = backItem
-        self.showProgressing(message: "Carregando Notas")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,40 +34,49 @@ class NotasViewController: BaseViewController {
     }
     
     @IBAction func btReload(_ sender: UIBarButtonItem) {
-        self.processingAlert?.show(nil, hidden: nil)
+        
+        self.alert?.show(nil, hidden: nil)
         REST.checkUpdate(user: user) { (isValide) in
             if isValide == true {
+                print("true")
+                self.alertShow(title: nil, message: "Carregando Notas", color: nil, type: "P")
+                self.alert?.show(nil, hidden: nil)
                 REST.pushNotifications()
                 self.reloadFecth()
+            }else{
+                self.alertShow(title: nil, message: "Informações estão atualizadas!", color: nil, type: "S")
+                self.alert?.show(nil, hidden: nil)
             }
         }
-        self.processingAlert?.hideAlert(nil)
+        
     }
     
     func reloadFecth(){
+        SVProgressHUD.show(withStatus: "Carregando")
         REST.subjectResponse(user: self.user, onComplete: { (array) in
             self.arraySubjects = array
-            self.processingAlert?.hideAlert(nil)
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                SVProgressHUD.dismiss()
             }
         }) { (error) in
-            self.errorAlert?.show(nil, hidden: nil)
+            self.alert?.show(nil, hidden: nil)
+            SVProgressHUD.dismiss()
             switch error {
             case .noResponse:
-                self.showError(message: MESSAGE.MESSAGE_NORESPONSE)
+                self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.MESSAGE_NORESPONSE, color: UIColor(named: "errorDefault"), type: "T")
             case .noJson:
-                self.showError(message: MESSAGE.MESSAGE_NOJSON)
+                self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.MESSAGE_NOJSON, color: UIColor(named: "errorDefault"), type: "T")
             case .nullResponse:
-                self.showError(message: MESSAGE.MESSAGE_NULLJSON)
+                self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.MESSAGE_NULLJSON, color: UIColor(named: "errorDefault"), type: "T")
             case .responseStatusCode(code: let codigo):
-                self.showError(message: MESSAGE.returnStatus(valueStatus:codigo!))
+                self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.returnStatus(valueStatus:codigo!), color: UIColor(named: "errorDefault"), type: "T")
             case .noConectionInternet:
-                self.showError(message: MESSAGE.MESSAGE_NO_INTERNET)
+                self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.MESSAGE_NO_INTERNET, color: UIColor(named: "errorDefault"), type: "T")
             case .alertData:
-                self.showError(message: MESSAGE.MESSAGE_ALERT)
+                self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.MESSAGE_ALERT, color: UIColor(named: "errorDefault"), type: "T")
             default:
-                self.showError(message: MESSAGE.MESSAGE_DEFAULT)
+                self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.MESSAGE_DEFAULT, color: UIColor(named: "errorDefault"), type: "T")
             }
         }
     }
