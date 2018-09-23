@@ -39,7 +39,6 @@ class LoginViewController: BaseViewController {
     @IBAction func loginBTN(_ sender: Any) {
         let usuario = User(user: userTF.text!, pass: passTF.text!)
         self.alert?.show(nil, hidden: nil)
-        self.textWithTitleAlert?.show(nil, hidden: nil)
         
         if self.validTextField(user: userTF, pass: passTF) == true {
             REST.login(user: usuario, onSucess: { (sucess) in
@@ -71,9 +70,7 @@ class LoginViewController: BaseViewController {
                     self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.MESSAGE_DEFAULT, color: UIColor(named: "errorDefault"), type: "T")
                 }
             }
-            
         }
-        
     }
     
     func saveCore (){
