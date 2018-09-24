@@ -18,10 +18,13 @@ class LoginViewController: BaseViewController {
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var viewUser: UIView!
     @IBOutlet weak var viewPass: UIView!
+    @IBOutlet weak var scroll: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.layoutArround()
+        userTF.delegate = self
+        passTF.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -71,6 +74,11 @@ class LoginViewController: BaseViewController {
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+        scroll.endEditing(true)
+    }
+    
     func layoutArround () {
         button.layer.cornerRadius = 20;
         viewUser.layer.cornerRadius = 20;
@@ -92,5 +100,16 @@ class LoginViewController: BaseViewController {
         }else {
             return true
         }
+    }
+}
+
+extension LoginViewController : UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == userTF{
+            passTF.becomeFirstResponder()
+        }else if textField == passTF {
+            self.loginBTN(Any)
+        }
+        return true
     }
 }
