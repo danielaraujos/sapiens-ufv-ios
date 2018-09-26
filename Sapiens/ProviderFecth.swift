@@ -12,6 +12,8 @@ import SwiftyJSON
 
 class ProviderFecth {
     
+    static let config = Configuration.shared
+    
     class func subjectFetch(user: User, onComplete: @escaping ([SubjectData]) -> Void, onFail: @escaping (RESTFail) -> ()){
         Alamofire.request(REST.pathBase + "notas", method: .post, parameters: REST.parametersAlamofire(user: user.user!, pass: user.pass!),encoding: JSONEncoding.default).responseJSON { (response) in
             if REST.isConnectedToInternet() {
@@ -21,11 +23,12 @@ class ProviderFecth {
                         return
                     }
                     do{
-                        REST.defaults.removeObject(forKey: REST.localStorageSubject)
+                        config.defaults.removeObject(forKey: UserDefaultsKeys.storageSubject.rawValue)
                         let subjects = try JSONDecoder().decode([SubjectData].self, from: data)
-                        REST.defaults.set(data, forKey: REST.localStorageSubject)
+                        config.storageSubject = data
+                        
                         onComplete(subjects)
-                        REST.defaults.synchronize()
+                        config.defaults.synchronize()
                     }catch{
                         onFail(.noDecoder)
                     }
@@ -48,11 +51,11 @@ class ProviderFecth {
                         return
                     }
                     do{
-                        REST.defaults.removeObject(forKey: REST.localStorageSchedules)
+                        config.defaults.removeObject(forKey: UserDefaultsKeys.storageSchedules.rawValue)
                         let subjects = try JSONDecoder().decode(SubjectsDataT.self, from: data)
-                        REST.defaults.set(data, forKey: REST.localStorageSchedules)
+                        config.storageSchedules = data
                         onComplete(subjects)
-                        REST.defaults.synchronize()
+                        config.defaults.synchronize()
                     }catch{
                         onFail(.noDecoder)
                     }
