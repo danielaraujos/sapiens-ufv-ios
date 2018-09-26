@@ -35,6 +35,7 @@ class BaseViewController: UIViewController {
             self.alert?.icon = UIImage(named: "ErrorIcon")
             self.alert?.animationDuration = 0.9
             self.alert?.hasNavigationBar = false
+            
         case "T":
             if let vTitle = title {self.alert = LIHAlertManager.getTextWithTitleAlert(title: vTitle, message: message)}
             if let vColor = color {self.alert?.alertColor = vColor}
@@ -43,6 +44,16 @@ class BaseViewController: UIViewController {
             self.alert?.hasNavigationBar = false
             self.alert?.paddingTop = 0.0
             self.alert?.autoCloseTimeInterval = 3.5
+            
+        case "L":
+            if let vTitle = title {self.alert = LIHAlertManager.getTextCustom(title: vTitle, message: message)}
+            if let vColor = color {self.alert?.alertColor = vColor}
+            self.alert?.initAlert(self.view)
+            self.alert?.animationDuration = 0.7
+            self.alert?.hasNavigationBar = false
+            self.alert?.paddingTop = 0.0
+            self.alert?.autoCloseTimeInterval = 3.5
+            
         case "P":
             self.alert = LIHAlertManager.getProcessingAlert(message: message)
             self.alert?.initAlert(self.view)
@@ -52,6 +63,8 @@ class BaseViewController: UIViewController {
         default:
             break
         }
+        
+        
     }
     
     func showAlertSheet(title: String, message: String) {

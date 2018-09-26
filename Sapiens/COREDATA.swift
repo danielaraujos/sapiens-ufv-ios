@@ -63,7 +63,6 @@ class COREDATA {
     class func saveUserResponse (user:UITextField, pass: UITextField, context: NSManagedObjectContext){
         if(userBD == nil ){
             self.userBD = UserDataBase(context: context)
-            
         }
         self.userBD?.user = user.text
         self.userBD?.pass = pass.text

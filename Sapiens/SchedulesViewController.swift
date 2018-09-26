@@ -217,9 +217,7 @@ extension SchedulesViewController :SpreadsheetViewDataSource, SpreadsheetViewDel
             let newStr = elemento.substring(to: endOfSentence).trimmingCharacters(in: .whitespacesAndNewlines)
             REST.schedulesResponse(user: self.user, onComplete: { (array) in
                 for i in array.disciplinas{
-                    if i.codigo == newStr {
-                        self.showAlertSheet(title: "\(i.codigo) - \(i.nome)", message: "Créditos: \(i.creditos)")
-                    }
+                    if i.codigo == newStr {self.showAlertSheet(title: "\(i.codigo) - \(i.nome)", message: "Créditos: \(i.creditos)")}
                 }
             }) { (error) in
                 print(error)

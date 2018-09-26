@@ -48,21 +48,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if application.applicationState == .background {
             if application.backgroundRefreshStatus == .available {
                 let user = User(user: COREDATA.loginUserCore().user!, pass: COREDATA.loginUserCore().pass!)
-                REST.checkUpdate(user: user) { (isValidate) in
-                    print(isValidate)
-                    if isValidate == true {
-                        do {
-                            DispatchQueue.main.async {
-                                REST.pushNotifications()
+                if(COREDATA.loginUserCore().user != "-1"){
+                        REST.checkUpdate(user: user) { (isValidate) in
+                        if isValidate == true {
+                            do {
+                                DispatchQueue.main.async {
+                                    REST.pushNotifications()
+                                }
+                                completionHandler(UIBackgroundFetchResult.newData)
+                            }catch{
+                                completionHandler(.failed)
                             }
-                            completionHandler(UIBackgroundFetchResult.newData)
-                        }catch{
+                        }else {
                             completionHandler(.failed)
                         }
-                    }else {
-                        completionHandler(.failed)
                     }
-                }
+                }else{print("-1")}
             }else if application.backgroundRefreshStatus == .denied{
                 print("Negado")
             }
