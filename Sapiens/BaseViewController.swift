@@ -15,7 +15,7 @@ import UserNotifications
 class BaseViewController: UIViewController {
 
     var alert: LIHAlert?
-    let defaults = UserDefaults.standard
+    static let config = Configuration.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
