@@ -15,6 +15,8 @@ class NotificationsViewController: BaseViewController {
     var times = ["5","10","15","25","30","35","40"]
     var itemAtDefaultPosition: String?
     
+    var config = Configuration.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         pickerView.delegate = self
@@ -23,27 +25,33 @@ class NotificationsViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        formatedView()
         
-        //RESPONSAVEL POR DEFINIR SE O SWICTH ESTÁ ATIVO
-        if defaults.bool(forKey: REST.localStorageNotifications) == true {
-            isOn.isOn = true
-        }else{
-            isOn.isOn = false
-        }
-        
-        // RESPONSAVEL POR SALVAR O TEMPO
-        if let index = times.index(of: String(defaults.integer(forKey: REST.localStorageTime))){
-            self.pickerView.selectRow(index, inComponent: 0, animated: true)
-        }
     }
     
     @IBAction func btIsOn(_ sender: UISwitch) {
-        if isOn.isOn == true {defaults.set(true, forKey: REST.localStorageNotifications)
-        }else {defaults.set(false, forKey: REST.localStorageNotifications)}
+        config.storageNotifications = sender.isOn
     }
     
     @IBAction func btnCancel(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil);
+    }
+    
+    
+    func formatedView(){
+        
+        //Verificar o status
+        if config.storageNotifications == true {
+            isOn.isOn = true
+        }else {
+            isOn.isOn = false
+        }
+        
+        if let index = times.index(of: String(config.storageTime)){
+            self.pickerView.selectRow(index, inComponent: 0, animated: true)
+        }
+        
+        
     }
 }
 extension NotificationsViewController : UIPickerViewDelegate, UIPickerViewDataSource {
@@ -61,6 +69,6 @@ extension NotificationsViewController : UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        defaults.set(Int(times[row]), forKey: REST.localStorageTime)
+        config.storageTime = Int(times[row])!
     }
 }

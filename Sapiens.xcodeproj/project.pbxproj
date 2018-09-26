@@ -34,6 +34,7 @@
 		4C90AC72210B695E0024ADE5 /* COREDATA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C90AC71210B695E0024ADE5 /* COREDATA.swift */; };
 		4C9343211EFEAB0F003092E4 /* NotasDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9343201EFEAB0F003092E4 /* NotasDetailViewController.swift */; };
 		4C93C74A210765D200781074 /* SchedulesClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C93C749210765D200781074 /* SchedulesClasses.swift */; };
+		4CACC9CB215C2DB70033BAF6 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CACC9CA215C2DB70033BAF6 /* Configuration.swift */; };
 		4CF2FD49213C21830099495C /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2FD48213C21830099495C /* Cells.swift */; };
 		68220C52605486015DBFF3BC /* Pods_Sapiens.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4BF36D584B86A72D8E535B8 /* Pods_Sapiens.framework */; };
 /* End PBXBuildFile section */
@@ -76,6 +77,7 @@
 		4C9343201EFEAB0F003092E4 /* NotasDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotasDetailViewController.swift; sourceTree = "<group>"; };
 		4C93C749210765D200781074 /* SchedulesClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesClasses.swift; sourceTree = "<group>"; };
 		4CAC82A0214FFBEB00CDA92B /* Sapiens.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sapiens.entitlements; sourceTree = "<group>"; };
+		4CACC9CA215C2DB70033BAF6 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		4CF2FD48213C21830099495C /* Cells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
 		7D3E8546880695C8ED6F7BE6 /* Pods-Sapiens.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sapiens.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sapiens/Pods-Sapiens.debug.xcconfig"; sourceTree = "<group>"; };
 		8B068ACBD1594920EC4E745E /* Pods-Sapiens.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sapiens.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sapiens/Pods-Sapiens.release.xcconfig"; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				4CF2FD48213C21830099495C /* Cells.swift */,
 				4C93C749210765D200781074 /* SchedulesClasses.swift */,
 				4C6AA2AF213E035900B5A0AD /* Setting.swift */,
+				4CACC9CA215C2DB70033BAF6 /* Configuration.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				4CF2FD49213C21830099495C /* Cells.swift in Sources */,
 				4C9343211EFEAB0F003092E4 /* NotasDetailViewController.swift in Sources */,
 				4C450C802104A5A500640DA0 /* REST.swift in Sources */,
+				4CACC9CB215C2DB70033BAF6 /* Configuration.swift in Sources */,
 				4C2FF2092108CE08005769BB /* ClassroomViewController.swift in Sources */,
 				4C3E916C1ECE2948008D7931 /* AppDelegate.swift in Sources */,
 			);
