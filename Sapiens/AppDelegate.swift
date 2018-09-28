@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     let center = UNUserNotificationCenter.current()
     let coreDataBase = CoreDataManager()
+    let base = BaseViewController()
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -48,8 +49,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if application.applicationState == .background {
             if application.backgroundRefreshStatus == .available {
-                /*let user = User(user: COREDATA.loginUserCore().user!, pass: COREDATA.loginUserCore().pass!)
-                if(COREDATA.loginUserCore().user != "-1"){
+                let user = self.base.returnUser()
+                if(user.user != "-1"){
                         REST.checkUpdate(user: user) { (isValidate) in
                         if isValidate == true {
                             do {
@@ -64,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             completionHandler(.failed)
                         }
                     }
-                }else{print("-1")} */
+                }else{print("-1")}
             }else if application.backgroundRefreshStatus == .denied{
                 print("Negado")
             }
