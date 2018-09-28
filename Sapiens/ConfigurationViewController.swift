@@ -12,7 +12,6 @@ import MessageUI
 class ConfigurationViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    var user = User(user: COREDATA.loginUserCore().user!, pass: COREDATA.loginUserCore().pass!)
     
     @IBOutlet weak var lblMatricula: UILabel!
     
@@ -22,11 +21,9 @@ class ConfigurationViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.lista()
-        
-        self.lblMatricula.text = user.user!.uppercased()
+        self.lblMatricula.text = self.user.user?.uppercased() ?? "0"
     }
-    
-    
+  
     func lista(){
         var config: Setting;
         config = Setting(id: 1, nome: "Notificações", image: #imageLiteral(resourceName: "user"))
@@ -44,7 +41,7 @@ class ConfigurationViewController: BaseViewController {
     
     @IBAction func btLogout(_ sender: UIBarButtonItem) {
         print("Redirecionar para inicio")
-        COREDATA.deleteLoginCore()
+        self.deleteUser()
         REST.deleteStorage()
         let loginViewController = REST.logoutHome()
         self.present(loginViewController, animated:true, completion:nil)
@@ -91,9 +88,6 @@ extension ConfigurationViewController:  UITableViewDelegate, UITableViewDataSour
     }
     
     
-   
-    
-    //Avaliacao na apple store
     func avaliarApp(appId: String, completion: @escaping ((_ success: Bool)->())) {
         guard let url = URL(string : "itms-apps://itunes.apple.com/app/" + appId) else {
             completion(false)

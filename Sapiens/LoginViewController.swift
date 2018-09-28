@@ -29,7 +29,8 @@ class LoginViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if(COREDATA.loginUserCore().user != "-1"){
+
+        if(self.user.user != "-1"){
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
             let tabs1 = storyBoard.instantiateViewController(withIdentifier: "Tabs") as! UITabBarController
             self.present(tabs1, animated:true, completion:nil)
@@ -44,12 +45,12 @@ class LoginViewController: BaseViewController {
         if self.validTextField(user: userTF, pass: passTF) == true {
             REST.login(user: usuario, onSucess: { (sucess) in
                 if sucess == true {
-                    COREDATA.saveUserResponse(user:self.userTF, pass: self.passTF, context: self.context)
+                    self.saveUser(user: usuario)
                     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                     let tabs1 = storyBoard.instantiateViewController(withIdentifier: "Tabs") as! UITabBarController
                     self.present(tabs1, animated:true, completion:nil)
                     DispatchQueue.main.async {
-                        COREDATA.loginUserCore()
+                        //self.returnUser()
                     }
                 }
             }) { (error) in
@@ -113,3 +114,5 @@ extension LoginViewController : UITextFieldDelegate {
         return true
     }
 }
+
+

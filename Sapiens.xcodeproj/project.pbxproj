@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C1119E3215D22FD004C8B34 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1119E2215D22FD004C8B34 /* CoreDataManager.swift */; };
 		4C1F0EDC1EFB39F400BD9325 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1F0EDB1EFB39F400BD9325 /* User.swift */; };
 		4C2FF2072108CC46005769BB /* ColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FF2062108CC46005769BB /* ColorHex.swift */; };
 		4C2FF2092108CE08005769BB /* ClassroomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FF2082108CE08005769BB /* ClassroomViewController.swift */; };
 		4C33DECF21261C470059C108 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C33DECE21261C470059C108 /* BaseViewController.swift */; };
 		4C34D27521558B0A00BE8948 /* ProviderFecth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C34D27421558B0A00BE8948 /* ProviderFecth.swift */; };
+		4C3658B0215D712C00059DEA /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4C3658AF215D712C00059DEA /* Settings.bundle */; };
 		4C3E916C1ECE2948008D7931 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3E916B1ECE2948008D7931 /* AppDelegate.swift */; };
 		4C3E91711ECE2948008D7931 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C3E916F1ECE2948008D7931 /* Main.storyboard */; };
 		4C3E91741ECE2948008D7931 /* Sapiens.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C3E91721ECE2948008D7931 /* Sapiens.xcdatamodeld */; };
@@ -31,7 +33,6 @@
 		4C6AA2B0213E035900B5A0AD /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6AA2AF213E035900B5A0AD /* Setting.swift */; };
 		4C6AA2B2213E098300B5A0AD /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6AA2B1213E098300B5A0AD /* NotificationsViewController.swift */; };
 		4C818A64210A7DD5003D4AFF /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C818A63210A7DD5003D4AFF /* ConfigurationViewController.swift */; };
-		4C90AC72210B695E0024ADE5 /* COREDATA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C90AC71210B695E0024ADE5 /* COREDATA.swift */; };
 		4C9343211EFEAB0F003092E4 /* NotasDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9343201EFEAB0F003092E4 /* NotasDetailViewController.swift */; };
 		4C93C74A210765D200781074 /* SchedulesClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C93C749210765D200781074 /* SchedulesClasses.swift */; };
 		4CACC9CB215C2DB70033BAF6 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CACC9CA215C2DB70033BAF6 /* Configuration.swift */; };
@@ -41,11 +42,13 @@
 
 /* Begin PBXFileReference section */
 		4C0EE5B61EFCB96D00BC642F /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = "Pods/../build/Debug-iphoneos/SVProgressHUD/SVProgressHUD.framework"; sourceTree = "<group>"; };
+		4C1119E2215D22FD004C8B34 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		4C1F0EDB1EFB39F400BD9325 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4C2FF2062108CC46005769BB /* ColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHex.swift; sourceTree = "<group>"; };
 		4C2FF2082108CE08005769BB /* ClassroomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassroomViewController.swift; sourceTree = "<group>"; };
 		4C33DECE21261C470059C108 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		4C34D27421558B0A00BE8948 /* ProviderFecth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderFecth.swift; sourceTree = "<group>"; };
+		4C3658AF215D712C00059DEA /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		4C3E91681ECE2948008D7931 /* Sapiens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sapiens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C3E916B1ECE2948008D7931 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C3E91701ECE2948008D7931 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -73,7 +76,6 @@
 		4C6AA2AF213E035900B5A0AD /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		4C6AA2B1213E098300B5A0AD /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		4C818A63210A7DD5003D4AFF /* ConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
-		4C90AC71210B695E0024ADE5 /* COREDATA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = COREDATA.swift; sourceTree = "<group>"; };
 		4C9343201EFEAB0F003092E4 /* NotasDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotasDetailViewController.swift; sourceTree = "<group>"; };
 		4C93C749210765D200781074 /* SchedulesClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesClasses.swift; sourceTree = "<group>"; };
 		4CAC82A0214FFBEB00CDA92B /* Sapiens.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sapiens.entitlements; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				4C3E91751ECE2948008D7931 /* Assets.xcassets */,
 				4C3E917A1ECE2948008D7931 /* Info.plist */,
 				4C3E91721ECE2948008D7931 /* Sapiens.xcdatamodeld */,
+				4C3658AF215D712C00059DEA /* Settings.bundle */,
 			);
 			path = Sapiens;
 			sourceTree = "<group>";
@@ -178,8 +181,8 @@
 				4C450C7F2104A5A500640DA0 /* REST.swift */,
 				4C2FF2062108CC46005769BB /* ColorHex.swift */,
 				4C5C0AB7210A195B0071C7C9 /* MESSAGE.swift */,
-				4C90AC71210B695E0024ADE5 /* COREDATA.swift */,
 				4C34D27421558B0A00BE8948 /* ProviderFecth.swift */,
+				4C1119E2215D22FD004C8B34 /* CoreDataManager.swift */,
 			);
 			name = Provider;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C3658B0215D712C00059DEA /* Settings.bundle in Resources */,
 				4C3E91791ECE2948008D7931 /* LaunchScreen.storyboard in Resources */,
 				4C3E91761ECE2948008D7931 /* Assets.xcassets in Resources */,
 				4C3E91711ECE2948008D7931 /* Main.storyboard in Resources */,
@@ -365,6 +369,7 @@
 				4C6AA2AE213E019300B5A0AD /* ConfigurationsCell.swift in Sources */,
 				4C33DECF21261C470059C108 /* BaseViewController.swift in Sources */,
 				4C93C74A210765D200781074 /* SchedulesClasses.swift in Sources */,
+				4C1119E3215D22FD004C8B34 /* CoreDataManager.swift in Sources */,
 				4C6AA2B0213E035900B5A0AD /* Setting.swift in Sources */,
 				4C67F17A1EF464CA004BCFB4 /* NotasViewController.swift in Sources */,
 				4C5C0AB8210A195B0071C7C9 /* MESSAGE.swift in Sources */,
@@ -375,7 +380,6 @@
 				4C67F16B1EF3065A004BCFB4 /* LoginViewController.swift in Sources */,
 				4C65332E2107CF2900FEB8BD /* SchedulesViewController.swift in Sources */,
 				4C34D27521558B0A00BE8948 /* ProviderFecth.swift in Sources */,
-				4C90AC72210B695E0024ADE5 /* COREDATA.swift in Sources */,
 				4CF2FD49213C21830099495C /* Cells.swift in Sources */,
 				4C9343211EFEAB0F003092E4 /* NotasDetailViewController.swift in Sources */,
 				4C450C802104A5A500640DA0 /* REST.swift in Sources */,

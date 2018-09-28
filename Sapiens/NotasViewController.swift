@@ -14,7 +14,7 @@ class NotasViewController: BaseViewController {
 
     var arraySubjects = [SubjectData]()
     var messageEmpty = UILabel()
-    var user = User(user: COREDATA.loginUserCore().user!, pass: COREDATA.loginUserCore().pass!)
+    
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -26,6 +26,7 @@ class NotasViewController: BaseViewController {
         let backItem = UIBarButtonItem()
         backItem.title = " "
         navigationItem.backBarButtonItem = backItem
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
