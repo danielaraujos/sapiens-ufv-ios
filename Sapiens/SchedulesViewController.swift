@@ -14,7 +14,6 @@ import LIHAlert
 class SchedulesViewController: BaseViewController{
 
     @IBOutlet weak var spreadsheetView: SpreadsheetView!
-    var user = User(user: COREDATA.loginUserCore().user!, pass: COREDATA.loginUserCore().pass!)
     
     let days = ["SEGUNDA", "TERÇA", "QUARTA", "QUINTA", "SEXTA", "SABADO", ]
     let dayColors = [UIColor(red: 0.918, green: 0.224, blue: 0.153, alpha: 1),

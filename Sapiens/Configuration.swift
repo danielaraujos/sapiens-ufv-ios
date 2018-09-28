@@ -23,18 +23,18 @@ class Configuration {
     static var shared: Configuration = Configuration()
     
     
-    var storageSubject : String {
+    var storageSubject : Data? {
         get {
-            return defaults.string(forKey: UserDefaultsKeys.storageSubject.rawValue)!
+            return defaults.data(forKey: UserDefaultsKeys.storageSubject.rawValue)
         }
         set {
             defaults.set(newValue, forKey: UserDefaultsKeys.storageSubject.rawValue)
         }
     }
     
-    var storageSchedules : String {
+    var storageSchedules : Data? {
         get {
-            return defaults.string(forKey: UserDefaultsKeys.storageSchedules.rawValue)!
+            return defaults.data(forKey: UserDefaultsKeys.storageSchedules.rawValue)
         }
         set {
             defaults.set(newValue, forKey: UserDefaultsKeys.storageSchedules.rawValue)

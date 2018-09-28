@@ -11,7 +11,6 @@ import SVProgressHUD
 
 class ClassroomViewController: BaseViewController {
 
-    var user = User(user: COREDATA.loginUserCore().user!, pass: COREDATA.loginUserCore().pass!)
     
     var dataTable: SwiftDataTable! = nil
     var dataSource: DataTableContent = []

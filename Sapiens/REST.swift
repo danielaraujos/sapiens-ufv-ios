@@ -40,15 +40,9 @@ class REST {
         ]
     }
     
-    static let localStorageSubject = "LocalSubject"
-    static let localStorageSchedules = "LocalSchedules"
-    static let localStorageNotifications = "isNotification"
-    static let localStorageTime = "isTime"
-    
+    static let config = Configuration.shared
     
     static let sessionManager = Alamofire.SessionManager(configuration: configuration)
-    
-    static let defaults = UserDefaults.standard
     
     /*
      FUNÇÃO RESPONSAVEL POR REALIZAR O LOGIN DO APLICATIVO
@@ -92,9 +86,9 @@ class REST {
      */
     class func subjectResponse(user: User, onComplete: @escaping ([SubjectData]) -> Void, onFail: @escaping (RESTFail) -> ()){
         
-        if let storageOff = defaults.data(forKey: REST.localStorageSubject) {
+        if let newData = config.storageSubject {
             do{
-                let subjects = try JSONDecoder().decode([SubjectData].self, from: storageOff)
+                let subjects = try JSONDecoder().decode([SubjectData].self, from: newData)
                 onComplete(subjects)
             }catch{
                 onFail(.noDecoder)
@@ -122,10 +116,10 @@ class REST {
     
     
     class func schedulesResponse(user: User, onComplete: @escaping (SubjectsDataT) -> Void, onFail: @escaping (RESTFail) -> ()){
-        if let storageOff = defaults.data(forKey: REST.localStorageSchedules) {
+        if let newData = config.storageSchedules {
             /*CASO O STORAGE ESTEJA COM INFORMACOES ELE ENTRARÁ AQUI*/
             do{
-                let subjects = try JSONDecoder().decode(SubjectsDataT.self, from: storageOff)
+                let subjects = try JSONDecoder().decode(SubjectsDataT.self, from: newData)
                 onComplete(subjects)
             }catch{
                 onFail(.noDecoder)
@@ -148,11 +142,11 @@ class REST {
                 onComplete(false)
                 return
             }
-            if let storageOff = defaults.data(forKey: REST.localStorageSubject) {
+            if let newData = config.storageSubject {
                 var arrayOf : [String] = [],arrayOn :  [String] = []
                 /*CASO O STORAGE ESTEJA COM INFORMACOES ELE ENTRARÁ AQUI*/
                 do{
-                    let subjectsOff = try JSONDecoder().decode([SubjectData].self, from: storageOff)
+                    let subjectsOff = try JSONDecoder().decode([SubjectData].self, from: newData)
                     let subjectsOn = try JSONDecoder().decode([SubjectData].self, from: data)
                     
                     for i in subjectsOff{if let notas = i.nota?.notas{for j in notas {arrayOf.append(j.valor)}}}
@@ -168,7 +162,7 @@ class REST {
     }
     
     class func pushNotifications (){
-        if defaults.bool(forKey: self.localStorageNotifications) == true {
+        if config.storageNotifications == true {
             print("Cliquei para ter notificacao")
             let id = String(Date().timeIntervalSince1970)
             let content = UNMutableNotificationContent()
@@ -188,9 +182,9 @@ class REST {
     
     class func deleteStorage() {
         // Remover as notas
-        defaults.removeObject(forKey: REST.localStorageSubject)
-        defaults.removeObject(forKey: REST.localStorageSchedules)
-        defaults.synchronize()
+        config.defaults.removeObject(forKey: UserDefaultsKeys.storageSubject.rawValue)
+        config.defaults.removeObject(forKey: UserDefaultsKeys.storageSchedules.rawValue)
+        config.defaults.synchronize()
         print("Dados do Storage foi deletado com sucesso!")
     }
     
