@@ -26,7 +26,7 @@ class ConfigurationViewController: BaseViewController {
   
     func lista(){
         var config: Setting;
-        config = Setting(id: 1, nome: "Notificações", image: #imageLiteral(resourceName: "user"))
+        config = Setting(id: 1, nome: "Ajustes Gerais", image: #imageLiteral(resourceName: "user"))
         self.settings.append(config)
         config = Setting(id: 2, nome: "Sobre o aplicativo", image: #imageLiteral(resourceName: "user"))
         self.settings.append(config)

@@ -162,7 +162,7 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellNotas" textLabel="QO8-CL-qY7" detailTextLabel="aLP-B6-iRZ" rowHeight="56" style="IBUITableViewCellStyleSubtitle" id="TrJ-R7-h2e">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellNotas" textLabel="QO8-CL-qY7" detailTextLabel="aLP-B6-iRZ" rowHeight="56" style="IBUITableViewCellStyleSubtitle" id="TrJ-R7-h2e">
                                         <rect key="frame" x="0.0" y="28" width="375" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TrJ-R7-h2e" id="uj9-kR-Ocd">
@@ -239,7 +239,7 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellSubject" rowHeight="50" id="yh7-VU-saD" customClass="SubjectCell" customModule="Sapiens" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellSubject" rowHeight="50" id="yh7-VU-saD" customClass="SubjectCell" customModule="Sapiens" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yh7-VU-saD" id="Pb2-E5-Cq5">
@@ -435,7 +435,7 @@
                                 <rect key="frame" x="0.0" y="238" width="375" height="491"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AjusteCell" rowHeight="54" id="Cbo-DX-KWu" customClass="ConfigurationsCell" customModule="Sapiens" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AjusteCell" rowHeight="54" id="Cbo-DX-KWu" customClass="ConfigurationsCell" customModule="Sapiens" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="54"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Cbo-DX-KWu" id="4To-4n-I7s">
@@ -574,7 +574,7 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </textAttributes>
                                         <items>
-                                            <navigationItem title="Notificações" id="HRS-aJ-EUE">
+                                            <navigationItem title="Ajustes Gerais" id="HRS-aJ-EUE">
                                                 <barButtonItem key="rightBarButtonItem" systemItem="stop" id="oaQ-2h-k9v">
                                                     <connections>
                                                         <action selector="btnCancel:" destination="ZfO-EZ-kYO" id="3MG-lc-cDq"/>
@@ -596,9 +596,8 @@
                             <view alpha="0.55000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tix-OA-ubk">
                                 <rect key="frame" x="0.0" y="63" width="375" height="44"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notificações de Notas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwz-ad-YXy">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notificações de Notas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwz-ad-YXy">
                                         <rect key="frame" x="8" y="12" width="170" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -607,7 +606,24 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Tix-OA-ubk" secondAttribute="height" multiplier="375:44" id="0xa-aD-aHv"/>
+                                    <constraint firstItem="cwz-ad-YXy" firstAttribute="top" secondItem="Tix-OA-ubk" secondAttribute="top" constant="12" id="6bi-Cg-R0m"/>
+                                    <constraint firstAttribute="trailing" secondItem="cwz-ad-YXy" secondAttribute="trailing" constant="197" id="dUE-eY-GLo"/>
+                                    <constraint firstAttribute="bottom" secondItem="cwz-ad-YXy" secondAttribute="bottom" constant="11" id="miy-dK-QT0"/>
+                                    <constraint firstItem="cwz-ad-YXy" firstAttribute="leading" secondItem="Tix-OA-ubk" secondAttribute="leading" constant="8" id="r7P-bF-wXB"/>
                                 </constraints>
+                            </view>
+                            <view alpha="0.55000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rGg-L4-c0V">
+                                <rect key="frame" x="0.0" y="333" width="375" height="44"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Acessibilidade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AhO-Mf-C1E">
+                                        <rect key="frame" x="8" y="12" width="110" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Receber notificações" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3o3-DJ-tgg">
                                 <rect key="frame" x="15" y="128" width="212" height="21"/>
@@ -632,21 +648,41 @@
                                 </connections>
                             </switch>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PPu-UP-IAb">
-                                <rect key="frame" x="15" y="190" width="332" height="92"/>
+                                <rect key="frame" x="15" y="195" width="332" height="92"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <outlet property="dataSource" destination="ZfO-EZ-kYO" id="W3U-fO-YeZ"/>
                                     <outlet property="delegate" destination="ZfO-EZ-kYO" id="S1s-en-plR"/>
                                 </connections>
                             </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Esquema de cores" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zGc-i9-MDe">
+                                <rect key="frame" x="109" y="396" width="155" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="aIQ-VH-fbq">
+                                <rect key="frame" x="18" y="429" width="339" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Claro"/>
+                                    <segment title="Escuro"/>
+                                </segments>
+                                <color key="tintColor" red="0.89411764709999997" green="0.76470588240000004" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="rGg-L4-c0V" firstAttribute="leading" secondItem="Tix-OA-ubk" secondAttribute="leading" id="0kY-4r-r0D"/>
                             <constraint firstItem="Tix-OA-ubk" firstAttribute="leading" secondItem="3tM-Mz-rXy" secondAttribute="leading" id="Gmf-Kd-7Pl"/>
                             <constraint firstItem="VLV-1f-wmt" firstAttribute="leading" secondItem="qtU-mO-ezL" secondAttribute="leading" id="INL-A1-Tc1"/>
+                            <constraint firstItem="iCf-Rf-oQZ" firstAttribute="top" secondItem="rGg-L4-c0V" secondAttribute="bottom" constant="401" id="Kgb-Fa-kW6"/>
                             <constraint firstItem="Tix-OA-ubk" firstAttribute="top" secondItem="3tM-Mz-rXy" secondAttribute="bottom" constant="-1" id="Lyp-Om-ZV9"/>
+                            <constraint firstItem="rGg-L4-c0V" firstAttribute="top" secondItem="qtU-mO-ezL" secondAttribute="top" constant="333" id="QTb-sE-1lH"/>
                             <constraint firstItem="Tix-OA-ubk" firstAttribute="centerX" secondItem="3tM-Mz-rXy" secondAttribute="centerX" id="dvD-Xo-xYj"/>
                             <constraint firstItem="VLV-1f-wmt" firstAttribute="top" secondItem="qtU-mO-ezL" secondAttribute="top" id="gPD-jf-hBE"/>
+                            <constraint firstItem="rGg-L4-c0V" firstAttribute="trailing" secondItem="Tix-OA-ubk" secondAttribute="trailing" id="hdd-3e-BrQ"/>
                             <constraint firstAttribute="trailing" secondItem="VLV-1f-wmt" secondAttribute="trailing" id="i8y-dF-KKB"/>
                         </constraints>
                     </view>
