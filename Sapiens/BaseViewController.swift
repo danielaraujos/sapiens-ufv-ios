@@ -15,10 +15,13 @@ import UserNotifications
 class BaseViewController: UIViewController {
 
     var alert: LIHAlert?
+    var user: User!
     static let config = Configuration.shared
+    var dataManager = CoreDataManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.user = returnUser()
     }
     
     
@@ -76,11 +79,48 @@ class BaseViewController: UIViewController {
   
 }
 
-extension BaseViewController {
-    var context : NSManagedObjectContext {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.persistentContainer.viewContext
+extension BaseViewController : CoreDataManagerType {
+    func saveUser(user: User) {
+        let managedContext = dataManager.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "UserDataBase", in: managedContext)!
+        let usuario = NSManagedObject(entity: entity, insertInto: managedContext)
+        usuario.setValue(user.user, forKey: "user")
+        usuario.setValue(user.pass, forKey: "pass")
+        
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
+    func returnUser() -> User {
+        let requisicao = NSFetchRequest<NSFetchRequestResult>(entityName: "UserDataBase")
+        do {
+            let user = try dataManager.persistentContainer.viewContext.fetch(requisicao).first
+            if user != nil{
+                let usuario = (user as AnyObject).value(forKey:"user") as! String
+                let senha = (user as AnyObject).value(forKey:"pass") as! String
+                return User(user: usuario, pass: senha)
+            }
+        } catch  let error as NSError {
+            print("Could not open. \(error), \(error.userInfo)")
+        }
+        return User(user: "-1", pass: " " )
+    }
+    
+    func deleteUser() {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "UserDataBase")
+        
+        let result = try? dataManager.persistentContainer.viewContext.fetch(fetchRequest)
+        if let resultData = result {for object in resultData {dataManager.persistentContainer.viewContext.delete(object as! NSManagedObject)}}
+        do {
+            try dataManager.persistentContainer.viewContext.save()
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
     }
 }
+
 
 
