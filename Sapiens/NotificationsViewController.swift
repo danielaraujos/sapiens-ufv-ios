@@ -12,6 +12,7 @@ class NotificationsViewController: BaseViewController {
 
     @IBOutlet weak var isOn: UISwitch!
     @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var colorSegmented: UISegmentedControl!
     var times = ["5","10","15","25","30","35","40"]
     var itemAtDefaultPosition: String?
     
@@ -26,7 +27,6 @@ class NotificationsViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         formatedView()
-        
     }
     
     @IBAction func btIsOn(_ sender: UISwitch) {
@@ -35,6 +35,9 @@ class NotificationsViewController: BaseViewController {
     
     @IBAction func btnCancel(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil);
+    }
+    @IBAction func changeSegmented(_ sender: Any) {
+        config.storageColor = (sender as AnyObject).selectedSegmentIndex
     }
     
     
@@ -51,6 +54,11 @@ class NotificationsViewController: BaseViewController {
             self.pickerView.selectRow(index, inComponent: 0, animated: true)
         }
         
+        if config.storageColor == 0 {
+            colorSegmented.selectedSegmentIndex = 0
+        }else  {
+            colorSegmented.selectedSegmentIndex = 1
+        }
         
     }
 }
