@@ -12,10 +12,12 @@ import CoreData
 import LIHAlert
 import UserNotifications
 
+
 class BaseViewController: UIViewController {
 
     var alert: LIHAlert?
     var user: User!
+    let center = UNUserNotificationCenter.current()
     static let config = Configuration.shared
     var dataManager = CoreDataManager()
     
@@ -85,6 +87,28 @@ class BaseViewController: UIViewController {
         tableView.detailTextLabel?.textColor = UIColor.white
         titleLabel?.textColor = UIColor.white
         detailLabel?.textColor = UIColor.white
+    }
+    
+    func checkoutPermissionNotifications(){
+        self.center.getNotificationSettings { (notification) in
+            if notification.authorizationStatus == .denied {
+                let alertaController = UIAlertController(title: "Notificações", message: "Para o bom funcionamento do aplicativo, necessitamos sua liberação!", preferredStyle: UIAlertControllerStyle.alert)
+                
+                let acaoConfig = UIAlertAction(title: "Abrir Configurações", style: UIAlertActionStyle.default, handler: { (acaoConfig) in
+                    
+                    if let configuracoes = NSURL(string: UIApplicationOpenSettingsURLString){
+                        UIApplication.shared.open(configuracoes as URL)
+                    }
+                })
+                
+                let acaoCancelar = UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.cancel, handler: nil)
+                
+                alertaController.addAction(acaoConfig)
+                alertaController.addAction(acaoCancelar)
+                
+                self.present(alertaController, animated: true, completion: nil)
+            }
+        }
     }
   
 }

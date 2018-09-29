@@ -9,15 +9,11 @@
 import UIKit
 import Alamofire
 import SVProgressHUD
-import UserNotifications
 
 class NotasViewController: BaseViewController {
 
     var arraySubjects = [SubjectData]()
     var messageEmpty = UILabel()
-    let center = UNUserNotificationCenter.current()
-    
-    
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -89,27 +85,7 @@ class NotasViewController: BaseViewController {
         }
     }
     
-    func checkoutPermissionNotifications(){
-        self.center.getNotificationSettings { (notification) in
-            if notification.authorizationStatus == .denied {
-                let alertaController = UIAlertController(title: "Notificações", message: "Para o bom funcionamento do aplicativo, necessitamos sua liberação!", preferredStyle: UIAlertControllerStyle.alert)
-                
-                let acaoConfig = UIAlertAction(title: "Abrir Configurações", style: UIAlertActionStyle.default, handler: { (acaoConfig) in
-                    
-                    if let configuracoes = NSURL(string: UIApplicationOpenSettingsURLString){
-                        UIApplication.shared.open(configuracoes as URL)
-                    }
-                })
-                
-                let acaoCancelar = UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.cancel, handler: nil)
-                
-                alertaController.addAction(acaoConfig)
-                alertaController.addAction(acaoCancelar)
-                
-                self.present(alertaController, animated: true, completion: nil)
-            }
-        }
-    }
+    
 }
 
 extension NotasViewController: UITableViewDelegate, UITableViewDataSource {
