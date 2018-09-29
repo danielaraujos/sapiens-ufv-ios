@@ -14,6 +14,7 @@ enum UserDefaultsKeys: String {
     case storageSchedules = "storageSchedules"
     case storageNotifications = "storageNotifications"
     case storageTime  = "storageTime"
+    case storageColor = "storageColor"
 }
 
 
@@ -61,12 +62,25 @@ class Configuration {
         }
     }
     
+    var storageColor : Int {
+        get {
+            return defaults.integer(forKey: UserDefaultsKeys.storageColor.rawValue)
+        }
+        set {
+            defaults.set(newValue, forKey: UserDefaultsKeys.storageColor.rawValue)
+        }
+    }
+    
     private init(){
         if defaults.integer(forKey: UserDefaultsKeys.storageTime.rawValue) == 0 {
             defaults.set(5, forKey: UserDefaultsKeys.storageTime.rawValue)
         }
         if defaults.bool(forKey: UserDefaultsKeys.storageNotifications.rawValue) == false {
             defaults.set(true, forKey: UserDefaultsKeys.storageNotifications.rawValue)
+        }
+        
+        if defaults.integer(forKey: UserDefaultsKeys.storageColor.rawValue) == 0 {
+            defaults.set(0, forKey: UserDefaultsKeys.storageColor.rawValue)
         }
     }
     
