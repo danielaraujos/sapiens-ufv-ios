@@ -567,6 +567,7 @@
                                 <constraints>
                                     <constraint firstItem="GgA-dy-UvS" firstAttribute="top" secondItem="p35-qY-pfd" secondAttribute="top" constant="29" id="0HV-YJ-v5M"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uJj-TJ-f0c" secondAttribute="trailing" constant="20" symbolic="YES" id="2Pk-Mq-p1q"/>
+                                    <constraint firstAttribute="trailing" secondItem="qQW-ja-cdZ" secondAttribute="trailing" constant="16" id="47g-Oi-woM"/>
                                     <constraint firstItem="m8t-wQ-ZYj" firstAttribute="leading" secondItem="p35-qY-pfd" secondAttribute="leading" constant="23" id="4IC-O2-BrF"/>
                                     <constraint firstItem="WUx-h1-gcW" firstAttribute="leading" secondItem="Pey-hN-hAq" secondAttribute="leading" id="4uy-Ic-Voh"/>
                                     <constraint firstItem="m8t-wQ-ZYj" firstAttribute="trailing" secondItem="d9c-jq-X8A" secondAttribute="trailing" id="5s2-Mr-cOC"/>
@@ -589,6 +590,7 @@
                                     <constraint firstItem="uJj-TJ-f0c" firstAttribute="leading" secondItem="d9c-jq-X8A" secondAttribute="leading" id="gkU-BX-OL5"/>
                                     <constraint firstItem="m8t-wQ-ZYj" firstAttribute="leading" secondItem="p35-qY-pfd" secondAttribute="leading" constant="23" id="icT-lG-mgz"/>
                                     <constraint firstAttribute="trailing" secondItem="m8t-wQ-ZYj" secondAttribute="trailing" constant="16" id="is0-48-dPs"/>
+                                    <constraint firstItem="qQW-ja-cdZ" firstAttribute="leading" secondItem="p35-qY-pfd" secondAttribute="leading" constant="23" id="khe-ER-qHc"/>
                                     <constraint firstItem="d9c-jq-X8A" firstAttribute="leading" secondItem="qQW-ja-cdZ" secondAttribute="leading" id="kig-QN-cU4"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="NBz-k1-1eV" secondAttribute="trailing" constant="20" symbolic="YES" id="moT-q0-mUz"/>
                                     <constraint firstItem="m8t-wQ-ZYj" firstAttribute="leading" secondItem="NBz-k1-1eV" secondAttribute="leading" id="mud-hn-a79"/>
@@ -610,9 +612,12 @@
                         <constraints>
                             <constraint firstAttribute="bottomMargin" secondItem="p35-qY-pfd" secondAttribute="bottom" constant="-11" id="37a-Vn-Zwz"/>
                             <constraint firstItem="p35-qY-pfd" firstAttribute="leading" secondItem="9un-8W-Nko" secondAttribute="leading" id="8C3-eL-FM0"/>
+                            <constraint firstItem="p35-qY-pfd" firstAttribute="leading" secondItem="a4T-Hp-M6Z" secondAttribute="leading" id="HQm-Uq-S5r"/>
+                            <constraint firstItem="p35-qY-pfd" firstAttribute="top" secondItem="9un-8W-Nko" secondAttribute="bottom" id="HtI-u3-yDi"/>
                             <constraint firstAttribute="trailing" secondItem="9un-8W-Nko" secondAttribute="trailing" id="KuO-Ck-aj1"/>
                             <constraint firstItem="9un-8W-Nko" firstAttribute="leading" secondItem="a4T-Hp-M6Z" secondAttribute="leading" id="MHT-XK-Ww2"/>
                             <constraint firstItem="p35-qY-pfd" firstAttribute="top" secondItem="9un-8W-Nko" secondAttribute="bottom" id="TWm-oX-1AU"/>
+                            <constraint firstAttribute="trailing" secondItem="p35-qY-pfd" secondAttribute="trailing" id="hoY-xc-7N2"/>
                             <constraint firstItem="9un-8W-Nko" firstAttribute="top" secondItem="a4T-Hp-M6Z" secondAttribute="top" id="tCi-pq-Ydz"/>
                             <constraint firstItem="p35-qY-pfd" firstAttribute="trailing" secondItem="9un-8W-Nko" secondAttribute="trailing" id="x3z-7e-kBw"/>
                         </constraints>
