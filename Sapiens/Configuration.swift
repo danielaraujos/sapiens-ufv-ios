@@ -15,6 +15,7 @@ enum UserDefaultsKeys: String {
     case storageNotifications = "storageNotifications"
     case storageTime  = "storageTime"
     case storageColor = "storageColor"
+    case storageNotificacaoAlert = "storageNotificacaoAlert"
 }
 
 
@@ -49,6 +50,15 @@ class Configuration {
         }
         set {
             defaults.set(newValue, forKey: UserDefaultsKeys.storageNotifications.rawValue)
+        }
+    }
+    
+    var storageNotificacaoAlert : Bool {
+        get {
+            return defaults.bool(forKey: UserDefaultsKeys.storageNotificacaoAlert.rawValue)
+        }
+        set {
+            defaults.set(newValue, forKey: UserDefaultsKeys.storageNotificacaoAlert.rawValue)
         }
     }
     
