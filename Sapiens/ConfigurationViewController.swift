@@ -95,7 +95,7 @@ extension ConfigurationViewController:  UITableViewDelegate, UITableViewDataSour
         if selecionado.id == 1 {
             self.performSegue(withIdentifier: "NotificationCell", sender: nil)
         }else if selecionado.id == 2{
-            
+            self.shouldPerformSegue(withIdentifier: "AboutCell", sender: nil)
         }else if selecionado.id == 3{
             //ajuda
             self.padrao("daniel.araujos@icloud.com", "Preciso de ajuda")
