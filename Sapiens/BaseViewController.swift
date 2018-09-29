@@ -92,7 +92,8 @@ class BaseViewController: UIViewController {
     func checkoutPermissionNotifications(){
         self.center.getNotificationSettings { (notification) in
             if notification.authorizationStatus == .denied {
-                let alertaController = UIAlertController(title: "Notificações", message: "Para o bom funcionamento do aplicativo, necessitamos sua liberação!", preferredStyle: UIAlertControllerStyle.alert)
+                Configuration.shared.storageNotifications = false
+                let alertaController = UIAlertController(title: "Notificações", message: "Para o bom funcionamento do aplicativo, necessitamos que libere as notificações!", preferredStyle: UIAlertControllerStyle.alert)
                 
                 let acaoConfig = UIAlertAction(title: "Abrir Configurações", style: UIAlertActionStyle.default, handler: { (acaoConfig) in
                     
@@ -107,6 +108,8 @@ class BaseViewController: UIViewController {
                 alertaController.addAction(acaoCancelar)
                 
                 self.present(alertaController, animated: true, completion: nil)
+            }else {
+                Configuration.shared.storageNotifications = true
             }
         }
     }
