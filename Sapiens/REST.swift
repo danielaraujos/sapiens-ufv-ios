@@ -184,6 +184,7 @@ class REST {
         // Remover as notas
         config.defaults.removeObject(forKey: UserDefaultsKeys.storageSubject.rawValue)
         config.defaults.removeObject(forKey: UserDefaultsKeys.storageSchedules.rawValue)
+        config.defaults.removeObject(forKey: UserDefaultsKeys.storageNotificacaoAlert.rawValue)
         config.defaults.synchronize()
         print("Dados do Storage foi deletado com sucesso!")
     }
