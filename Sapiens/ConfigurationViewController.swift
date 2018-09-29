@@ -109,8 +109,6 @@ extension ConfigurationViewController:  UITableViewDelegate, UITableViewDataSour
                 print("RateApp \(success)")
             })
         }
-        
-        print(selecionado.id)
     }
     
     func openModal(identified: String){
