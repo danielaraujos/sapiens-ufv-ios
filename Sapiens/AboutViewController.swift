@@ -15,6 +15,8 @@ class AboutViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.tvMotivacions.text = " O Sapiens é uma das ferramentas mais importantes na vida acadêmica de docentes na UFV. Ela possibilita o acesso ao histórico, disciplinas, notas e demais funcionalidades.  Devido esta importância, não poderia faltar aplicativos para otimizar e facilitar a vida dos docentes. Como só existia esta funcionalidade para dispositivos Android, motivou o desenvolvimento para a plataforma iOS."
+        self.tvInformations.text = " Devido as diversas regras da plataforma iOS, não é possível a verificação continua das notas em segundo plano. Desta forma esta rotina, é executada de acordo com a liberação na fila de execuções da plataforma."
     }
 
     override func didReceiveMemoryWarning() {
