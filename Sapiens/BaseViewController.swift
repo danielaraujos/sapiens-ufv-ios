@@ -104,12 +104,18 @@ class BaseViewController: UIViewController {
                 
                 let acaoCancelar = UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.cancel, handler: nil)
                 
+                let acaoNunca = UIAlertAction(title: "Nunca", style: UIAlertActionStyle.destructive, handler: { (acaoNunca) in
+                    Configuration.shared.storageNotificacaoAlert = true
+                    print("Nunca")
+                })
+                
                 alertaController.addAction(acaoConfig)
                 alertaController.addAction(acaoCancelar)
+                alertaController.addAction(acaoNunca)
                 
-                self.present(alertaController, animated: true, completion: nil)
-            }else {
-                Configuration.shared.storageNotifications = true
+                if Configuration.shared.storageNotificacaoAlert != true{
+                    self.present(alertaController, animated: true, completion: nil)
+                }
             }
         }
     }

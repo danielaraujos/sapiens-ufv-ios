@@ -32,9 +32,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }else {
                         print(error?.localizedDescription ?? 0)
                     }
+                    Configuration.shared.storageNotifications = true
                 })
             }else if setting.authorizationStatus == .denied {
                 print("O usuario negou a notificacao")
+                Configuration.shared.storageNotifications = false
             }
         }
         
