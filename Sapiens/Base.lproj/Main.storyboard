@@ -419,6 +419,24 @@
             </objects>
             <point key="canvasLocation" x="2199.1999999999998" y="2662.2188905547227"/>
         </scene>
+        <!--About View Controller-->
+        <scene sceneID="koa-xc-syz">
+            <objects>
+                <viewController restorationIdentifier="AboutViewController" storyboardIdentifier="AboutViewController" id="UE9-6m-Q3l" customClass="AboutViewController" customModule="Sapiens" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mbS-AK-fjm"/>
+                        <viewControllerLayoutGuide type="bottom" id="k88-Ut-rdn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="a4T-Hp-M6Z">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g3B-p9-2Sd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3238" y="2289"/>
+        </scene>
         <!--Ajustes-->
         <scene sceneID="NRM-V2-rAN">
             <objects>
@@ -459,6 +477,7 @@
                                             <outlet property="imageI" destination="ZWi-ZO-iMo" id="huv-tJ-5WV"/>
                                             <outlet property="lblTitle" destination="2We-R0-mgA" id="7kY-3i-c6T"/>
                                             <segue destination="ZfO-EZ-kYO" kind="presentation" identifier="NotificationCell" trigger="accessoryAction" id="pg1-ON-n9k"/>
+                                            <segue destination="UE9-6m-Q3l" kind="modal" identifier="AboutCell" id="HrH-8A-hyK"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -714,7 +733,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yt1-14-hOg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3032.8000000000002" y="1851.7241379310346"/>
+            <point key="canvasLocation" x="3238" y="1615"/>
         </scene>
         <!--Ajustes-->
         <scene sceneID="hcp-HR-UEX">
