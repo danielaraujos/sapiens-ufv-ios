@@ -93,9 +93,11 @@ extension ConfigurationViewController:  UITableViewDelegate, UITableViewDataSour
         let selecionado = self.settings[indexPath.row]
         
         if selecionado.id == 1 {
-            self.performSegue(withIdentifier: "NotificationCell", sender: nil)
+            //self.performSegue(withIdentifier: "NotificationCell", sender: nil)
+            openModal(identified: "NotificationsViewController")
         }else if selecionado.id == 2{
-            self.shouldPerformSegue(withIdentifier: "AboutCell", sender: nil)
+            //self.shouldPerformSegue(withIdentifier: "AboutCell", sender: nil)
+            openModal(identified: "AboutViewController")
         }else if selecionado.id == 3{
             //ajuda
             self.padrao("daniel.araujos@icloud.com", "Preciso de ajuda")
@@ -107,7 +109,20 @@ extension ConfigurationViewController:  UITableViewDelegate, UITableViewDataSour
                 print("RateApp \(success)")
             })
         }
+        
+        print(selecionado.id)
     }
+    
+    func openModal(identified: String){
+        let vc = (
+            storyboard?.instantiateViewController(
+                withIdentifier: identified)
+            )!
+        vc.modalTransitionStyle = .crossDissolve
+        present(vc, animated: true, completion: nil)
+    }
+    
+
     
     
     func avaliarApp(appId: String, completion: @escaping ((_ success: Bool)->())) {

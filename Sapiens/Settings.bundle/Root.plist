@@ -26,16 +26,6 @@
 				<integer>1</integer>
 			</array>
 		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-			<key>Title</key>
-			<string>Notificações</string>
-			<key>Key</key>
-			<string>storageNotifications</string>
-			<key>DefaultValue</key>
-			<true/>
-		</dict>
 	</array>
 </dict>
 </plist>
