@@ -71,8 +71,8 @@ class NotificationsViewController: BaseViewController {
         }else  {
             colorSegmented.selectedSegmentIndex = 1
         }
-        
     }
+    
 }
 extension NotificationsViewController : UIPickerViewDelegate, UIPickerViewDataSource {
     

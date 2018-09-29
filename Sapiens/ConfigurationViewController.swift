@@ -22,6 +22,10 @@ class ConfigurationViewController: BaseViewController {
         super.viewDidLoad()
         self.lista()
         self.lblMatricula.text = self.user.user?.uppercased() ?? "0"
+        
+        if Configuration.shared.storageColor == 1 {
+            self.tableView.backgroundColor = UIColor.black
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,11 +37,11 @@ class ConfigurationViewController: BaseViewController {
   
     func lista(){
         var config: Setting;
-        config = Setting(id: 1, nome: "Ajustes Gerais", image: #imageLiteral(resourceName: "user"))
+        config = Setting(id: 1, nome: "Ajustes Gerais", image: #imageLiteral(resourceName: "settingConfig"))
         self.settings.append(config)
-        config = Setting(id: 2, nome: "Sobre o aplicativo", image: #imageLiteral(resourceName: "user"))
+        config = Setting(id: 2, nome: "Sobre o aplicativo", image: #imageLiteral(resourceName: "informa"))
         self.settings.append(config)
-        config = Setting(id: 3, nome: "Ajuda", image: #imageLiteral(resourceName: "informa"))
+        config = Setting(id: 3, nome: "Ajuda", image:#imageLiteral(resourceName: "user"))
         self.settings.append(config)
         config = Setting(id: 4, nome: "Contar a um amigo", image: #imageLiteral(resourceName: "contar"))
         self.settings.append(config)
