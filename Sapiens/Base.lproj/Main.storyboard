@@ -692,6 +692,9 @@
                     <connections>
                         <outlet property="colorSegmented" destination="aIQ-VH-fbq" id="Ch0-gk-J92"/>
                         <outlet property="isOn" destination="ENH-xI-JZz" id="CiC-yc-gqj"/>
+                        <outlet property="lblEsquema" destination="zGc-i9-MDe" id="SUy-RR-hpx"/>
+                        <outlet property="lblNotification" destination="3o3-DJ-tgg" id="VEi-Pr-oa5"/>
+                        <outlet property="lblTempo" destination="WYY-Ge-yTj" id="DcI-Fx-Azw"/>
                         <outlet property="pickerView" destination="PPu-UP-IAb" id="Ctr-Om-uPK"/>
                     </connections>
                 </viewController>

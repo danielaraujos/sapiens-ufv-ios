@@ -24,6 +24,12 @@ class NotasDetailViewController: BaseViewController{
             self.tableView.reloadData()
         }
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if Configuration.shared.storageColor == 1 {
+            self.tableView.backgroundColor = UIColor.black
+        }
+    }
     
     func returnTuplas (){
         self.arrayTupla.remove(at: 0)
@@ -71,6 +77,10 @@ extension NotasDetailViewController : UITableViewDataSource, UITableViewDelegate
         
         cell.selectionStyle = .none
         
+        if Configuration.shared.storageColor == 1 {
+            changeColorBackgraung(tableView: cell, titleLabel: cell.title, detailLabel: cell.detail)
+        }
+        
         cell.backgraundView.layer.cornerRadius = 7
         if(subject.tipo == "0"){
             if let value = Float(subject.detail), let maximo = Float(subject.max){
@@ -90,6 +100,12 @@ extension NotasDetailViewController : UITableViewDataSource, UITableViewDelegate
         }
         cell.backgraundView.clipsToBounds = true
         return cell;
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if Configuration.shared.storageColor == 1 {
+            cell.backgroundColor = UIColor.black
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

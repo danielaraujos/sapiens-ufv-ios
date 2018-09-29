@@ -32,6 +32,10 @@ class NotasViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.reloadFecth()
+        
+        if Configuration.shared.storageColor == 1 {
+            self.tableView.backgroundColor = UIColor.black
+        }
     }
     
     @IBAction func btReload(_ sender: UIBarButtonItem) {
@@ -99,11 +103,22 @@ extension NotasViewController: UITableViewDelegate, UITableViewDataSource {
         let subject = self.arraySubjects[indexPath.row]
         cell.textLabel?.text = subject.nome
         cell.detailTextLabel?.text = "Data da Alteração: \(subject.alteracao)"
+        
+        if Configuration.shared.storageColor == 1 {
+            changeColorBackgraung(tableView: cell,titleLabel: nil,detailLabel: nil)
+        }
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+         if Configuration.shared.storageColor == 1 {
+            cell.backgroundColor = UIColor.black
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

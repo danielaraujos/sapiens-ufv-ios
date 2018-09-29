@@ -15,6 +15,7 @@ class SchedulesViewController: BaseViewController{
 
     @IBOutlet weak var spreadsheetView: SpreadsheetView!
     
+    
     let days = ["SEGUNDA", "TERÇA", "QUARTA", "QUINTA", "SEXTA", "SABADO", ]
     let dayColors = [UIColor(red: 0.918, green: 0.224, blue: 0.153, alpha: 1),
                      UIColor(red: 0.106, green: 0.541, blue: 0.827, alpha: 1),
@@ -64,6 +65,11 @@ class SchedulesViewController: BaseViewController{
             self.reloadFecth()
         }
         spreadsheetView.flashScrollIndicators()
+        
+        if Configuration.shared.storageColor == 1 {
+            self.spreadsheetView.backgroundColor = UIColor.black
+        }
+        
     }
     
     @IBAction func btReload(_ sender: UIBarButtonItem) {

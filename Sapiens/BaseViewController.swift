@@ -76,6 +76,16 @@ class BaseViewController: UIViewController {
         alert.addAction(ok);
         present(alert, animated: true, completion: nil);
     }
+    
+    
+    
+    func changeColorBackgraung(tableView: UITableViewCell,titleLabel: UILabel?, detailLabel: UILabel?){
+        tableView.backgroundColor = UIColor.black
+        tableView.textLabel?.textColor = UIColor.white
+        tableView.detailTextLabel?.textColor = UIColor.white
+        titleLabel?.textColor = UIColor.white
+        detailLabel?.textColor = UIColor.white
+    }
   
 }
 

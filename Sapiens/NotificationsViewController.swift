@@ -10,9 +10,14 @@ import UIKit
 
 class NotificationsViewController: BaseViewController {
 
+    @IBOutlet weak var lblNotification: UILabel!
+    @IBOutlet weak var lblTempo: UILabel!
+    @IBOutlet weak var lblEsquema: UILabel!
+    
     @IBOutlet weak var isOn: UISwitch!
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var colorSegmented: UISegmentedControl!
+    
     var times = ["5","10","15","25","30","35","40"]
     var itemAtDefaultPosition: String?
     
@@ -27,6 +32,13 @@ class NotificationsViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         formatedView()
+        
+        if config.storageColor == 1 {
+            self.view.backgroundColor = UIColor.black
+            self.lblTempo.textColor = UIColor.white
+            self.lblNotification.textColor = UIColor.white
+            self.lblEsquema.textColor = UIColor.white
+        }
     }
     
     @IBAction func btIsOn(_ sender: UISwitch) {

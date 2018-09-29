@@ -23,6 +23,13 @@ class ConfigurationViewController: BaseViewController {
         self.lista()
         self.lblMatricula.text = self.user.user?.uppercased() ?? "0"
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if Configuration.shared.storageColor == 1 {
+            self.tableView.backgroundColor = UIColor.black
+        }
+    }
   
     func lista(){
         var config: Setting;
@@ -63,7 +70,18 @@ extension ConfigurationViewController:  UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: CELL_ID, for: indexPath) as! ConfigurationsCell
         cell.lblTitle.text = config.nome
         cell.imageI.image = config.image
+        
+        if Configuration.shared.storageColor == 1 {
+            changeColorBackgraung(tableView: cell, titleLabel: cell.lblTitle, detailLabel: nil )
+        }
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if Configuration.shared.storageColor == 1 {
+            cell.backgroundColor = UIColor.black
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
