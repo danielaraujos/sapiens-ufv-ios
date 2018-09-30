@@ -22,7 +22,6 @@
 		4C450C802104A5A500640DA0 /* REST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C450C7F2104A5A500640DA0 /* REST.swift */; };
 		4C4EFBFC215F9FDF00C9BD56 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4EFBFB215F9FDF00C9BD56 /* AboutViewController.swift */; };
 		4C5C0AB8210A195B0071C7C9 /* MESSAGE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C0AB7210A195B0071C7C9 /* MESSAGE.swift */; };
-		4C5D14422108828B00442274 /* SwiftDataTables.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5D14412108828B00442274 /* SwiftDataTables.framework */; };
 		4C65332C2107C4F500FEB8BD /* SubjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C65332B2107C4F500FEB8BD /* SubjectCell.swift */; };
 		4C65332E2107CF2900FEB8BD /* SchedulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C65332D2107CF2900FEB8BD /* SchedulesViewController.swift */; };
 		4C67F16B1EF3065A004BCFB4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C67F16A1EF3065A004BCFB4 /* LoginViewController.swift */; };
@@ -38,11 +37,10 @@
 		4C93C74A210765D200781074 /* SchedulesClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C93C749210765D200781074 /* SchedulesClasses.swift */; };
 		4CACC9CB215C2DB70033BAF6 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CACC9CA215C2DB70033BAF6 /* Configuration.swift */; };
 		4CF2FD49213C21830099495C /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2FD48213C21830099495C /* Cells.swift */; };
-		68220C52605486015DBFF3BC /* Pods_Sapiens.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4BF36D584B86A72D8E535B8 /* Pods_Sapiens.framework */; };
+		9C5AA7873C4CAE0A47965C4D /* Pods_Sapiens.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAC930ABE31A76526C1B03E0 /* Pods_Sapiens.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4C0EE5B61EFCB96D00BC642F /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = "Pods/../build/Debug-iphoneos/SVProgressHUD/SVProgressHUD.framework"; sourceTree = "<group>"; };
 		4C1119E2215D22FD004C8B34 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		4C1F0EDB1EFB39F400BD9325 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4C2FF2062108CC46005769BB /* ColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHex.swift; sourceTree = "<group>"; };
@@ -58,18 +56,13 @@
 		4C3E91781ECE2948008D7931 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C3E917A1ECE2948008D7931 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C43A032210813D50069697B /* SwiftDataTables */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftDataTables; path = Pods/SwiftDataTables/SwiftDataTables; sourceTree = "<group>"; };
-		4C43A034210813F10069697B /* SwiftDataTables.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftDataTables.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C43A0362108143A0069697B /* SwiftDataTables.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SwiftDataTables.bundle; path = Pods/SwiftDataTables/SwiftDataTables/SwiftDataTables.bundle; sourceTree = "<group>"; };
-		4C43A045210814E40069697B /* SwiftDataTables.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftDataTables.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4C450C7D2104968800640DA0 /* CodableAlamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CodableAlamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C450C7F2104A5A500640DA0 /* REST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REST.swift; sourceTree = "<group>"; };
 		4C4EFBFB215F9FDF00C9BD56 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		4C5C0AB7210A195B0071C7C9 /* MESSAGE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MESSAGE.swift; sourceTree = "<group>"; };
-		4C5D14412108828B00442274 /* SwiftDataTables.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftDataTables.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C65332B2107C4F500FEB8BD /* SubjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectCell.swift; sourceTree = "<group>"; };
 		4C65332D2107CF2900FEB8BD /* SchedulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesViewController.swift; sourceTree = "<group>"; };
 		4C67F16A1EF3065A004BCFB4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		4C67F1731EF331B3004BCFB4 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Sapiens-dovrozhxjwfnarbgchfexlsjhsbl/Build/Products/Debug-iphonesimulator/PromiseKit/PromiseKit.framework"; sourceTree = "<group>"; };
 		4C67F1751EF331B8004BCFB4 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Sapiens-dovrozhxjwfnarbgchfexlsjhsbl/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		4C67F1771EF458B8004BCFB4 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Sapiens-dovrozhxjwfnarbgchfexlsjhsbl/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		4C67F1791EF464CA004BCFB4 /* NotasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotasViewController.swift; sourceTree = "<group>"; };
@@ -85,7 +78,7 @@
 		4CF2FD48213C21830099495C /* Cells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
 		7D3E8546880695C8ED6F7BE6 /* Pods-Sapiens.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sapiens.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sapiens/Pods-Sapiens.debug.xcconfig"; sourceTree = "<group>"; };
 		8B068ACBD1594920EC4E745E /* Pods-Sapiens.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sapiens.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sapiens/Pods-Sapiens.release.xcconfig"; sourceTree = "<group>"; };
-		A4BF36D584B86A72D8E535B8 /* Pods_Sapiens.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sapiens.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAC930ABE31A76526C1B03E0 /* Pods_Sapiens.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sapiens.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,10 +86,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C5D14422108828B00442274 /* SwiftDataTables.framework in Frameworks */,
 				4C67F1781EF458B8004BCFB4 /* SwiftyJSON.framework in Frameworks */,
 				4C67F1761EF331B8004BCFB4 /* Alamofire.framework in Frameworks */,
-				68220C52605486015DBFF3BC /* Pods_Sapiens.framework in Frameworks */,
+				9C5AA7873C4CAE0A47965C4D /* Pods_Sapiens.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,17 +185,11 @@
 		5BBAC2F4E1CDA0241A823E30 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4C5D14412108828B00442274 /* SwiftDataTables.framework */,
-				4C43A045210814E40069697B /* SwiftDataTables.framework */,
 				4C43A0362108143A0069697B /* SwiftDataTables.bundle */,
-				4C43A034210813F10069697B /* SwiftDataTables.framework */,
 				4C43A032210813D50069697B /* SwiftDataTables */,
-				4C450C7D2104968800640DA0 /* CodableAlamofire.framework */,
-				4C0EE5B61EFCB96D00BC642F /* SVProgressHUD.framework */,
 				4C67F1771EF458B8004BCFB4 /* SwiftyJSON.framework */,
 				4C67F1751EF331B8004BCFB4 /* Alamofire.framework */,
-				4C67F1731EF331B3004BCFB4 /* PromiseKit.framework */,
-				A4BF36D584B86A72D8E535B8 /* Pods_Sapiens.framework */,
+				BAC930ABE31A76526C1B03E0 /* Pods_Sapiens.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -339,7 +325,6 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Sapiens/Pods-Sapiens-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/LIHAlert/LIHAlert.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SpreadsheetView/SpreadsheetView.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDataTables/SwiftDataTables.framework",
@@ -348,7 +333,6 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LIHAlert.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SpreadsheetView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDataTables.framework",
@@ -535,11 +519,10 @@
 				DEVELOPMENT_TEAM = ZX8B9U4537;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/SVProgressHUD",
+					"$(SRCROOT)",
 				);
 				INFOPLIST_FILE = Sapiens/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.danielaraujos.Sapiens;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -556,11 +539,10 @@
 				DEVELOPMENT_TEAM = ZX8B9U4537;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/SVProgressHUD",
+					"$(SRCROOT)",
 				);
 				INFOPLIST_FILE = Sapiens/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.danielaraujos.Sapiens;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
