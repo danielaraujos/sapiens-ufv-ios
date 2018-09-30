@@ -808,7 +808,7 @@
                                 <rect key="frame" x="0.0" y="63" width="375" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notificações de Notas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwz-ad-YXy">
-                                        <rect key="frame" x="8" y="12" width="170" height="21"/>
+                                        <rect key="frame" x="8" y="12" width="233" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -818,7 +818,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Tix-OA-ubk" secondAttribute="height" multiplier="375:44" id="0xa-aD-aHv"/>
                                     <constraint firstItem="cwz-ad-YXy" firstAttribute="top" secondItem="Tix-OA-ubk" secondAttribute="top" constant="12" id="6bi-Cg-R0m"/>
-                                    <constraint firstAttribute="trailing" secondItem="cwz-ad-YXy" secondAttribute="trailing" constant="197" id="dUE-eY-GLo"/>
+                                    <constraint firstAttribute="trailing" secondItem="cwz-ad-YXy" secondAttribute="trailing" constant="134" id="dUE-eY-GLo"/>
                                     <constraint firstAttribute="bottom" secondItem="cwz-ad-YXy" secondAttribute="bottom" constant="11" id="miy-dK-QT0"/>
                                     <constraint firstItem="cwz-ad-YXy" firstAttribute="leading" secondItem="Tix-OA-ubk" secondAttribute="leading" constant="8" id="r7P-bF-wXB"/>
                                 </constraints>
@@ -902,6 +902,7 @@
                             <constraint firstAttribute="trailing" secondItem="PPu-UP-IAb" secondAttribute="trailing" constant="40" id="XTD-XM-bLl"/>
                             <constraint firstItem="zGc-i9-MDe" firstAttribute="centerX" secondItem="qtU-mO-ezL" secondAttribute="centerX" id="YBR-U3-p8n"/>
                             <constraint firstItem="Tix-OA-ubk" firstAttribute="centerX" secondItem="3tM-Mz-rXy" secondAttribute="centerX" id="dvD-Xo-xYj"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3o3-DJ-tgg" secondAttribute="trailing" constant="20" symbolic="YES" id="f3c-SR-jHD"/>
                             <constraint firstItem="VLV-1f-wmt" firstAttribute="top" secondItem="qtU-mO-ezL" secondAttribute="top" id="gPD-jf-hBE"/>
                             <constraint firstItem="rGg-L4-c0V" firstAttribute="top" secondItem="qtU-mO-ezL" secondAttribute="top" constant="353" id="h7c-3v-pme"/>
                             <constraint firstAttribute="trailing" secondItem="VLV-1f-wmt" secondAttribute="trailing" id="i8y-dF-KKB"/>
@@ -932,7 +933,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yt1-14-hOg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3238" y="1615"/>
+            <point key="canvasLocation" x="3237.5999999999999" y="1614.5320197044337"/>
         </scene>
         <!--Ajustes-->
         <scene sceneID="hcp-HR-UEX">

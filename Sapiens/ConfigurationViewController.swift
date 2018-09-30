@@ -100,12 +100,12 @@ extension ConfigurationViewController:  UITableViewDelegate, UITableViewDataSour
             openModal(identified: "AboutViewController")
         }else if selecionado.id == 3{
             //ajuda
-            self.padrao("daniel.araujos@icloud.com", "Preciso de ajuda")
+            self.padrao("daniel.araujos@icloud.com", "Preciso de ajuda - Sapiens iOS")
         }else  if selecionado.id == 4{
             //contar a um amigo
             self.compartilhar()
         }else if selecionado.id == 5 {
-            self.avaliarApp(appId: "#", completion: { (success) in
+            self.avaliarApp(appId: "1437726885", completion: { (success) in
                 print("RateApp \(success)")
             })
         }
@@ -140,7 +140,7 @@ extension ConfigurationViewController:  UITableViewDelegate, UITableViewDataSour
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
             mail.setToRecipients([email])
-            mail.setMessageBody("<p>Dispositivo: \(UIDevice.current.name)</p>", isHTML: true)
+            mail.setMessageBody("<p>Dispositivo: \(UIDevice.current.name) - \(UIDevice.current.model)</p>", isHTML: true)
             mail.setSubject(descricao)
             
             present(mail, animated: true)
@@ -150,7 +150,7 @@ extension ConfigurationViewController:  UITableViewDelegate, UITableViewDataSour
     }
     
     func compartilhar(){
-        let site = "#"
+        let site = "https://itunes.apple.com/us/app/sapiens/id1437726885"
         let activitiVC = UIActivityViewController(activityItems: [site], applicationActivities: nil)
         activitiVC.popoverPresentationController?.sourceView = self.view
         self.present(activitiVC, animated: true, completion: nil)
