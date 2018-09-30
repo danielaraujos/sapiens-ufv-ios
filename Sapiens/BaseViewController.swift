@@ -21,6 +21,8 @@ class BaseViewController: UIViewController {
     static let config = Configuration.shared
     var dataManager = CoreDataManager()
     
+    let colorError = UIColor(red: 0.894/255.0, green: 0.309/255.0, blue: 0.187/255.0, alpha: 1.0)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.user = returnUser()

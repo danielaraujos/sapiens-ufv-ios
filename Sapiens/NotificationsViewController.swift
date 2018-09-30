@@ -45,7 +45,7 @@ class NotificationsViewController: BaseViewController {
         config.storageNotifications = sender.isOn
         self.checkoutPermissionNotifications()
         
-        self.alertShow(title:"Atenção", message: "Caso as Notificações esteja bloqueadas, não funcionará este atributo!", color: UIColor(named: "errorDefault"), type: "T")
+        self.alertShow(title:"Atenção", message: "Caso as Notificações esteja bloqueadas, não funcionará este atributo!", color: self.colorError ,type: "T")
         self.alert?.show(nil, hidden: nil)
     }
     

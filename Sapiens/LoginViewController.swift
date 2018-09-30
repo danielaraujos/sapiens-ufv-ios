@@ -57,19 +57,19 @@ class LoginViewController: BaseViewController {
                 self.alert?.show(nil, hidden: nil)
                 switch error {
                 case .errorLogin(error: let message):
-                    self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: message, color: UIColor(named: "errorDefault"), type: "L")
+                    self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: message, color: self.colorError, type: "L")
                 case .noResponse:
-                    self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.MESSAGE_NORESPONSE, color: UIColor(named: "errorDefault"), type: "L")
+                    self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.MESSAGE_NORESPONSE, color: self.colorError, type: "L")
                 case .noJson:
-                    self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.MESSAGE_NOJSON, color: UIColor(named: "errorDefault"), type: "L")
+                    self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.MESSAGE_NOJSON, color: self.colorError, type: "L")
                 case .nullResponse:
-                    self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.MESSAGE_NULLJSON, color: UIColor(named: "errorDefault"), type: "L")
+                    self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.MESSAGE_NULLJSON, color: self.colorError, type: "L")
                 case .responseStatusCode(code: let codigo):
-                    self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.returnStatus(valueStatus:codigo!), color: UIColor(named: "errorDefault"), type: "L")
+                    self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.returnStatus(valueStatus:codigo!), color: self.colorError, type: "L")
                 case .noConectionInternet:
-                    self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.MESSAGE_NO_INTERNET, color: UIColor(named: "errorDefault"), type: "L")
+                    self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.MESSAGE_NO_INTERNET, color: self.colorError, type: "L")
                 default:
-                    self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.MESSAGE_DEFAULT, color: UIColor(named: "errorDefault"), type: "L")
+                    self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: MESSAGE.MESSAGE_DEFAULT, color: self.colorError, type: "L")
                 }
             }
         }
