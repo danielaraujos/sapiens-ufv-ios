@@ -25,7 +25,7 @@ enum RESTFail {
 
 
 class REST {
-    static let pathBase = "http://danielaraujos.com/webservicesapiens/index.php?info="
+    static let pathBase = "https://danielaraujos.com/webservicesapiens/index.php?info="
     
     static let configuration : URLSessionConfiguration = {
         var config = URLSessionConfiguration.default
