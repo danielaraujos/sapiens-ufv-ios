@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import Foundation
 
 class NotasDetailViewController: BaseViewController{
 
@@ -71,6 +72,7 @@ extension NotasDetailViewController : UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellSubject", for: indexPath) as! SubjectCell
         let subject = self.arrayTupla[indexPath.row]
+        print(subject)
         
         cell.title.text = subject.title
         cell.detail.text = subject.detail
@@ -83,20 +85,23 @@ extension NotasDetailViewController : UITableViewDataSource, UITableViewDelegate
         
         cell.backgraundView.layer.cornerRadius = 7
         if(subject.tipo == "0"){
-            if let value = Float(subject.detail), let maximo = Float(subject.max){
-                if(value >= (maximo*0.6)){
-                    cell.backgraundView.backgroundColor = UIColor(hexString: "E6C43D")
-                }else{
-                    cell.backgraundView.backgroundColor = UIColor.red
-                }
-                if maximo != 0{
-                    cell.detail.text = "\(value) de \(maximo) (\((value/maximo)*100)%)"
-                }else{
-                    cell.detail.text = "\(value) de \(maximo)"
-                }
+            let value = subject.detail.convertCommaToDecimal
+            let maximo = subject.max.convertCommaToDecimal
+            
+            if(value >= (maximo*0.6)){
+                cell.backgraundView.backgroundColor = UIColor(hexString: "E6C43D")
+            }else{
+                cell.backgraundView.backgroundColor = UIColor.red
+            }
+            if maximo != 0{
+                cell.detail.text = "\(value) de \(maximo) (\((value/maximo)*100)%)"
+            }else{
+                cell.detail.text = "\(value) de \(maximo)"
             }
         }else {
             cell.backgraundView.backgroundColor = UIColor(hexString: "E6C43D")
+            
+            
         }
         cell.backgraundView.clipsToBounds = true
         return cell;
@@ -111,4 +116,24 @@ extension NotasDetailViewController : UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
     }
+}
+
+
+/*Responsavel por transformar virgula em ponto*/
+extension String {
+    
+    var convertCommaToDecimal: Double {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.decimalSeparator = "."
+        if let result = numberFormatter.number(from: self) {
+            return result.doubleValue
+        } else {
+            numberFormatter.decimalSeparator = ","
+            if let result = numberFormatter.number(from: self) {
+                return result.doubleValue
+            }
+        }
+        return 0
+    }
+    
 }
