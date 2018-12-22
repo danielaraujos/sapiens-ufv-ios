@@ -2,7 +2,7 @@
 
 Check out the example project to see it in action!
 ### Preview Samples
-| Login | Home Application | Message with monitor | Profile |
+| Login | Home Application | Schedules | Configuration |
 | --- | --- | --- | --- |
 | ![](http://danielaraujos.com/partners/git_project/sapiens/login_sapiens.PNG) | ![](http://danielaraujos.com/partners/git_project/sapiens/home_sapiens.gif) | ![](http://danielaraujos.com/partners/git_project/sapiens/horarios_sapiens.gif) | ![](http://danielaraujos.com/partners/git_project/sapiens/ajustes_sapiens.PNG) |
 
