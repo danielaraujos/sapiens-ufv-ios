@@ -12,7 +12,7 @@ Check out the example project to see it in action!
 - [x] iOS 10 or higher.
 
 ## Installation
-### CocoaPods
+### CocoaPods 
 
 [CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
 
@@ -36,7 +36,6 @@ This project we use this frameworks:
   <li>SwiftDataTables</li>
   <li>SVProgressHUD</li>
   <li>LIHAlert</li>
-  
 </ul>
 
 
