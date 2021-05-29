@@ -52,7 +52,7 @@ class BaseViewController: UIViewController {
             self.alert?.autoCloseTimeInterval = 3.5
             
         case "L":
-            if let vTitle = title {self.alert = LIHAlertManager.getTextCustom(title: vTitle, message: message)}
+            if let vTitle = title {self.alert = LIHAlertManager.getTextWithTitleAlert(title: vTitle, message: message)}
             if let vColor = color {self.alert?.alertColor = vColor}
             self.alert?.initAlert(self.view)
             self.alert?.animationDuration = 0.7
@@ -94,18 +94,18 @@ class BaseViewController: UIViewController {
         self.center.getNotificationSettings { (notification) in
             if notification.authorizationStatus == .denied {
                 Configuration.shared.storageNotifications = false
-                let alertaController = UIAlertController(title: "Notificações", message: "Para o bom funcionamento do aplicativo, necessitamos que libere as notificações!", preferredStyle: UIAlertControllerStyle.alert)
+                let alertaController = UIAlertController(title: "Notificações", message: "Para o bom funcionamento do aplicativo, necessitamos que libere as notificações!", preferredStyle: UIAlertController.Style.alert)
                 
-                let acaoConfig = UIAlertAction(title: "Abrir Configurações", style: UIAlertActionStyle.default, handler: { (acaoConfig) in
+                let acaoConfig = UIAlertAction(title: "Abrir Configurações", style: UIAlertAction.Style.default, handler: { (acaoConfig) in
                     
-                    if let configuracoes = NSURL(string: UIApplicationOpenSettingsURLString){
+                    if let configuracoes = NSURL(string: UIApplication.openSettingsURLString){
                         UIApplication.shared.open(configuracoes as URL)
                     }
                 })
                 
-                let acaoCancelar = UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.cancel, handler: nil)
+                let acaoCancelar = UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.cancel, handler: nil)
                 
-                let acaoNunca = UIAlertAction(title: "Nunca", style: UIAlertActionStyle.destructive, handler: { (acaoNunca) in
+                let acaoNunca = UIAlertAction(title: "Nunca", style: UIAlertAction.Style.destructive, handler: { (acaoNunca) in
                     Configuration.shared.storageNotificacaoAlert = true
                     print("Nunca")
                 })

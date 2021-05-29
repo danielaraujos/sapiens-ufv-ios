@@ -55,6 +55,7 @@ class LoginViewController: BaseViewController {
                 }
             }) { (error) in
                 self.alert?.show(nil, hidden: nil)
+                
                 switch error {
                 case .errorLogin(error: let message):
                     self.alertShow(title: MESSAGE.MESSAGE_TITLE, message: message, color: self.colorError, type: "L")
@@ -109,7 +110,7 @@ extension LoginViewController : UITextFieldDelegate {
         if textField == userTF{
             passTF.becomeFirstResponder()
         }else if textField == passTF {
-            self.loginBTN(Any)
+            self.loginBTN((Any).self)
         }
         return true
     }

@@ -25,7 +25,7 @@ enum RESTFail {
 
 
 class REST {
-    static let pathBase = "https://danielaraujos.com/webservicesapiens/index.php?info="
+    static let pathBase = "http://192.168.64.2/sapiens-ws/index.php?info="
     
     static let configuration : URLSessionConfiguration = {
         var config = URLSessionConfiguration.default
@@ -70,13 +70,13 @@ class REST {
                     }
                 }else {
                     onSucess(false)
-                    onFail(.responseStatusCode(code: response.response!.statusCode ?? 0))
+                    onFail(.responseStatusCode(code: response.response?.statusCode ?? 0))
+                    print("Retornou erro")
                 }
             }else {
                 onSucess(false)
                 onFail(.noConectionInternet)
             }
-            
         }
     }
     
@@ -169,7 +169,7 @@ class REST {
             content.title = "Atualização no Sapiens"
             content.body = "Ocorreu uma atualização em suas notas!"
             
-            content.sound = UNNotificationSound(named: "out.caf")
+            content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "out.caf"))
             content.categoryIdentifier = "Atualização"
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)

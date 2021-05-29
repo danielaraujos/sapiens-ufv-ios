@@ -11,6 +11,6 @@ target 'Sapiens' do
   #pod 'Firebase'
   pod 'SwiftyJSON'
   pod 'SwiftDataTables'
-   pod 'SVProgressHUD', '~> 2.2'
+   pod 'SVProgressHUD'
    pod 'LIHAlert'
 end
