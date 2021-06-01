@@ -2,13 +2,13 @@
 
 Check out the example project to see it in action!
 ### Preview Samples
-| Login | Home Application | Schedules | Configuration |
+| Application | Login | Schedules | Configuration |
 | --- | --- | --- | --- |
-| ![](http://danielaraujos.com/partners/git_project/sapiens/login_sapiens.PNG) | ![](http://danielaraujos.com/partners/git_project/sapiens/home_sapiens.gif) | ![](http://danielaraujos.com/partners/git_project/sapiens/horarios_sapiens.gif) | ![](http://danielaraujos.com/partners/git_project/sapiens/ajustes_sapiens.PNG) |
+| ![](https://raw.githubusercontent.com/danielaraujos/sapiens-ufv-ios/master/assets/abertura.jpeg) | ![](https://raw.githubusercontent.com/danielaraujos/sapiens-ufv-ios/master/assets/login.jpeg) | ![](https://raw.githubusercontent.com/danielaraujos/sapiens-ufv-ios/master/assets/horarios.jpeg) | ![](https://raw.githubusercontent.com/danielaraujos/sapiens-ufv-ios/master/assets/config.jpeg) |
 
 ## Requirements
 - [x] Xcode 10.
-- [x] Swift 4.0.
+- [x] Swift 5.0.
 - [x] iOS 10 or higher.
 
 ## Installation
